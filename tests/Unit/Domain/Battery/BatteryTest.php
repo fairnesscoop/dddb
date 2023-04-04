@@ -7,7 +7,7 @@ namespace App\Tests\Unit\Domain\User;
 use App\Domain\Battery\Battery;
 use PHPUnit\Framework\TestCase;
 
-final class UserTest extends TestCase
+final class BatteryTest extends TestCase
 {
     public function testGetters(): void
     {

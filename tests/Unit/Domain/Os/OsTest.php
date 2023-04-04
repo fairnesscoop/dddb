@@ -7,7 +7,7 @@ namespace App\Tests\Unit\Domain\Os;
 use App\Domain\Os\Os;
 use PHPUnit\Framework\TestCase;
 
-class OsTest extends TestCase
+final class OsTest extends TestCase
 {
     public function testGetters(): void
     {
