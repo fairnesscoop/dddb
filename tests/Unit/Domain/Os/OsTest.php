@@ -12,7 +12,7 @@ final class OsTest extends TestCase
     public function testGetters(): void
     {
         $uuid = 'abcde';
-        $name = 'LineageOS';
+        $name = 'Android';
 
         $os = new Os(
             $uuid,

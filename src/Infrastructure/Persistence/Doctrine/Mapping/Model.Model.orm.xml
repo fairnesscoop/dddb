@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Domain\Model\Model" table="model">
+    <id name="uuid" type="guid" column="uuid"/>
+    <field name="codeName" type="string" column="name" nullable="false" length="50" />
+    <field name="codeTac" type="array" column="code_tac" nullable="false" />
+    <field name="attributes" type="json" column="attributes" nullable="false" />
+    <many-to-one field='serie' target-entity="App\Domain\Serie\Serie">
+      <join-column name="serie_uuid" referenced-column-name="uuid" on-delete="CASCADE" nullable="false" />
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

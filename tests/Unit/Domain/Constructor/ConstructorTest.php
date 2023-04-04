@@ -10,7 +10,7 @@ final class ConstructorTest extends TestCase
     public function testGetters(): void
     {
         $uuid = 'abcde';
-        $name = 'Fairphone';
+        $name = 'Google';
 
         $constructor = new Constructor(
             $uuid,

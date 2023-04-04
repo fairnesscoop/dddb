@@ -13,7 +13,7 @@ final class SerieTest extends TestCase
     public function testGetters(): void
     {
         $uuid = 'abcde';
-        $name = '4';
+        $name = 'Pixel 5';
         $constructor = $this->createMock(Constructor::class);
 
         $serie = new Serie(

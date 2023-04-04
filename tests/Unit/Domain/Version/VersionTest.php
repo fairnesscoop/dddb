@@ -13,7 +13,7 @@ final class VersionTest extends TestCase
     public function testGetters(): void
     {
         $uuid = 'abcde';
-        $name = 'Version name';
+        $name = '12';
         $os = $this->createMock(Os::class);
 
         $version = new Version(
