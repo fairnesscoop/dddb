@@ -9,17 +9,17 @@ use PHPUnit\Framework\TestCase;
 
 final class UserTest extends TestCase
 {
-  public function testGetters(): void
-  {
-    $uuid = 'abcd';
-    $reference = 'efgh';
+    public function testGetters(): void
+    {
+        $uuid = 'abcd';
+        $reference = 'efgh';
 
-    $battery = new Battery(
-      $uuid,
-      $reference
-    );
+        $battery = new Battery(
+            $uuid,
+            $reference
+        );
 
-    $this->assertSame($battery->getUuid(), $uuid);
-    $this->assertSame($battery->getReference(), $reference);
-  }
+        $this->assertSame($battery->getUuid(), $uuid);
+        $this->assertSame($battery->getReference(), $reference);
+    }
 }
