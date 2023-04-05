@@ -2,16 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Serie;
+namespace App\Domain\Model;
 
-use App\Domain\Constructor\Constructor;
-
-class Serie
+class Constructor
 {
     public function __construct(
         private string $uuid,
-        private string $name,
-        private Constructor $constructor
+        private string $name
     ) {
     }
 
@@ -23,10 +20,5 @@ class Serie
     public function getName(): string
     {
         return $this->name;
-    }
-
-    public function getConstructor(): Constructor
-    {
-        return $this->constructor;
     }
 }

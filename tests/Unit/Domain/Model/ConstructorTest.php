@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Tests\Unit\Domain\Constructor;
+declare(strict_types=1);
 
-use App\Domain\Constructor\Constructor;
+namespace App\Tests\Unit\Domain\Model;
+
+use App\Domain\Model\Constructor;
 use PHPUnit\Framework\TestCase;
 
 final class ConstructorTest extends TestCase

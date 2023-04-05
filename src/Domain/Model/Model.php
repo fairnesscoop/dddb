@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Model;
 
-use App\Domain\Serie\Serie;
+use App\Domain\Model\Serie;
 
 class Model
 {

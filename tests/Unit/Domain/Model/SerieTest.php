@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Domain\Serie;
+namespace App\Tests\Unit\Domain\Model;
 
-use App\Domain\Constructor\Constructor;
-use App\Domain\Serie\Serie;
+use App\Domain\Model\Constructor;
+use App\Domain\Model\Serie;
 use PHPUnit\Framework\TestCase;
 
 final class SerieTest extends TestCase

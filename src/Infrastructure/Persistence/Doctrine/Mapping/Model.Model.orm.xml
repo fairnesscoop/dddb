@@ -6,7 +6,7 @@
     <field name="codeTac" type="array" column="code_tac" nullable="false" />
     <field name="attributes" type="json" column="attributes" nullable="false" />
     
-    <many-to-one field='serie' target-entity="App\Domain\Serie\Serie">
+    <many-to-one field='serie' target-entity="App\Domain\Model\Serie">
       <join-column name="serie_uuid" referenced-column-name="uuid" on-delete="CASCADE" nullable="false" />
     </many-to-one>
     <one-to-one field="parentModel" target-entity="App\Domain\Model\Model" inversed-by="model">

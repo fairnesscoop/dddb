@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Domain\Model;
 
 use App\Domain\Model\Model;
-use App\Domain\Serie\Serie;
+use App\Domain\Model\Serie;
 use PHPUnit\Framework\TestCase;
 
 final class ModelTest extends TestCase

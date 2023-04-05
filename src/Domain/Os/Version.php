@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Version;
+namespace App\Domain\Os;
 
 use App\Domain\Os\Os;
 
