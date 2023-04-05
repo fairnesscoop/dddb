@@ -1,41 +1,53 @@
 <!doctype html>
 <html lang="{{ app.request.locale }}">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% set _nonce = csp_nonce('script') %}
-    {% set _nonce = csp_nonce('style') %}
-    <meta name="csp-nonce" content="{{ _nonce }}">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		{% set _nonce = csp_nonce('script') %}
+		{% set _nonce = csp_nonce('style') %}
+		<meta name="csp-nonce" content="{{ _nonce }}">
 
-    <link rel="apple-touch-icon" href="{{ asset('build/favicon/apple-touch-icon.png') }}"><!-- 180×180 -->
-    <link rel="shortcut icon" href="{{ asset('build/favicon/favicon.ico') }}" type="image/x-icon"><!-- 32×32 -->
-    <link rel="manifest" href="{{ asset('build/favicon/site.webmanifest') }}" crossorigin="use-credentials">
+		<link
+		rel="apple-touch-icon" href="{{ asset('build/favicon/apple-touch-icon.png') }}">
+		<!-- 180×180 -->
+		<link
+		rel="shortcut icon" href="{{ asset('build/favicon/favicon.ico') }}" type="image/x-icon">
+		<!-- 32×32 -->
+		<link rel="manifest" href="{{ asset('build/favicon/site.webmanifest') }}" crossorigin="use-credentials">
 
-    <title>{% block title %}{{ 'common.title'|trans }}{% endblock %}</title>
+		<title>
+			{% block title %}
+				{{ 'common.title'|trans }}
+			{% endblock %}
+		</title>
 
-    {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-    {% endblock %}
-  </head>
-  <body>
-    {% for label, messages in app.flashes %}
-        {% if loop.first %}<div class="fr-container fr-mt-4w">{% endif %}
-        {% for message in messages %}
-            <div class="fr-alert fr-alert--{{ label }}">
-                {{ message|raw }}
-            </div>
-        {% endfor %}
-    {% if loop.last %}</div>{% endif %}
-    {% endfor %}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
 
-    <main id="contenu">
-        {% block body %}{% endblock %}
-    </main>
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+		{% for label, messages in app.flashes %}
+			{% if loop.first %}
+				<div class="fr-container fr-mt-4w">
+				{% endif %}
+				{% for message in messages %}
+					<div class="fr-alert fr-alert--{{ label }}">
+						{{ message|raw }}
+					</div>
+				{% endfor %}
+				{% if loop.last %}
+				</div>
+			{% endif %}
+		{% endfor %}
 
-    {% block body_end %}{% endblock %}
+		<main id="contenu"> {% block body %}{% endblock %}
+			</main>
 
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-    {% endblock %}
-  </body>
-</html>
+			{% block body_end %}{% endblock %}
+
+		</body>
+	</html>
