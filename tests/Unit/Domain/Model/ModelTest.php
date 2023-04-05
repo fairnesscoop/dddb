@@ -20,13 +20,15 @@ final class ModelTest extends TestCase
             "battery_reference" => "battery_uuid"
         ];
         $serie = $this->createMock(Serie::class);
+        $parentModel = $this->createMock(Model::class);
 
         $model = new Model(
             $uuid,
             $codeName,
             $codeTac,
             $attributes,
-            $serie
+            $serie,
+            $parentModel
         );
 
         $this->assertSame($model->getUuid(), $uuid);
@@ -34,5 +36,6 @@ final class ModelTest extends TestCase
         $this->assertSame($model->getCodeTac(), $codeTac);
         $this->assertSame($model->getAttributes(), $attributes);
         $this->assertSame($model->getSerie(), $serie);
+        $this->assertSame($model->getParentModel(), $parentModel);
     }
 }

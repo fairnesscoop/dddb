@@ -14,6 +14,7 @@ class Model
         private array $codeTac,
         private array $attributes,
         private Serie $serie,
+        private ?Model $parentModel = null
     ) {
     }
 
@@ -40,5 +41,10 @@ class Model
     public function getSerie(): Serie
     {
         return $this->serie;
+    }
+
+    public function getParentModel(): Model
+    {
+        return $this->parentModel;
     }
 }
