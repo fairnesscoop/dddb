@@ -6,6 +6,5 @@
     <unique-constraints>
       <unique-constraint columns="name" name="constructor_name" />
     </unique-constraints>
-
   </entity>
 </doctrine-mapping>

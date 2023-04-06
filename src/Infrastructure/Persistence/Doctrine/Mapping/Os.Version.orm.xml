@@ -6,6 +6,5 @@
     <many-to-one field="os" target-entity="App\Domain\Os\Os">
       <join-column name="os_uuid" referenced-column-name="uuid" on-delete="CASCADE" nullable="false" />
     </many-to-one>
-
   </entity>
 </doctrine-mapping>

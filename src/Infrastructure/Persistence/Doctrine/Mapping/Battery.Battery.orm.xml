@@ -6,6 +6,5 @@
     <unique-constraints>
       <unique-constraint columns="reference" name="battery_reference" />
     </unique-constraints>
-    
   </entity>
 </doctrine-mapping>
