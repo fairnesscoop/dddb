@@ -28,3 +28,7 @@ ou lancez la commande suivante si le projet avait déjà été installé :
 ```bash
 make start
 ```
+
+## Contribute
+
+See [developpment documentation](./docs/README.md).
