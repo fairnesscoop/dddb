@@ -8,7 +8,7 @@ class Os
 {
     public function __construct(
         private string $uuid,
-        private string $name
+        private string $name,
     ) {
     }
 

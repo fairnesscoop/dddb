@@ -8,7 +8,7 @@
     <many-to-one field='serie' target-entity="App\Domain\Model\Serie">
       <join-column name="serie_uuid" referenced-column-name="uuid" on-delete="CASCADE" nullable="false" />
     </many-to-one>
-    <one-to-one field="parentModel" target-entity="App\Domain\Model\Model" inversed-by="model">
+    <one-to-one field="parentModel" target-entity="App\Domain\Model\Model">
       <join-column name="parent_model" referenced-column-name="uuid"/>
     </one-to-one>
   </entity>

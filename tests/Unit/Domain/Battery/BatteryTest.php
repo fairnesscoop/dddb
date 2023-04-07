@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Domain\User;
+namespace App\Tests\Unit\Domain\Battery;
 
 use App\Domain\Battery\Battery;
 use PHPUnit\Framework\TestCase;

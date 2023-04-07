@@ -8,7 +8,7 @@ class Battery
 {
     public function __construct(
         private string $uuid,
-        private string $reference
+        private string $reference,
     ) {
     }
 

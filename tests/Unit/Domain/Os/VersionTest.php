@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Domain\Version;
+namespace App\Tests\Unit\Domain\Os;
 
 use App\Domain\Os\Os;
 use App\Domain\Os\Version;

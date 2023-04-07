@@ -12,7 +12,7 @@ class Model
         private array $codeTac,
         private array $attributes,
         private Serie $serie,
-        private ?Model $parentModel = null
+        private ?Model $parentModel = null,
     ) {
     }
 

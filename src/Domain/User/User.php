@@ -14,7 +14,7 @@ class User
         private string $lastName,
         private string $email,
         private string $password,
-        private RoleEnum $role
+        private RoleEnum $role,
     ) {
     }
 
