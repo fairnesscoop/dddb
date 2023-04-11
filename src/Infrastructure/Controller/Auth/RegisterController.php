@@ -26,8 +26,8 @@ final class RegisterController
             $this->twig->render(
                 name: 'auth/register.html.twig',
                 context: [
-                    'form' => $form->createView()
-                ]
+                    'form' => $form->createView(),
+                ],
             ),
         );
     }

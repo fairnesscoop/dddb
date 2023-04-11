@@ -17,19 +17,19 @@ final class RegisterFormType extends AbstractType
         $builder
             ->add(
                 'firstName',
-                TextType::class
+                TextType::class,
             )
             ->add(
                 'lastName',
-                TextType::class
+                TextType::class,
             )
             ->add(
                 'email',
-                EmailType::class
+                EmailType::class,
             )
             ->add(
                 'password',
-                PasswordType::class
+                PasswordType::class,
             );
     }
 }
