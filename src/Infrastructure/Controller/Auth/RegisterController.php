@@ -18,7 +18,7 @@ class RegisterController
     public function __invoke(): Response
     {
         return new Response(
-            $this->twig->render(name: 'auth/register.html.twig')
+            $this->twig->render(name: 'auth/register.html.twig'),
         );
     }
 }
