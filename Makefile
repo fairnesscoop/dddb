@@ -15,6 +15,11 @@ BIN_CONSOLE = ${_SYMFONY} console
 BIN_COMPOSER = ${_SYMFONY} composer
 NPM = ${_DOCKER_EXEC_PHP} npm
 
+# No TTY commands.
+_DOCKER_EXEC_PHP_NO_TTY = docker-compose exec -T php
+BIN_PHP_NO_TTY = ${_DOCKER_EXEC_PHP_NO_TTY} php
+BIN_CONSOLE_NO_TTY = ${_SYMFONY_NO_TTY} console
+
 ##
 ## ----------------
 ## General
@@ -115,10 +120,10 @@ phpstan: ## PHP Stan
 	${BIN_PHP} ./vendor/bin/phpstan analyse -l 5 --xdebug src
 
 php_lint: ## PHP linter
-	${BIN_PHP} ./vendor/bin/php-cs-fixer fix -n ${ARGS}
+	${BIN_PHP_NO_TTY} ./vendor/bin/php-cs-fixer fix -n ${ARGS}
 
 twig_lint: ## Twig linter
-	${BIN_CONSOLE} lint:twig -n
+	${BIN_CONSOLE_NO_TTY} lint:twig -n
 
 security_check: ## Security checks
 	${_SYMFONY} security:check
@@ -134,6 +139,10 @@ check: ## Run checks
 	make twig_lint
 	make phpstan
 	${BIN_CONSOLE} doctrine:schema:validate
+
+husky_precommit: ## Run pre commits commands
+	make php_lint
+	make twig_lint
 
 format: php_lint ## Format code
 
