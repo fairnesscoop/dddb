@@ -17,6 +17,7 @@ NPM = ${_DOCKER_EXEC_PHP} npm
 
 # No TTY commands.
 _DOCKER_EXEC_PHP_NO_TTY = docker-compose exec -T php
+_SYMFONY_NO_TTY = ${_DOCKER_EXEC_PHP_NO_TTY} symfony
 BIN_PHP_NO_TTY = ${_DOCKER_EXEC_PHP_NO_TTY} php
 BIN_CONSOLE_NO_TTY = ${_SYMFONY_NO_TTY} console
 
