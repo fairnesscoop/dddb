@@ -9,7 +9,7 @@ class Version
     public function __construct(
         private string $uuid,
         private string $name,
-        private Os $os
+        private Os $os,
     ) {
     }
 

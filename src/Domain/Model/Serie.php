@@ -9,7 +9,7 @@ class Serie
     public function __construct(
         private string $uuid,
         private string $name,
-        private Constructor $constructor
+        private Constructor $constructor,
     ) {
     }
 
