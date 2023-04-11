@@ -121,9 +121,15 @@ phpstan: ## PHP Stan
 	${BIN_PHP} ./vendor/bin/phpstan analyse -l 5 --xdebug src
 
 php_lint: ## PHP linter
+	${BIN_PHP} ./vendor/bin/php-cs-fixer fix -n ${ARGS}
+
+php_lint_no_tty: ## PHP linter
 	${BIN_PHP_NO_TTY} ./vendor/bin/php-cs-fixer fix -n ${ARGS}
 
 twig_lint: ## Twig linter
+	${BIN_CONSOLE} lint:twig -n
+
+twig_lint_no_tty: ## Twig linter
 	${BIN_CONSOLE_NO_TTY} lint:twig -n
 
 security_check: ## Security checks
@@ -142,8 +148,8 @@ check: ## Run checks
 	${BIN_CONSOLE} doctrine:schema:validate
 
 husky_precommit: ## Run pre commits commands
-	make php_lint
-	make twig_lint
+	make php_lint_no_tty
+	make twig_lint_no_tty
 
 format: php_lint ## Format code
 
