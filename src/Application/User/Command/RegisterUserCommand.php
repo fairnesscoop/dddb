@@ -14,7 +14,7 @@ final class RegisterUserCommand implements CommandInterface
         private string $lastName,
         private string $email,
         private string $password,
-        private ?string $role = RoleEnum::ADMIN->value,
+        private ?string $role = 'admin',
     ) {
     }
 }
