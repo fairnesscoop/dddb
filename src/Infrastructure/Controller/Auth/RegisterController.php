@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Controller\Auth;
 
-use App\Infrastructure\Form\User\RegisterFormType;
+use App\Infrastructure\Form\Auth\RegisterFormType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,7 +17,7 @@ final class RegisterController
     ) {
     }
 
-    #[Route('/register', name: 'register', methods: ['GET'])]
+    #[Route('/register', name: 'app_register', methods: ['GET'])]
     public function __invoke(): Response
     {
         $form = $this->formFactory->create(RegisterFormType::class);
