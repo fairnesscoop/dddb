@@ -3,4 +3,3 @@
 
 make husky_precommit
 git add .
-git commit -m "Husky lint" --no-verify
