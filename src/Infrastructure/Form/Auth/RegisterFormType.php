@@ -22,9 +22,9 @@ final class RegisterFormType extends AbstractType
                 options: [
                     'label' => 'register.form.firstName',
                     'attr' => [
-                        'placeholder' => 'register.form.firstName.placeholder'
-                    ]
-                ]
+                        'placeholder' => 'register.form.firstName.placeholder',
+                    ],
+                ],
             )
             ->add(
                 'lastName',
@@ -32,9 +32,9 @@ final class RegisterFormType extends AbstractType
                 options: [
                     'label' => 'register.form.lastName',
                     'attr' => [
-                        'placeholder' => 'register.form.lastName.placeholder'
-                    ]
-                ]
+                        'placeholder' => 'register.form.lastName.placeholder',
+                    ],
+                ],
             )
             ->add(
                 'email',
@@ -42,9 +42,9 @@ final class RegisterFormType extends AbstractType
                 options: [
                     'label' => 'register.form.email',
                     'attr' => [
-                        'placeholder' => 'register.form.email.placeholder'
-                    ]
-                ]
+                        'placeholder' => 'register.form.email.placeholder',
+                    ],
+                ],
             )
             ->add(
                 'password',
@@ -55,16 +55,16 @@ final class RegisterFormType extends AbstractType
                     'first_options' => [
                         'label' => 'register.form.password',
                         'attr' => [
-                            'placeholder' => 'register.form.password.placeholder'
-                        ]
+                            'placeholder' => 'register.form.password.placeholder',
+                        ],
                     ],
                     'second_options' => [
                         'label' => 'register.form.password.confirm',
                         'attr' => [
-                            'placeholder' => 'register.form.password.confirm.placeholder'
-                        ]
-                    ]
-                ]
+                            'placeholder' => 'register.form.password.confirm.placeholder',
+                        ],
+                    ],
+                ],
             );
     }
 }

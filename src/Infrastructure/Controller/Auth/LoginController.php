@@ -34,7 +34,7 @@ final class LoginController
                 context: [
                     'last_username' => $lastUsername,
                     'error' => $error,
-                    'form' => $form->createView()
+                    'form' => $form->createView(),
                 ],
             ),
         );

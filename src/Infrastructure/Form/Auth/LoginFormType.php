@@ -20,9 +20,9 @@ final class LoginFormType extends AbstractType
                 options: [
                     'label' => 'login.form.email',
                     'attr' => [
-                        'placeholder' => 'login.form.email.placeholder'
-                    ]
-                ]
+                        'placeholder' => 'login.form.email.placeholder',
+                    ],
+                ],
             )
             ->add(
                 'password',
@@ -30,9 +30,9 @@ final class LoginFormType extends AbstractType
                 options: [
                     'label' => 'login.form.password',
                     'attr' => [
-                        'placeholder' => 'login.form.password.placeholder'
-                    ]
-                ]
+                        'placeholder' => 'login.form.password.placeholder',
+                    ],
+                ],
             );
     }
 }
