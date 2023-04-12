@@ -23,7 +23,7 @@ final class RegisterController
     #[Route('/register', name: 'app_register', methods: ['GET'])]
     public function __invoke(): Response
     {
-        $command = new RegisterUserCommand("Benoit", "Paquier", "benoit@fairness.coop", "temptemp");
+        $command = new RegisterUserCommand('Benoit', 'Paquier', 'benoit@fairness.coop', 'temptemp');
         $form = $this->formFactory->create(RegisterFormType::class);
 
         $this->commandBus->handle($command);
