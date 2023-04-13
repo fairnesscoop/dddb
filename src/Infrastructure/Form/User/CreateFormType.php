@@ -55,7 +55,7 @@ final class CreateFormType extends AbstractType
                 RepeatedType::class,
                 options: [
                     'type' => PasswordType::class,
-                    'invalid_message' => 'users.create.form.password.nomatch',
+                    'invalid_message' => 'users.create.form.password.notmatch',
                     'first_options' => [
                         'label' => 'users.create.form.password',
                         'attr' => [

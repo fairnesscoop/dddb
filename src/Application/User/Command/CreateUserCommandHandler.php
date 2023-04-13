@@ -7,13 +7,16 @@ namespace App\Application\User\Command;
 use App\Application\IdFactoryInterface;
 use App\Application\PasswordHasherInterface;
 use App\Domain\User\Enum\RoleEnum;
+use App\Domain\User\Exception\UserAlreadyRegisteredException;
 use App\Domain\User\Repository\UserRepositoryInterface;
+use App\Domain\User\Specification\IsUserAlreadyRegistred;
 use App\Domain\User\User;
 
 class CreateUserCommandHandler
 {
     public function __construct(
         private UserRepositoryInterface $userRepository,
+        private IsUserAlreadyRegistred $isUserAlreadyRegistred,
         private IdFactoryInterface $idFactory,
         private PasswordHasherInterface $passwordHasher,
     ) {
@@ -25,6 +28,9 @@ class CreateUserCommandHandler
         $email = trim(strtolower($createUserCommand->email));
 
         // check if email already exists
+        if ($this->isUserAlreadyRegistred->isSatisfiedBy($email)) {
+            throw new UserAlreadyRegisteredException();
+        }
 
         $uuid = $this->idFactory->make();
         $password = $this->passwordHasher->hash($createUserCommand->password);

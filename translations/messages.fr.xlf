@@ -100,10 +100,6 @@
                 <source>users.create.form.password.confirm.placeholder</source>
                 <target>Entrez la confirmation du mot de passe</target>
             </trans-unit>
-            <trans-unit id="users.create.form.password.nomatch">
-                <source>users.create.form.password.nomatch</source>
-                <target>Le mot de passe et la confirmation doivent être identique</target>
-            </trans-unit>
             <trans-unit id="users.create.form.role">
                 <source>users.create.form.role</source>
                 <target>Rôle</target>
