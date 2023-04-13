@@ -50,6 +50,68 @@
                 <source>common.cancel</source>
                 <target>Annuler</target>
             </trans-unit>
+
+            <!-- Users create -->
+            <trans-unit id="users.create.title">
+                <source>users.create.title</source>
+                <target>Créer un utilisateur</target>
+            </trans-unit>
+            <trans-unit id="users.create.meta.title">
+                <source>users.create.meta.title</source>
+                <target>Créer un utilisateur</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.firstName">
+                <source>users.create.form.firstName</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.firstName.placeholder">
+                <source>users.create.form.firstName.placeholder</source>
+                <target>Entrez le prénom</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.lastName">
+                <source>users.create.form.lastName</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.lastName.placeholder">
+                <source>users.create.form.lastName.placeholder</source>
+                <target>Entrez le nom</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.email">
+                <source>users.create.form.email</source>
+                <target>Adresse e-mail</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.email.placeholder">
+                <source>users.create.form.email.placeholder</source>
+                <target>Entrez l'adresse e-mail</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.password">
+                <source>users.create.form.password</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.password.placeholder">
+                <source>users.create.form.password.placeholder</source>
+                <target>Entrez le mot de passe</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.password.confirm">
+                <source>users.create.form.password.confirm</source>
+                <target>Confirmation du mot de passe</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.password.confirm.placeholder">
+                <source>users.create.form.password.confirm.placeholder</source>
+                <target>Entrez la confirmation du mot de passe</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.password.nomatch">
+                <source>users.create.form.password.nomatch</source>
+                <target>Le mot de passe et la confirmation doivent être identique</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.role">
+                <source>users.create.form.role</source>
+                <target>Rôle</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.submit">
+                <source>users.create.form.submit</source>
+                <target>Créer l'utilisateur</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

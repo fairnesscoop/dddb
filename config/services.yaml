@@ -28,9 +28,15 @@ services:
         resource: '../src/Infrastructure/Controller/'
         tags: ['controller.service_arguments']
 
-    # ----------------
-    # Console commands
-    # ----------------
-    # App\Infrastructure\Symfony\Command\:
-    #     resource: '../src/Infrastructure/Symfony/Command/'
-    #     tags: ['console.command']
+    # -------------------
+    # Command & Query bus
+    # -------------------
+    App\Infrastructure\Adapter\CommandBus:
+        $commandBus: '@messenger.bus.commands'
+
+    command_handlers:
+        namespace: App\Application\
+        resource: '%kernel.project_dir%/src/Application/**/Command/**/*Handler.php'
+        public: true
+        tags:
+            - { name: 'messenger.message_handler', bus: 'messenger.bus.commands' }
