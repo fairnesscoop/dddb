@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Application\User\Command;
 
-// use App\Domain\User\User;
+use App\Domain\User\Enum\RoleEnum;
+use App\Domain\User\User;
 
 class CreateUserCommandHandler
 {
@@ -13,8 +14,15 @@ class CreateUserCommandHandler
     }
 
     // dont forget to change invoke return type to "User"
-    public function __invoke(CreateUserCommand $createUserCommand): void
+    public function __invoke(CreateUserCommand $createUserCommand): User
     {
-        dump($createUserCommand);
+        return new User(
+            'uuid1',
+            'benoit',
+            'paquier',
+            'email@mail.mail',
+            'temptemp',
+            RoleEnum::ADMIN,
+        );
     }
 }

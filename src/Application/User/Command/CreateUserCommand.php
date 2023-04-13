@@ -8,12 +8,9 @@ use App\Application\CommandInterface;
 
 final class CreateUserCommand implements CommandInterface
 {
-    public function __construct(
-        private string $firstName,
-        private string $lastName,
-        private string $email,
-        private string $password,
-        private ?string $role = 'admin',
-    ) {
-    }
+    public ?string $firstName;
+    public ?string $lastName;
+    public ?string $email;
+    public ?string $password;
+    public ?string $role = 'contributor';
 }
