@@ -14,18 +14,18 @@
       {{ form_start(form, { 'attr': { 'class': 'space-y-4 md:space-y-6' } }) }}
       <div>
         {{ form_label(form.firstName, null, { 'label_attr': { 'class': 'block mb-2 text-sm font-medium' }}) }}
-        {{ form_widget(form.firstName, { 'attr': { 'value': 'John', 'class': 'bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5' } }) }}
+        {{ form_widget(form.firstName, { 'attr': { 'class': 'bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5' } }) }}
       </div>
       <div>
         {{ form_label(form.lastName, null, { 'label_attr': { 'class': 'block mb-2 text-sm font-medium' }}) }}
-        {{ form_widget(form.lastName, { 'attr': { 'value': 'Doe', 'class': 'bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5' } }) }}
+        {{ form_widget(form.lastName, { 'attr': { 'class': 'bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5' } }) }}
       </div>
       <div>
         {{ form_label(form.email, null, { 'label_attr': { 'class': 'block mb-2 text-sm font-medium' }}) }}
         <div class="mb-2 text-sm text-red-500">
           {{ form_errors(form.email, { 'errors_attr': { 'class': 'red-500' } }) }}
         </div>
-        {{ form_widget(form.email, { 'attr': { 'value': 'john@doe.com', 'class': 'bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5' } }) }}
+        {{ form_widget(form.email, { 'attr': {'class': 'bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5' } }) }}
       </div>
       <div class="mb-2 text-sm text-red-500">
         {{ form_errors(form.password, { 'errors_attr': { 'class': 'red-500' } }) }}
@@ -35,14 +35,14 @@
         <div class="mb-2 text-sm text-red-500">
           {{ form_errors(form.password.first, { 'errors_attr': { 'class': 'red-500' } }) }}
         </div>
-        {{ form_widget(form.password.first, { 'attr': { 'value': 'temptemp', 'class': 'bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5' } }) }}
+        {{ form_widget(form.password.first, { 'attr': { 'class': 'bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5' } }) }}
       </div>
       <div>
         {{ form_label(form.password.second, null, { 'label_attr': { 'class': 'block mb-2 text-sm font-medium' }}) }}
         <div class="mb-2 text-sm text-red-500">
           {{ form_errors(form.password.second, { 'errors_attr': { 'class': 'red-500' } }) }}
         </div>
-        {{ form_widget(form.password.second, { 'attr': { 'value': 'temptemp', 'class': 'bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5' } }) }}
+        {{ form_widget(form.password.second, { 'attr': { 'class': 'bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5' } }) }}
       </div>
       <div>
         {{ form_label(form.role, null, { 'label_attr': { 'class': 'block mb-2 text-sm font-medium' }}) }}
