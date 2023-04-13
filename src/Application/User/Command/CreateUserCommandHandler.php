@@ -15,7 +15,7 @@ class CreateUserCommandHandler
     public function __construct(
         private UserRepositoryInterface $userRepository,
         private IdFactoryInterface $idFactory,
-        private readonly PasswordHasherInterface $passwordHasher,
+        private PasswordHasherInterface $passwordHasher,
     ) {
     }
 
@@ -28,18 +28,18 @@ class CreateUserCommandHandler
 
         $uuid = $this->idFactory->make();
         $password = $this->passwordHasher->hash($createUserCommand->password);
+        $role = $createUserCommand->role === RoleEnum::ADMIN->value ?
+            RoleEnum::ADMIN : RoleEnum::CONTRIBUTOR;
 
-        dump($email);
-        dump($uuid);
-        dump($password);
-
-        return new User(
-            'uuid1',
-            'benoit',
-            'paquier',
-            'email@mail.mail',
-            'temptemp',
-            RoleEnum::ADMIN,
+        return $this->userRepository->add(
+            new User(
+                $uuid,
+                $createUserCommand->firstName,
+                $createUserCommand->lastName,
+                $email,
+                $password,
+                $role->value,
+            ),
         );
     }
 }

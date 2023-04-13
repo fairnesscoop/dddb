@@ -23,7 +23,13 @@ final class UserRepository extends ServiceEntityRepository implements UserReposi
             ->setParameter('email', trim(strtolower($email)))
             ->setMaxResults(1)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
+    }
+
+    public function add(User $user): User
+    {
+        $this->getEntityManager()->persist($user);
+
+        return $user;
     }
 }
