@@ -33,7 +33,6 @@ final class CreateUserController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $this->commandBus->handle($command);
-            dump($user);
 
             return new RedirectResponse(
                 url: $this->router->generate('app_login'),
