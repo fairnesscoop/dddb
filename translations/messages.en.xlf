@@ -4,23 +4,23 @@
         <body>
             <trans-unit id="common.title">
                 <source>common.title</source>
-                <target>Référentiel Smartphones</target>
+                <target>Smartphones Referential</target>
             </trans-unit>
             <trans-unit id="common.site_name">
                 <source>common.site_name</source>
-                <target>Référentiel Smartphones</target>
+                <target>Digital devices referential</target>
             </trans-unit>
             <trans-unit id="common.login">
                 <source>common.login</source>
-                <target>Se connecter</target>
+                <target>Sign in</target>
             </trans-unit>
             <trans-unit id="common.logout">
                 <source>common.logout</source>
-                <target>Se déconnecter</target>
+                <target>Sign out</target>
             </trans-unit>
             <trans-unit id="common.close">
                 <source>common.close</source>
-                <target>Fermer</target>
+                <target>Close</target>
             </trans-unit>
             <trans-unit id="common.menu">
                 <source>common.menu</source>
@@ -28,43 +28,43 @@
             </trans-unit>
             <trans-unit id="common.see">
                 <source>common.see</source>
-                <target>Voir le détail</target>
+                <target>See details</target>
             </trans-unit>
             <trans-unit id="common.delete">
                 <source>common.delete</source>
-                <target>Supprimer</target>
+                <target>Delete</target>
             </trans-unit>
             <trans-unit id="common.back_to_home">
                 <source>common.back_to_home</source>
-                <target>Retour à l'accueil</target>
+                <target>Back to home</target>
             </trans-unit>
             <trans-unit id="common.save">
                 <source>common.save</source>
-                <target>Sauvegarder</target>
+                <target>Save</target>
             </trans-unit>
             <trans-unit id="common.update">
                 <source>common.update</source>
-                <target>Modifier</target>
+                <target>Update</target>
             </trans-unit>
             <trans-unit id="common.cancel">
                 <source>common.cancel</source>
-                <target>Annuler</target>
+                <target>Cancel</target>
             </trans-unit>
             <trans-unit id="login.form.email">
                 <source>login.form.email</source>
-                <target>Votre email</target>
+                <target>Email</target>
             </trans-unit>
             <trans-unit id="login.form.password">
                 <source>login.form.password</source>
-                <target>Votre mot de passe</target>
+                <target>Password</target>
             </trans-unit>
             <trans-unit id="login.password_forgotten">
                 <source>login.password_forgotten</source>
-                <target>Vous avez perdu votre mot de passe ?</target>
+                <target>Password forgotten?</target>
             </trans-unit>
             <trans-unit id="login.reset_password">
                 <source>login.reset_password</source>
-                <target>Réinitialiser le mot de passe</target>
+                <target>Reset password</target>
             </trans-unit>
         </body>
     </file>
