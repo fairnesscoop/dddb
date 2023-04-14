@@ -38,6 +38,11 @@ class User
         return $this->email;
     }
 
+    public function getFullName(): string
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
+
     public function getPassword(): string
     {
         return $this->password;
