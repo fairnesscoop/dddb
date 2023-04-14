@@ -108,6 +108,24 @@
                 <source>users.create.form.submit</source>
                 <target>Créer l'utilisateur</target>
             </trans-unit>
+
+            <!-- Login -->
+            <trans-unit id="login.form.email">
+                <source>login.form.email</source>
+                <target>Votre email</target>
+            </trans-unit>
+            <trans-unit id="login.form.password">
+                <source>login.form.password</source>
+                <target>Votre mot de passe</target>
+            </trans-unit>
+            <trans-unit id="login.password_forgotten">
+                <source>login.password_forgotten</source>
+                <target>Vous avez perdu votre mot de passe ?</target>
+            </trans-unit>
+            <trans-unit id="login.reset_password">
+                <source>login.reset_password</source>
+                <target>Réinitialiser le mot de passe</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

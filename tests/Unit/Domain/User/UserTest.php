@@ -17,7 +17,7 @@ final class UserTest extends TestCase
         $lastName = 'Paquier';
         $email = 'benoit.paquier@fairness.coop';
         $password = 'pwd';
-        $role = RoleEnum::ADMIN->value;
+        $role = RoleEnum::ROLE_ADMIN;
 
         $user = new User(
             $uuid,

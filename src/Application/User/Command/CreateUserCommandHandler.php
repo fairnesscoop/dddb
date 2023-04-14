@@ -34,8 +34,8 @@ class CreateUserCommandHandler
 
         $uuid = $this->idFactory->make();
         $password = $this->passwordHasher->hash($createUserCommand->password);
-        $role = $createUserCommand->role === RoleEnum::ADMIN->value ?
-            RoleEnum::ADMIN : RoleEnum::CONTRIBUTOR;
+        $role = $createUserCommand->role === RoleEnum::ROLE_ADMIN->value ?
+            RoleEnum::ROLE_ADMIN : RoleEnum::ROLE_CONTRIBUTOR;
 
         return $this->userRepository->add(
             new User(
@@ -44,7 +44,7 @@ class CreateUserCommandHandler
                 $createUserCommand->lastName,
                 $email,
                 $password,
-                $role->value,
+                $role,
             ),
         );
     }
