@@ -12,8 +12,15 @@
         <property name="lastName">
             <constraint name="NotBlank" />
             <constraint name="Length">
-                <option name="max">10</option>
+                <option name="max">100</option>
             </constraint>
+        </property>
+        <property name="email">
+            <constraint name="NotBlank" />
+            <constraint name="Email" />
+        </property>
+        <property name="password">
+            <constraint name="NotBlank" />
         </property>
     </class>
 </constraint-mapping>
