@@ -14,6 +14,7 @@ final class CreateUserControllerTest extends AbstractWebTestCase
         $crawler = $client->request('GET', '/users/create');
 
         $this->assertResponseStatusCodeSame(200);
+        $this->assertSecurityHeaders();
         $this->assertSame('Créer un utilisateur', $crawler->filter('h1')->text());
 
         $saveButton = $crawler->selectButton("Créer l'utilisateur");
@@ -35,6 +36,7 @@ final class CreateUserControllerTest extends AbstractWebTestCase
         $crawler = $client->request('GET', '/users/create');
 
         $this->assertResponseStatusCodeSame(200);
+        $this->assertSecurityHeaders();
         $this->assertSame('Créer un utilisateur', $crawler->filter('h1')->text());
 
         $saveButton = $crawler->selectButton("Créer l'utilisateur");
