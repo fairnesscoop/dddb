@@ -22,9 +22,31 @@ final class UserFixture extends Fixture
             RoleEnum::ROLE_ADMIN,
         );
 
+        $gpelletier = new User(
+            '0b507871-8b5e-4575-b297-a630310fc06a',
+            'Gregory',
+            'Pelletier',
+            'gregory.pelletier@fairness.coop',
+            'password',
+            RoleEnum::ROLE_ADMIN,
+        );
+
+        $mmarchois = new User(
+            '0b507871-8b5e-4575-b297-a630310fc06b',
+            'Mathieu',
+            'Marchois',
+            'mathieu.marchois@fairness.coop',
+            'password',
+            RoleEnum::ROLE_ADMIN,
+        );
+
         $manager->persist($bpaquier);
+        $manager->persist($gpelletier);
+        $manager->persist($mmarchois);
         $manager->flush();
 
         $this->addReference('bpaquier', $bpaquier);
+        $this->addReference('gpelletier', $gpelletier);
+        $this->addReference('mmarchois', $mmarchois);
     }
 }
