@@ -32,4 +32,18 @@ final class UserRepository extends ServiceEntityRepository implements UserReposi
 
         return $user;
     }
+
+    public function findUsers(): array
+    {
+        return $this->createQueryBuilder('u')
+            ->select([
+                'u.uuid',
+                'u.firstName',
+                'u.lastName',
+                'u.email',
+                'u.role',
+            ])
+            ->getQuery()
+            ->getResult();
+    }
 }

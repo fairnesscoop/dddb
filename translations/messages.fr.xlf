@@ -109,6 +109,41 @@
                 <target>Créer l'utilisateur</target>
             </trans-unit>
 
+            <!-- Users list -->
+            <trans-unit id="users.list.title">
+                <source>users.list.title</source>
+                <target>Liste des utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="users.list.meta.title">
+                <source>users.list.meta.title</source>
+                <target>Liste des utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="users.list.button.create">
+                <source>users.list.button.create</source>
+                <target>Créer un utilisateur</target>
+            </trans-unit>
+            <trans-unit id="users.list.table.thead.first_name">
+                <source>users.list.table.thead.first_name</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="users.list.table.thead.last_name">
+                <source>users.list.table.thead.last_name</source>
+                <target>Nom de famille</target>
+            </trans-unit>
+            <trans-unit id="users.list.table.thead.email">
+                <source>users.list.table.thead.email</source>
+                <target>Adresse e-mail</target>
+            </trans-unit>
+            <trans-unit id="users.list.table.thead.role">
+                <source>users.list.table.thead.role</source>
+                <target>Rôle</target>
+            </trans-unit>
+            <trans-unit id="users.list.table.thead.actions">
+                <source>users.list.table.thead.actions</source>
+                <target>Actions</target>
+            </trans-unit>
+
+
             <!-- Login -->
             <trans-unit id="login.form.email">
                 <source>login.form.email</source>

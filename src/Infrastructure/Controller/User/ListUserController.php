@@ -4,19 +4,35 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Controller\User;
 
-use App\Infrastructure\Persistence\Doctrine\Repository\User\UserRepository;
+use App\Application\QueryBusInterface;
+use App\Application\User\Query\ListUsersQuery;
+use App\Domain\User\Enum\RoleEnum;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 final class ListUserController
 {
     public function __construct(
-        private UserRepository $userRepository,
+        private \Twig\Environment $twig,
+        private QueryBusInterface $queryBus,
     ) {
     }
 
-    #[Route('/users', name: 'app_list_users')]
+    #[Route('/users', name: 'app_users_list', methods: ['GET'])]
     public function __invoke()
     {
-        dump('hello');
+        $users = $this->queryBus->handle(new ListUsersQuery());
+        dump($users);
+
+        return new Response(
+            content: $this->twig->render(
+                name: 'users/list.html.twig',
+                context: [
+                    'users' => $users,
+                    'adminRole' => RoleEnum::ROLE_ADMIN->value,
+                    'contributorRole' => RoleEnum::ROLE_CONTRIBUTOR->value,
+                ],
+            ),
+        );
     }
 }
