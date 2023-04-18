@@ -28,7 +28,7 @@ final class CreateUserController
     ) {
     }
 
-    #[Route('/users/create', name: 'app_create_user', methods: ['GET', 'POST'])]
+    #[Route('/users/create', name: 'app_user_create', methods: ['GET', 'POST'])]
     public function __invoke(Request $request): Response
     {
         $command = new CreateUserCommand();
