@@ -10,7 +10,7 @@ use App\Domain\User\Enum\RoleEnum;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class ListUserController
+final class ListUsersController
 {
     public function __construct(
         private \Twig\Environment $twig,
@@ -22,7 +22,6 @@ final class ListUserController
     public function __invoke()
     {
         $users = $this->queryBus->handle(new ListUsersQuery());
-        dump($users);
 
         return new Response(
             content: $this->twig->render(
