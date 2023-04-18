@@ -23,7 +23,7 @@ final class CreateUserControllerTest extends AbstractWebTestCase
         $form["create_form[email]"] = "benoit@fairness.coop";
         $form["create_form[password][first]"] = "temptemp";
         $form["create_form[password][second]"] = "temptemp";
-        $form["create_form[role]"] = "ROLE_CONTRIBUTOR";
+        $form["create_form[role]"] = "0";
         $client->submit($form);
 
         $this->assertResponseStatusCodeSame(303);
@@ -44,7 +44,7 @@ final class CreateUserControllerTest extends AbstractWebTestCase
         $form["create_form[email]"] = "benoit.paquier@fairness.coop";
         $form["create_form[password][first]"] = "temptemp";
         $form["create_form[password][second]"] = "temptemp";
-        $form["create_form[role]"] = "ROLE_CONTRIBUTOR";
+        $form["create_form[role]"] = "0";
         $client->submit($form);
 
         $this->assertResponseStatusCodeSame(422);
@@ -62,7 +62,7 @@ final class CreateUserControllerTest extends AbstractWebTestCase
         $form["create_form[email]"] = "benoit";
         $form["create_form[password][first]"] = "temptemp";
         $form["create_form[password][second]"] = "temptemptemp";
-        $form["create_form[role]"] = "ROLE_CONTRIBUTOR";
+        $form["create_form[role]"] = "0";
         $crawler = $client->submit($form);
 
         $this->assertResponseStatusCodeSame(422);

@@ -74,8 +74,8 @@ final class CreateFormType extends AbstractType
                 ChoiceType::class,
                 [
                     'choices' => [
-                        'Contributor' => RoleEnum::ROLE_CONTRIBUTOR->value,
-                        'Admin' => RoleEnum::ROLE_ADMIN->value,
+                        'Contributor' => RoleEnum::ROLE_CONTRIBUTOR,
+                        'Admin' => RoleEnum::ROLE_ADMIN,
                     ],
                 ],
             );
