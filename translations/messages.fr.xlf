@@ -51,6 +51,20 @@
                 <target>Annuler</target>
             </trans-unit>
 
+            <!-- Menu -->
+            <trans-unit id="menu.title">
+                <source>menu.title</source>
+                <target>Vertige</target>
+            </trans-unit>
+            <trans-unit id="menu.users.title">
+                <source>menu.users.title</source>
+                <target>Utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="menu.users.create">
+                <source>menu.users.create</source>
+                <target>Créer un utilisateur</target>
+            </trans-unit>
+
             <!-- Users create -->
             <trans-unit id="users.create.title">
                 <source>users.create.title</source>

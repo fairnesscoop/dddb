@@ -1,48 +1,48 @@
 security:
-  # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
-  password_hashers:
-    Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-  # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
-  providers:
-    user:
-      id: App\Infrastructure\Security\Provider\UserProvider
+    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+    password_hashers:
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+    providers:
+        user:
+            id: App\Infrastructure\Security\Provider\UserProvider
 
-  firewalls:
-    dev:
-      pattern: ^/(_(profiler|wdt)|css|images|js)/
-      security: false
-    main:
-      # by default, the feature allows 5 login attempts per minute
-      login_throttling: ~
-      lazy: true
-      provider: user
-      form_login:
-        login_path: app_login
-        check_path: app_login
-        default_target_path: app_users_list
-        enable_csrf: true
-        username_parameter: email
-        password_parameter: password
-      logout:
-        path: app_logout
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            # by default, the feature allows 5 login attempts per minute
+            login_throttling: ~
+            lazy: true
+            provider: user
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                default_target_path: app_user_create
+                enable_csrf: true
+                username_parameter: email
+                password_parameter: password
+            logout:
+                path: app_logout
 
-      # https://symfony.com/doc/current/security/impersonating_user.html
-      # switch_user: true
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
 
-  # Easy way to control access for large sections of your site
-  # Note: Only the *first* access control that matches will be used
-  access_control:
-    # - { path: ^/admin, roles: ROLE_ADMIN }
-    # - { path: ^/profile, roles: ROLE_USER }
-    - { path: ^/login, roles: PUBLIC_ACCESS }
-    - { path: ^/, roles: ROLE_CONTRIBUTOR }
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/, roles: ROLE_CONTRIBUTOR }
 
-  role_hierarchy:
-    ROLE_ADMIN: ROLE_CONTRIBUTOR
-    ROLE_CONTRIBUTOR: ROLE_USER
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_CONTRIBUTOR
+        ROLE_CONTRIBUTOR: ROLE_USER
 
 when@test:
-  security:
-    password_hashers:
-      Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
-        algorithm: 'plaintext'
+    security:
+        password_hashers:
+            Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
+                algorithm: "plaintext"

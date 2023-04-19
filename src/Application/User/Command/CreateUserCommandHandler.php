@@ -21,7 +21,6 @@ class CreateUserCommandHandler
     ) {
     }
 
-    // dont forget to change invoke return type to "User"
     public function __invoke(CreateUserCommand $createUserCommand): User
     {
         $email = trim(strtolower($createUserCommand->email));
