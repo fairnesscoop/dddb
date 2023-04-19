@@ -64,6 +64,10 @@
                 <source>menu.users.create</source>
                 <target>Créer un utilisateur</target>
             </trans-unit>
+            <trans-unit id="menu.users.list">
+                <source>menu.users.list</source>
+                <target>Liste des utilisateurs</target>
+            </trans-unit>
 
             <!-- Users create -->
             <trans-unit id="users.create.title">
