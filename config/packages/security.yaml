@@ -19,6 +19,7 @@ security:
             form_login:
                 login_path: app_login
                 check_path: app_login
+                default_target_path: app_user_create
                 enable_csrf: true
                 username_parameter: email
                 password_parameter: password
@@ -34,11 +35,11 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/login, roles: PUBLIC_ACCESS }
-        - { path: ^/, roles: contributor }
+        - { path: ^/, roles: ROLE_CONTRIBUTOR }
 
     role_hierarchy:
-        admin: contributor
-        contributor: ROLE_USER
+        ROLE_ADMIN: ROLE_CONTRIBUTOR
+        ROLE_CONTRIBUTOR: ROLE_USER
 
 when@test:
     security:

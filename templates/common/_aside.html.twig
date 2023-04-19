@@ -1,0 +1,18 @@
+{% set userCreateActive = path('app_user_create') == app.request.pathinfo %}
+{% set usersDetailsActive = userCreateActive %}
+
+<aside class="fixed left-0 flex flex-col w-72 h-full border-r border-gray-200">
+  <div class="border-b py-8 px-8">
+    <p class="text-xl text-primary-500 underline font-bold tracking-tight md:text-3xl">{{ 'menu.title'|trans }}</p>
+  </div>
+  <details class="rounded-lg py-6 px-6" open={{ usersDetailsActive }}>
+    <summary class="marker:content-none font-bold text-lg select-none rounded-lg px-5 py-2.5 hover:bg-gray-100 hover:cursor-pointer">{{ 'menu.users.title'|trans }}</summary>
+    <nav>
+      <ul>
+        <li class="select-none text-sm rounded-lg px-5 py-2.5 {{ userCreateActive ? 'bg-gray-100' : '' }} hover:bg-gray-100 hover:cursor-pointer">
+          <a href={{ path('app_user_create') }}>{{ 'menu.users.create'|trans }}</a>
+        </li>
+      </ul>
+    </nav>
+  </details>
+</aside>

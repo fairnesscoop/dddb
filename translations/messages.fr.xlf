@@ -50,6 +50,80 @@
                 <source>common.cancel</source>
                 <target>Annuler</target>
             </trans-unit>
+
+            <!-- Menu -->
+            <trans-unit id="menu.title">
+                <source>menu.title</source>
+                <target>Vertige</target>
+            </trans-unit>
+            <trans-unit id="menu.users.title">
+                <source>menu.users.title</source>
+                <target>Utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="menu.users.create">
+                <source>menu.users.create</source>
+                <target>Créer un utilisateur</target>
+            </trans-unit>
+
+            <!-- Users create -->
+            <trans-unit id="users.create.title">
+                <source>users.create.title</source>
+                <target>Créer un utilisateur</target>
+            </trans-unit>
+            <trans-unit id="users.create.meta.title">
+                <source>users.create.meta.title</source>
+                <target>Créer un utilisateur</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.firstName">
+                <source>users.create.form.firstName</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.firstName.placeholder">
+                <source>users.create.form.firstName.placeholder</source>
+                <target>Entrez le prénom</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.lastName">
+                <source>users.create.form.lastName</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.lastName.placeholder">
+                <source>users.create.form.lastName.placeholder</source>
+                <target>Entrez le nom</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.email">
+                <source>users.create.form.email</source>
+                <target>Adresse e-mail</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.email.placeholder">
+                <source>users.create.form.email.placeholder</source>
+                <target>Entrez l'adresse e-mail</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.password">
+                <source>users.create.form.password</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.password.placeholder">
+                <source>users.create.form.password.placeholder</source>
+                <target>Entrez le mot de passe</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.password.confirm">
+                <source>users.create.form.password.confirm</source>
+                <target>Confirmation du mot de passe</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.password.confirm.placeholder">
+                <source>users.create.form.password.confirm.placeholder</source>
+                <target>Entrez la confirmation du mot de passe</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.role">
+                <source>users.create.form.role</source>
+                <target>Rôle</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.submit">
+                <source>users.create.form.submit</source>
+                <target>Créer l'utilisateur</target>
+            </trans-unit>
+
+            <!-- Login -->
             <trans-unit id="login.form.email">
                 <source>login.form.email</source>
                 <target>Votre email</target>
