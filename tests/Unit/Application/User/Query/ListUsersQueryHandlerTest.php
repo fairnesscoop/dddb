@@ -8,7 +8,6 @@ use App\Application\User\Query\ListUsersQuery;
 use App\Application\User\Query\ListUsersQueryHandler;
 use App\Domain\Pagination;
 use App\Domain\User\Repository\UserRepositoryInterface;
-use App\Domain\User\User;
 use PHPUnit\Framework\TestCase;
 
 final class ListUsersQueryHandlerTest extends TestCase
