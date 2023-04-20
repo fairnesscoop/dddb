@@ -41,6 +41,47 @@ final class ListUsersControllerTest extends AbstractWebTestCase
         $this->assertSame('Créer un utilisateur', $createUserButton->text());
     }
 
+    public function testPaginationRendering(): void
+    {
+        $client = $this->login();
+        $page = $client->request('GET', '/users?page=2&pageSize=1');
+        $this->assertResponseStatusCodeSame(200);
+        $this->assertSecurityHeaders();
+
+        $navLi = $page->filter('nav')->eq(1)->filter('li');
+        $this->assertSame('Page précédente', $navLi->eq(0)->filter('span')->text());
+        $this->assertSame('1', $navLi->eq(1)->filter('a')->text());
+        $this->assertSame('2', $navLi->eq(2)->filter('a')->text());
+        $this->assertSame('3', $navLi->eq(3)->filter('a')->text());
+        $this->assertSame('Page suivante', $navLi->eq(4)->filter('span')->text());
+    }
+
+    public function testInvalidPageSize(): void
+    {
+        $client = $this->login();
+        $client->request('GET', '/users?pageSize=0');
+        $this->assertResponseStatusCodeSame(400);
+
+        $client->request('GET', '/users?pageSize=-1');
+        $this->assertResponseStatusCodeSame(400);
+
+        $client->request('GET', '/users?pageSize=abc');
+        $this->assertResponseStatusCodeSame(400);
+    }
+
+    public function testInvalidPageNumber(): void
+    {
+        $client = $this->login();
+        $client->request('GET', '/users?page=0');
+        $this->assertResponseStatusCodeSame(400);
+
+        $client->request('GET', '/users?page=-1');
+        $this->assertResponseStatusCodeSame(400);
+
+        $client->request('GET', '/users?page=abc');
+        $this->assertResponseStatusCodeSame(400);
+    }
+
     public function testUnauthenticatedUser(): void
     {
         $client = static::createClient();
