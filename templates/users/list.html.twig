@@ -45,13 +45,13 @@
           {% endfor %}
         </tbody>
       </table>
-        {% include "common/pagination.html.twig" with {
-            pagination: users,
-            page: page,
-            pageSize: pageSize,
-            route: 'app_users_list',
-            entity: 'pagination.entity.users'|trans
-        } %}
+      {% include "common/pagination.html.twig" with {
+        pagination: users,
+        page: page,
+        pageSize: pageSize,
+        route: 'app_users_list',
+        entity: 'pagination.entity.users'|trans
+      } %}
     </section>
   </main>
 {% endblock %}
