@@ -69,6 +69,24 @@
                 <target>Liste des utilisateurs</target>
             </trans-unit>
 
+            <!-- Pagination -->
+            <trans-unit id="pagination.previous">
+                <source>pagination.previous</source>
+                <target>Page précédente</target>
+            </trans-unit>
+            <trans-unit id="pagination.next">
+                <source>pagination.next</source>
+                <target>Page suivante</target>
+            </trans-unit>
+            <trans-unit id="pagination.entity.users">
+                <source>pagination.entity.users</source>
+                <target>utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="pagination.count">
+                <source>pagination.count</source>
+                <target>Affichage de %start% à %end% sur %total% %entity%</target>
+            </trans-unit>
+
             <!-- Users create -->
             <trans-unit id="users.create.title">
                 <source>users.create.title</source>

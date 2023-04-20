@@ -16,15 +16,15 @@ final class Pagination
     public function __construct(
         public readonly array $items,
         public readonly int $totalItems,
-        int $currentPage,
+        int $page,
         int $pageSize,
     ) {
         $this->lastPage = $totalItems > 0 ? (int) ceil($totalItems / $pageSize) : 1;
 
         $numSiblings = 2;
         $firstPage = 1;
-        $leftSibling = max($currentPage - $numSiblings, $firstPage);
-        $rightSibling = min($currentPage + $numSiblings, $this->lastPage);
+        $leftSibling = max($page - $numSiblings, $firstPage);
+        $rightSibling = min($page + $numSiblings, $this->lastPage);
 
         $this->windowPages = range($leftSibling, $rightSibling);
         $this->hasLeftTruncature = $leftSibling >= $firstPage + 2;

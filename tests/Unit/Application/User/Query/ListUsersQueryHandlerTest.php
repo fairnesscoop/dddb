@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Application\User\Query;
 
 use App\Application\User\Query\ListUsersQuery;
 use App\Application\User\Query\ListUsersQueryHandler;
+use App\Domain\Pagination;
 use App\Domain\User\Repository\UserRepositoryInterface;
 use App\Domain\User\User;
 use PHPUnit\Framework\TestCase;
@@ -45,19 +46,35 @@ final class ListUsersQueryHandlerTest extends TestCase
             ],
         ];
 
+        $pagination = new Pagination(
+            items: $users,
+            totalItems: count($users),
+            page: 1,
+            pageSize: 20
+        );
+
+
         $this->userRepository
             ->expects(self::once())
             ->method('findUsers')
             ->willReturn($users);
 
+        $this->userRepository
+            ->expects(self::once())
+            ->method('countUsers')
+            ->willReturn(count($users));
+
         $handler = new ListUsersQueryHandler(
             $this->userRepository
         );
 
-        $query = new ListUsersQuery();
+        $query = new ListUsersQuery(
+            page: 1,
+            pageSize: 20
+        );
 
         $result = $handler($query);
 
-        $this->assertSame($users, $result);
+        $this->assertEquals($pagination, $result);
     }
 }

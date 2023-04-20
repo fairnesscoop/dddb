@@ -48,4 +48,12 @@ final class UserRepository extends ServiceEntityRepository implements UserReposi
             ->getQuery()
             ->getResult();
     }
+
+    public function countUsers(): int
+    {
+        return $this->createQueryBuilder('u')
+            ->select(['count(u.uuid)'])
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

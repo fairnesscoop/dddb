@@ -12,13 +12,13 @@ final class PaginationTest extends TestCase
     public function testWithNoItems(): void
     {
         $items = [];
-        $currentPage = 1;
+        $page = 1;
         $pageSize = 10;
 
         $pagination = new Pagination(
             items: $items,
             totalItems: count($items),
-            currentPage: $currentPage,
+            page: $page,
             pageSize: $pageSize
         );
 
@@ -35,13 +35,13 @@ final class PaginationTest extends TestCase
     public function testWithOneItem(): void
     {
         $items = [[]];
-        $currentPage = 1;
+        $page = 1;
         $pageSize = 10;
 
         $pagination = new Pagination(
             items: $items,
             totalItems: count($items),
-            currentPage: $currentPage,
+            page: $page,
             pageSize: $pageSize
         );
 
@@ -58,13 +58,13 @@ final class PaginationTest extends TestCase
     public function testWithTruncatures(): void
     {
         $items = [[], [], [], [], [], [], [], [], [], [], []];
-        $currentPage = 6;
+        $page = 6;
         $pageSize = 1;
 
         $pagination = new Pagination(
             items: $items,
             totalItems: count($items),
-            currentPage: $currentPage,
+            page: $page,
             pageSize: $pageSize
         );
 
@@ -81,13 +81,13 @@ final class PaginationTest extends TestCase
     public function testWithoutTruncature(): void
     {
         $items = [[], [], [], [], [], [], [], [], [], [], []];
-        $currentPage = 1;
+        $page = 1;
         $pageSize = 10;
 
         $pagination = new Pagination(
             items: $items,
             totalItems: count($items),
-            currentPage: $currentPage,
+            page: $page,
             pageSize: $pageSize
         );
 

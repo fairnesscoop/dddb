@@ -37,6 +37,9 @@ final class ListUsersController
                 name: 'users/list.html.twig',
                 context: [
                     'users' => $users,
+                    'totalUsers' => $users->totalItems,
+                    'page' => $page,
+                    'pageSize' => $pageSize,
                     'adminRole' => RoleEnum::ROLE_ADMIN->value,
                     'contributorRole' => RoleEnum::ROLE_CONTRIBUTOR->value,
                 ],
