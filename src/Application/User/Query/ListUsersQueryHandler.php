@@ -15,7 +15,10 @@ final class ListUsersQueryHandler
 
     public function __invoke(ListUsersQuery $listUsersQuery)
     {
-        $users = $this->userRepository->findUsers();
+        $users = $this->userRepository->findUsers(
+            page: $listUsersQuery->page,
+            pageSize: $listUsersQuery->pageSize,
+        );
 
         return $users;
     }

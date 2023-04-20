@@ -7,6 +7,7 @@ namespace App\Infrastructure\Controller\User;
 use App\Application\QueryBusInterface;
 use App\Application\User\Query\ListUsersQuery;
 use App\Domain\User\Enum\RoleEnum;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,9 +20,17 @@ final class ListUsersController
     }
 
     #[Route('/users', name: 'app_users_list', methods: ['GET'])]
-    public function __invoke()
+    public function __invoke(Request $request)
     {
-        $users = $this->queryBus->handle(new ListUsersQuery());
+        $page = $request->query->getInt('page', 1);
+        $pageSize = min($request->query->getInt('pageSize', 20), 100);
+
+        $users = $this->queryBus->handle(
+            new ListUsersQuery(
+                page: $page,
+                pageSize: $pageSize,
+            ),
+        );
 
         return new Response(
             content: $this->twig->render(

@@ -12,5 +12,5 @@ interface UserRepositoryInterface
 
     public function add(User $user): User;
 
-    public function findUsers(): array;
+    public function findUsers(int $page, int $pageSize): array;
 }

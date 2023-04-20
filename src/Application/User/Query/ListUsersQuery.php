@@ -8,7 +8,9 @@ use App\Application\QueryInterface;
 
 final class ListUsersQuery implements QueryInterface
 {
-    public function __construct()
-    {
+    public function __construct(
+        public readonly int $page,
+        public readonly int $pageSize,
+    ) {
     }
 }

@@ -33,7 +33,7 @@ final class UserRepository extends ServiceEntityRepository implements UserReposi
         return $user;
     }
 
-    public function findUsers(): array
+    public function findUsers(int $page, int $pageSize): array
     {
         return $this->createQueryBuilder('u')
             ->select([
@@ -43,6 +43,8 @@ final class UserRepository extends ServiceEntityRepository implements UserReposi
                 'u.email',
                 'u.role',
             ])
+            ->setFirstResult($pageSize * ($page - 1))
+            ->setMaxResults($pageSize)
             ->getQuery()
             ->getResult();
     }
