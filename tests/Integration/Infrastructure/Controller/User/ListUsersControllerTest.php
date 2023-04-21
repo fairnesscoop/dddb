@@ -20,7 +20,7 @@ final class ListUsersControllerTest extends AbstractWebTestCase
         $this->assertMetaTitle('Users list - Smartphones Referential', $crawler);
 
         $rows = $crawler->filter('tbody > tr');
-        $this->assertSame(3, $rows->count());
+        $this->assertSame(5, $rows->count());
 
         $this->assertSame('Benoit', $rows->eq(0)->filter('td')->eq(0)->text());
         $this->assertSame('Paquier', $rows->eq(0)->filter('td')->eq(1)->text());
@@ -36,6 +36,16 @@ final class ListUsersControllerTest extends AbstractWebTestCase
         $this->assertSame('Marchois', $rows->eq(2)->filter('td')->eq(1)->text());
         $this->assertSame('mathieu@email.org', $rows->eq(2)->filter('td')->eq(2)->text());
         $this->assertSame(RoleEnum::ROLE_ADMIN->value, $rows->eq(2)->filter('td')->eq(3)->text());
+
+        $this->assertSame('John', $rows->eq(3)->filter('td')->eq(0)->text());
+        $this->assertSame('Doe', $rows->eq(3)->filter('td')->eq(1)->text());
+        $this->assertSame('contrib@vertige.org', $rows->eq(3)->filter('td')->eq(2)->text());
+        $this->assertSame(RoleEnum::ROLE_CONTRIBUTOR->value, $rows->eq(3)->filter('td')->eq(3)->text());
+
+        $this->assertSame('Tim', $rows->eq(4)->filter('td')->eq(0)->text());
+        $this->assertSame('Lee', $rows->eq(4)->filter('td')->eq(1)->text());
+        $this->assertSame('admin@vertige.org', $rows->eq(4)->filter('td')->eq(2)->text());
+        $this->assertSame(RoleEnum::ROLE_ADMIN->value, $rows->eq(4)->filter('td')->eq(3)->text());
 
         $createUserButton = $crawler->filter('header > a > button');
         $this->assertSame('Create user', $createUserButton->text());
@@ -53,7 +63,9 @@ final class ListUsersControllerTest extends AbstractWebTestCase
         $this->assertSame('1', $navLi->eq(1)->filter('a')->text());
         $this->assertSame('2', $navLi->eq(2)->filter('a')->text());
         $this->assertSame('3', $navLi->eq(3)->filter('a')->text());
-        $this->assertSame('Next page', $navLi->eq(4)->filter('span')->text());
+        $this->assertSame('4', $navLi->eq(4)->filter('a')->text());
+        $this->assertSame('5', $navLi->eq(5)->filter('a')->text());
+        $this->assertSame('Next page', $navLi->eq(6)->filter('span')->text());
     }
 
     public function testInvalidPageSize(): void
