@@ -41,7 +41,7 @@ final class CreateUserController
                 $this->commandBus->handle($command);
 
                 return new RedirectResponse(
-                    url: $this->router->generate('app_login'),
+                    url: $this->router->generate('app_users_list'),
                     status: Response::HTTP_SEE_OTHER,
                 );
             } catch (UserAlreadyRegisteredException) {
