@@ -15,9 +15,9 @@ final class CreateUserControllerTest extends AbstractWebTestCase
 
         $this->assertResponseStatusCodeSame(200);
         $this->assertSecurityHeaders();
-        $this->assertSame('Créer un utilisateur', $crawler->filter('h1')->text());
+        $this->assertSame('Create user', $crawler->filter('h1')->text());
 
-        $saveButton = $crawler->selectButton("Créer l'utilisateur");
+        $saveButton = $crawler->selectButton("Create user");
         $form = $saveButton->form();
         $form["create_form[firstName]"] = "Benoit";
         $form["create_form[lastName]"] = "Paquier";
@@ -37,13 +37,13 @@ final class CreateUserControllerTest extends AbstractWebTestCase
 
         $this->assertResponseStatusCodeSame(200);
         $this->assertSecurityHeaders();
-        $this->assertSame('Créer un utilisateur', $crawler->filter('h1')->text());
+        $this->assertSame('Create user', $crawler->filter('h1')->text());
 
-        $saveButton = $crawler->selectButton("Créer l'utilisateur");
+        $saveButton = $crawler->selectButton("Create user");
         $form = $saveButton->form();
         $form["create_form[firstName]"] = "Benoit";
         $form["create_form[lastName]"] = "Paquier";
-        $form["create_form[email]"] = "benoit.paquier@fairness.coop";
+        $form["create_form[email]"] = "benoit@email.org";
         $form["create_form[password][first]"] = "temptemp";
         $form["create_form[password][second]"] = "temptemp";
         $form["create_form[role]"] = "0";
@@ -57,7 +57,7 @@ final class CreateUserControllerTest extends AbstractWebTestCase
         $client = $this->login();
         $crawler = $client->request('GET', '/users/create');
 
-        $saveButton = $crawler->selectButton("Créer l'utilisateur");
+        $saveButton = $crawler->selectButton("Create user");
         $form = $saveButton->form();
         $form["create_form[firstName]"] = str_repeat('a', 101);
         $form["create_form[lastName]"] = str_repeat('b', 101);
@@ -68,10 +68,10 @@ final class CreateUserControllerTest extends AbstractWebTestCase
         $crawler = $client->submit($form);
 
         $this->assertResponseStatusCodeSame(422);
-        $this->assertSame("Cette chaîne est trop longue. Elle doit avoir au maximum 100 caractères.", $crawler->filter('#create_form_firstName_error')->text());
-        $this->assertSame("Cette chaîne est trop longue. Elle doit avoir au maximum 100 caractères.", $crawler->filter('#create_form_lastName_error')->text());
-        $this->assertSame("Cette valeur n'est pas une adresse email valide.", $crawler->filter('#create_form_email_error')->text());
-        $this->assertSame("Les mots de passe ne sont pas identiques.", $crawler->filter('#create_form_password_first_error')->text());
+        $this->assertSame("This value is too long. It should have 100 characters or less.", $crawler->filter('#create_form_firstName_error')->text());
+        $this->assertSame("This value is too long. It should have 100 characters or less.", $crawler->filter('#create_form_lastName_error')->text());
+        $this->assertSame("This value is not a valid email address.", $crawler->filter('#create_form_email_error')->text());
+        $this->assertSame("Password and passowrd confirmation don't match.", $crawler->filter('#create_form_password_first_error')->text());
     }
 
     public function testEmptyValues(): void
@@ -79,14 +79,14 @@ final class CreateUserControllerTest extends AbstractWebTestCase
         $client = $this->login();
         $crawler = $client->request('GET', '/users/create');
 
-        $saveButton = $crawler->selectButton("Créer l'utilisateur");
+        $saveButton = $crawler->selectButton("Create user");
         $form = $saveButton->form();
         $crawler = $client->submit($form);
 
         $this->assertResponseStatusCodeSame(422);
-        $this->assertSame("Cette valeur ne doit pas être vide.", $crawler->filter('#create_form_lastName_error')->text());
-        $this->assertSame("Cette valeur ne doit pas être vide.", $crawler->filter('#create_form_firstName_error')->text());
-        $this->assertSame("Cette valeur ne doit pas être vide.", $crawler->filter('#create_form_email_error')->text());
-        $this->assertSame("Cette valeur ne doit pas être vide.", $crawler->filter('#create_form_password_first_error')->text());
+        $this->assertSame("This value should not be blank.", $crawler->filter('#create_form_lastName_error')->text());
+        $this->assertSame("This value should not be blank.", $crawler->filter('#create_form_firstName_error')->text());
+        $this->assertSame("This value should not be blank.", $crawler->filter('#create_form_email_error')->text());
+        $this->assertSame("This value should not be blank.", $crawler->filter('#create_form_password_first_error')->text());
     }
 }

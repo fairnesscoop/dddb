@@ -26,21 +26,21 @@ final class ListUsersQueryHandlerTest extends TestCase
                 "uuid" => "abcde",
                 "firstName" => "Benoit",
                 "lastName" => "Paquier",
-                "email" => "benoit.paquier@fairness.coop",
+                "email" => "benoit@email.org",
                 "role" => "ROLE_ADMIN"
             ],
             [
                 "uuid" => "abcde",
                 "firstName" => "Gregory",
                 "lastName" => "Pelletier",
-                "email" => "gregory.pelletier@fairness.coop",
+                "email" => "gregory@email.org",
                 "role" => "ROLE_ADMIN"
             ],
             [
                 "uuid" => "abcde",
                 "firstName" => "Mathieu",
                 "lastName" => "Marchois",
-                "email" => "benoit.paquier@fairness.coop",
+                "email" => "benoit@email.org",
                 "role" => "ROLE_ADMIN"
             ],
         ];

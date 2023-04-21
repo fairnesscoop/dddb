@@ -66,7 +66,7 @@
             </trans-unit>
             <trans-unit id="menu.users.list">
                 <source>menu.users.list</source>
-                <target>Liste des utilisateurs</target>
+                <target>Users list</target>
             </trans-unit>
 
             <!-- Pagination -->
@@ -148,11 +148,11 @@
             <!-- Users list -->
             <trans-unit id="users.list.title">
                 <source>users.list.title</source>
-                <target>Liste des utilisateurs</target>
+                <target>Users list</target>
             </trans-unit>
             <trans-unit id="users.list.meta.title">
                 <source>users.list.meta.title</source>
-                <target>Liste des utilisateurs</target>
+                <target>Users list</target>
             </trans-unit>
             <trans-unit id="users.list.button.create">
                 <source>users.list.button.create</source>
@@ -174,20 +174,23 @@
                 <source>users.list.table.thead.role</source>
                 <target>Rôle</target>
             </trans-unit>
-            <trans-unit id="users.list.table.thead.actions">
-                <source>users.list.table.thead.actions</source>
-                <target>Actions</target>
-            </trans-unit>
-
 
             <!-- Login -->
             <trans-unit id="login.form.email">
                 <source>login.form.email</source>
                 <target>Votre email</target>
             </trans-unit>
+            <trans-unit id="login.form.email.placeholder">
+                <source>login.form.email.placeholder</source>
+                <target>Entrez votre adresse e-mail</target>
+            </trans-unit>
             <trans-unit id="login.form.password">
                 <source>login.form.password</source>
                 <target>Votre mot de passe</target>
+            </trans-unit>
+            <trans-unit id="login.form.password.placeholder">
+                <source>login.form.password.placeholder</source>
+                <target>Entrez votre mot de passe</target>
             </trans-unit>
             <trans-unit id="login.password_forgotten">
                 <source>login.password_forgotten</source>
