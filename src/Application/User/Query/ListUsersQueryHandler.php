@@ -19,16 +19,14 @@ final class ListUsersQueryHandler
         $page = $listUsersQuery->page;
         $pageSize = $listUsersQuery->pageSize;
 
-        $users = $this->userRepository->findUsers(
+        $result = $this->userRepository->findUsers(
             page: $page,
             pageSize: $pageSize,
         );
 
-        $totalUsers = $this->userRepository->countUsers();
-
         return new Pagination(
-            items: $users,
-            totalItems: $totalUsers,
+            items: $result['items'],
+            totalItems: $result['totalItems'],
             page: $page,
             pageSize: $pageSize,
         );

@@ -56,12 +56,10 @@ final class ListUsersQueryHandlerTest extends TestCase
         $this->userRepository
             ->expects(self::once())
             ->method('findUsers')
-            ->willReturn($users);
-
-        $this->userRepository
-            ->expects(self::once())
-            ->method('countUsers')
-            ->willReturn(count($users));
+            ->willReturn([
+                'items' => $users,
+                'totalItems' => 3
+            ]);
 
         $handler = new ListUsersQueryHandler(
             $this->userRepository
