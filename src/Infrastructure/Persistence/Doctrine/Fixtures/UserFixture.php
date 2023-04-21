@@ -17,7 +17,7 @@ final class UserFixture extends Fixture
             '0b507871-8b5e-4575-b297-a630310fc06e',
             'Benoit',
             'Paquier',
-            'benoit.paquier@fairness.coop',
+            'benoit@email.org',
             'password',
             RoleEnum::ROLE_ADMIN,
         );
@@ -26,7 +26,7 @@ final class UserFixture extends Fixture
             '0b507871-8b5e-4575-b297-a630310fc06a',
             'Gregory',
             'Pelletier',
-            'gregory.pelletier@fairness.coop',
+            'gregory@email.org',
             'password',
             RoleEnum::ROLE_ADMIN,
         );
@@ -35,7 +35,7 @@ final class UserFixture extends Fixture
             '0b507871-8b5e-4575-b297-a630310fc06b',
             'Mathieu',
             'Marchois',
-            'mathieu.marchois@fairness.coop',
+            'mathieu@email.org',
             'password',
             RoleEnum::ROLE_ADMIN,
         );
