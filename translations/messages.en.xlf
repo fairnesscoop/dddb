@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="fr" datatype="plaintext" original="file.ext">
+    <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="common.title">
                 <source>common.title</source>
@@ -50,13 +50,95 @@
                 <source>common.cancel</source>
                 <target>Cancel</target>
             </trans-unit>
+
+            <!-- Menu -->
+            <trans-unit id="menu.title">
+                <source>menu.title</source>
+                <target>Vertige</target>
+            </trans-unit>
+            <trans-unit id="menu.users.title">
+                <source>menu.users.title</source>
+                <target>Users</target>
+            </trans-unit>
+            <trans-unit id="menu.users.create">
+                <source>menu.users.create</source>
+                <target>Create user</target>
+            </trans-unit>
+
+            <!-- Users create -->
+            <trans-unit id="users.create.title">
+                <source>users.create.title</source>
+                <target>Create user</target>
+            </trans-unit>
+            <trans-unit id="users.create.meta.title">
+                <source>users.create.meta.title</source>
+                <target>Create user</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.firstName">
+                <source>users.create.form.firstName</source>
+                <target>First name</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.firstName.placeholder">
+                <source>users.create.form.firstName.placeholder</source>
+                <target>Enter first name</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.lastName">
+                <source>users.create.form.lastName</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.lastName.placeholder">
+                <source>users.create.form.lastName.placeholder</source>
+                <target>Enter you name</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.email">
+                <source>users.create.form.email</source>
+                <target>E-mail address</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.email.placeholder">
+                <source>users.create.form.email.placeholder</source>
+                <target>Enter e-mail address</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.password">
+                <source>users.create.form.password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.password.placeholder">
+                <source>users.create.form.password.placeholder</source>
+                <target>Enter password</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.password.confirm">
+                <source>users.create.form.password.confirm</source>
+                <target>Password confirmation</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.password.confirm.placeholder">
+                <source>users.create.form.password.confirm.placeholder</source>
+                <target>Enter password confirmation</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.role">
+                <source>users.create.form.role</source>
+                <target>Role</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.submit">
+                <source>users.create.form.submit</source>
+                <target>Create user</target>
+            </trans-unit>
+
+            <!-- Login -->
             <trans-unit id="login.form.email">
                 <source>login.form.email</source>
                 <target>Email</target>
             </trans-unit>
+            <trans-unit id="login.form.email.placeholder">
+                <source>login.form.email.placeholder</source>
+                <target>Enter your e-mail address</target>
+            </trans-unit>
             <trans-unit id="login.form.password">
                 <source>login.form.password</source>
                 <target>Password</target>
+            </trans-unit>
+            <trans-unit id="login.form.password.placeholder">
+                <source>login.form.password.placeholder</source>
+                <target>Enter your password</target>
             </trans-unit>
             <trans-unit id="login.password_forgotten">
                 <source>login.password_forgotten</source>
