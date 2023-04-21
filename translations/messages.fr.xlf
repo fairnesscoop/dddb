@@ -128,9 +128,17 @@
                 <source>login.form.email</source>
                 <target>Votre email</target>
             </trans-unit>
+            <trans-unit id="login.form.email.placeholder">
+                <source>login.form.email.placeholder</source>
+                <target>Entrez votre adresse e-mail</target>
+            </trans-unit>
             <trans-unit id="login.form.password">
                 <source>login.form.password</source>
                 <target>Votre mot de passe</target>
+            </trans-unit>
+            <trans-unit id="login.form.password.placeholder">
+                <source>login.form.password.placeholder</source>
+                <target>Entrez votre mot de passe</target>
             </trans-unit>
             <trans-unit id="login.password_forgotten">
                 <source>login.password_forgotten</source>

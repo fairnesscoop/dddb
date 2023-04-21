@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="users.create.form.password.notmatch">
+                <source>users.create.form.password.notmatch</source>
+                <target>Password and passowrd confirmation don't match.</target>
+            </trans-unit>
+            <trans-unit id="users.create.form.email.already_exist">
+                <source>users.create.form.email.already_exist</source>
+                <target>This email address is already used by another user.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
