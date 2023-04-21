@@ -19,23 +19,20 @@ nelmio_security:
     # and send no header to a less secure destination (HTTPS->HTTP).
     # If `strict-origin-when-cross-origin` is not supported, use `no-referrer` policy,
     # no referrer information is sent along with requests.
+    referrer_policy:
+        enabled: true
+        policies:
+            - 'no-referrer'
+            - 'strict-origin-when-cross-origin'
 
-when@prod:
-    nelmio_security:
-        referrer_policy:
-            enabled: true
-            policies:
-                - 'no-referrer'
-                - 'strict-origin-when-cross-origin'
-
-        # Set a Content-Security-Policy
-        csp:
-            enabled: true
-            enforce:
-                default-src: ['self']
-                script-src: ['self']
-                style-src: ['self']
-                connect-src: ['self']
-                font-src: ['self']
-                img-src: ['self', 'data:']
-                block-all-mixed-content: true
+    # Set a Content-Security-Policy
+    csp:
+        enabled: true
+        enforce:
+            default-src: ['self']
+            script-src: ['self']
+            style-src: ['self']
+            connect-src: ['self']
+            font-src: ['self']
+            img-src: ['self', 'data:']
+            block-all-mixed-content: true
