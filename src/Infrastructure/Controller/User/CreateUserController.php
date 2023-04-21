@@ -7,7 +7,7 @@ namespace App\Infrastructure\Controller\User;
 use App\Application\CommandBusInterface;
 use App\Application\User\Command\CreateUserCommand;
 use App\Domain\User\Exception\UserAlreadyRegisteredException;
-use App\Infrastructure\Form\User\CreateFormType;
+use App\Infrastructure\Form\User\FormType;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -32,7 +32,7 @@ final class CreateUserController
     public function __invoke(Request $request): Response
     {
         $command = new CreateUserCommand();
-        $form = $this->formFactory->create(CreateFormType::class, $command);
+        $form = $this->formFactory->create(FormType::class, $command);
         $form->handleRequest($request);
         $hasCommandFailed = false;
 

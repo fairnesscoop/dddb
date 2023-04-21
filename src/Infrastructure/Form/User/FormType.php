@@ -15,7 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class CreateFormType extends AbstractType
+final class FormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -85,6 +85,7 @@ final class CreateFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => CreateUserCommand::class,
+            'mode' => 'create',
         ]);
     }
 }
