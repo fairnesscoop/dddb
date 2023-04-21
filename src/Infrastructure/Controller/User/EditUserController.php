@@ -14,7 +14,7 @@ final class EditUserController
     ) {
     }
 
-    #[Route('/users/:id/edit', name: 'app_user_edit')]
+    #[Route('/users/{uui}/edit', name: 'app_user_edit')]
     public function __invoke()
     {
         return new Response(

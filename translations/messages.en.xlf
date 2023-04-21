@@ -145,6 +145,64 @@
                 <target>Create user</target>
             </trans-unit>
 
+            <!-- Users edit -->
+            <trans-unit id="users.edit.title">
+                <source>users.edit.title</source>
+                <target>Create user</target>
+            </trans-unit>
+            <trans-unit id="users.edit.meta.title">
+                <source>users.edit.meta.title</source>
+                <target>Create user</target>
+            </trans-unit>
+            <trans-unit id="users.edit.form.firstName">
+                <source>users.edit.form.firstName</source>
+                <target>First name</target>
+            </trans-unit>
+            <trans-unit id="users.edit.form.firstName.placeholder">
+                <source>users.edit.form.firstName.placeholder</source>
+                <target>Enter first name</target>
+            </trans-unit>
+            <trans-unit id="users.edit.form.lastName">
+                <source>users.edit.form.lastName</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="users.edit.form.lastName.placeholder">
+                <source>users.edit.form.lastName.placeholder</source>
+                <target>Enter you name</target>
+            </trans-unit>
+            <trans-unit id="users.edit.form.email">
+                <source>users.edit.form.email</source>
+                <target>E-mail address</target>
+            </trans-unit>
+            <trans-unit id="users.edit.form.email.placeholder">
+                <source>users.edit.form.email.placeholder</source>
+                <target>Enter e-mail address</target>
+            </trans-unit>
+            <trans-unit id="users.edit.form.password">
+                <source>users.edit.form.password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="users.edit.form.password.placeholder">
+                <source>users.edit.form.password.placeholder</source>
+                <target>Enter password</target>
+            </trans-unit>
+            <trans-unit id="users.edit.form.password.confirm">
+                <source>users.edit.form.password.confirm</source>
+                <target>Password confirmation</target>
+            </trans-unit>
+            <trans-unit id="users.edit.form.password.confirm.placeholder">
+                <source>users.edit.form.password.confirm.placeholder</source>
+                <target>Enter password confirmation</target>
+            </trans-unit>
+            <trans-unit id="users.edit.form.role">
+                <source>users.edit.form.role</source>
+                <target>Role</target>
+            </trans-unit>
+            <trans-unit id="users.edit.form.submit">
+                <source>users.edit.form.submit</source>
+                <target>Create user</target>
+            </trans-unit>
+
             <!-- Users list -->
             <trans-unit id="users.list.title">
                 <source>users.list.title</source>
