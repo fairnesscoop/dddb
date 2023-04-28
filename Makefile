@@ -83,6 +83,7 @@ dbshell: ## Connect to the database
 	docker-compose exec database psql ${DATABASE_URL}
 
 dbfixtures: ## Load tests fixtures
+	make dbmigrate ARGS="--env=test"
 	make console CMD="doctrine:fixtures:load --env=test -n --purge-with-truncate"
 
 ##

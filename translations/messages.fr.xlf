@@ -54,7 +54,19 @@
             <!-- Menu -->
             <trans-unit id="menu.title">
                 <source>menu.title</source>
-                <target>Vertige</target>
+                <target>Réferentiel</target>
+            </trans-unit>
+            <trans-unit id="menu.manufacturers.title">
+                <source>menu.manufacturers.title</source>
+                <target>Fabriquants</target>
+            </trans-unit>
+            <trans-unit id="menu.manufacturers.create">
+                <source>menu.manufacturers.create</source>
+                <target>Créer un fabriquant</target>
+            </trans-unit>
+            <trans-unit id="menu.manufacturers.list">
+                <source>menu.manufacturers.list</source>
+                <target>Liste des fabriquants</target>
             </trans-unit>
             <trans-unit id="menu.users.title">
                 <source>menu.users.title</source>
@@ -66,7 +78,7 @@
             </trans-unit>
             <trans-unit id="menu.users.list">
                 <source>menu.users.list</source>
-                <target>Users list</target>
+                <target>Liste des utilisateurs</target>
             </trans-unit>
 
             <!-- Pagination -->
@@ -173,6 +185,46 @@
             <trans-unit id="users.list.table.thead.role">
                 <source>users.list.table.thead.role</source>
                 <target>Rôle</target>
+            </trans-unit>
+
+            <!-- Manufacturer create -->
+            <trans-unit id="manufacturers.create.title">
+                <source>manufacturers.create.title</source>
+                <target>Créer un fabriquant</target>
+            </trans-unit>
+            <trans-unit id="manufacturers.create.meta.title">
+                <source>manufacturers.create.meta.title</source>
+                <target>Créer un fabriquant</target>
+            </trans-unit>
+            <trans-unit id="manufacturers.create.form.name">
+                <source>manufacturers.create.form.name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="manufacturers.create.form.name.placeholder">
+                <source>manufacturers.create.form.name.placeholder</source>
+                <target>Entrez le nom ou la marque du fabriquant</target>
+            </trans-unit>
+            <trans-unit id="manufacturers.create.form.submit">
+                <source>manufacturers.create.form.submit</source>
+                <target>Créer un fabriquant</target>
+            </trans-unit>
+
+            <!-- Manufacturers list -->
+            <trans-unit id="manufacturers.list.title">
+                <source>manufacturers.list.title</source>
+                <target>Liste des fabriquants</target>
+            </trans-unit>
+            <trans-unit id="manufacturers.list.meta.title">
+                <source>manufacturers.list.meta.title</source>
+                <target>Liste des fabriquants</target>
+            </trans-unit>
+            <trans-unit id="manufacturers.list.button.create">
+                <source>manufacturers.list.button.create</source>
+                <target>Créer un fabriquant</target>
+            </trans-unit>
+            <trans-unit id="manufacturers.list.table.thead.name">
+                <source>manufacturers.list.table.thead.name</source>
+                <target>Nom du fabriquant</target>
             </trans-unit>
 
             <!-- Login -->

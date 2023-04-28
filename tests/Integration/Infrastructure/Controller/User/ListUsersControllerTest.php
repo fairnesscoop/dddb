@@ -58,7 +58,7 @@ final class ListUsersControllerTest extends AbstractWebTestCase
         $this->assertResponseStatusCodeSame(200);
         $this->assertSecurityHeaders();
 
-        $navLi = $page->filter('nav')->eq(1)->filter('li');
+        $navLi = $page->filter('nav.pagination li');
         $this->assertSame('Previous page', $navLi->eq(0)->filter('span')->text());
         $this->assertSame('1', $navLi->eq(1)->filter('a')->text());
         $this->assertSame('2', $navLi->eq(2)->filter('a')->text());

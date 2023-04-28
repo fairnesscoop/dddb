@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Controller\User;
+namespace App\Infrastructure\Controller\Manufacturer;
 
+use App\Application\Manufacturer\Query\ListManufacturersQuery;
 use App\Application\QueryBusInterface;
-use App\Application\User\Query\ListUsersQuery;
 use App\Domain\User\Enum\RoleEnum;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-final class ListUsersController
+final class ListManufacturersController
 {
     public function __construct(
         private \Twig\Environment $twig,
@@ -22,7 +22,7 @@ final class ListUsersController
     ) {
     }
 
-    #[Route('/users', name: 'app_users_list', methods: ['GET'])]
+    #[Route('/manufacturers', name: 'app_manufacturers_list', methods: ['GET'])]
     public function __invoke(Request $request)
     {
         $page = $request->query->getInt('page', 1);
@@ -34,8 +34,8 @@ final class ListUsersController
             );
         }
 
-        $users = $this->queryBus->handle(
-            new ListUsersQuery(
+        $manufacturers = $this->queryBus->handle(
+            new ListManufacturersQuery(
                 page: $page,
                 pageSize: $pageSize,
             ),
@@ -43,15 +43,14 @@ final class ListUsersController
 
         return new Response(
             content: $this->twig->render(
-                name: 'users/list.html.twig',
+                name: 'manufacturers/list.html.twig',
                 context: [
-                    'users' => $users,
-                    'totalUsers' => $users->totalItems,
+                    'manufacturers' => $manufacturers,
                     'page' => $page,
                     'pageSize' => $pageSize,
                     'adminRole' => RoleEnum::ROLE_ADMIN->value,
                     'contributorRole' => RoleEnum::ROLE_CONTRIBUTOR->value,
-                    'asideDetailsActive' => 'users',
+                    'asideDetailsActive' => 'manufacturers',
                 ],
             ),
         );

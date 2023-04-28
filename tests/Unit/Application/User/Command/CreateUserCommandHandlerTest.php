@@ -13,14 +13,15 @@ use App\Domain\User\Exception\UserAlreadyRegisteredException;
 use App\Domain\User\Repository\UserRepositoryInterface;
 use App\Domain\User\Specification\IsUserAlreadyRegistred;
 use App\Domain\User\User;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 final class CreateUserCommandHandlerTest extends TestCase
 {
-    private $idFactory;
-    private $passwordHasher;
-    private $userRepository;
-    private $isUserAlreadyRegistred;
+    private MockObject|IdFactoryInterface $idFactory;
+    private MockObject|PasswordHasherInterface $passwordHasher;
+    private MockObject|UserRepositoryInterface $userRepository;
+    private MockObject|IsUserAlreadyRegistred $isUserAlreadyRegistred;
 
     public function setUp(): void
     {

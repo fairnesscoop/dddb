@@ -1,0 +1,14 @@
+<details class="rounded-lg py-6 px-6" open={{ asideDetailsActive|default(null) == name }}>
+  <summary class="marker:content-none font-bold text-lg select-none rounded-lg px-5 py-2.5 hover:bg-gray-100 hover:cursor-pointer">
+    {{ "menu.#{name}.title"|trans }}
+  </summary>
+  <nav>
+    <ul>
+      {% for item in nav_items %}
+      <li class="mt-1 rounded-lg {{ app.request.attributes.get('_route') == item.route ? 'bg-gray-100' : '' }} hover:bg-gray-100">
+        <a href={{ path(item.route) }} class="select-none text-sm px-5 py-2.5 block">{{ item.label|trans }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</details>

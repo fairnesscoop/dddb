@@ -9,7 +9,7 @@ class Serie
     public function __construct(
         private string $uuid,
         private string $name,
-        private Constructor $constructor,
+        private Manufacturer $manufacturer,
     ) {
     }
 
@@ -23,8 +23,8 @@ class Serie
         return $this->name;
     }
 
-    public function getConstructor(): Constructor
+    public function getManufacturer(): Manufacturer
     {
-        return $this->constructor;
+        return $this->manufacturer;
     }
 }
