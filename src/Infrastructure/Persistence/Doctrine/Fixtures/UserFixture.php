@@ -17,7 +17,25 @@ final class UserFixture extends Fixture
             '0b507871-8b5e-4575-b297-a630310fc06e',
             'Benoit',
             'Paquier',
-            'benoit.paquier@fairness.coop',
+            'benoit@email.org',
+            'password',
+            RoleEnum::ROLE_ADMIN,
+        );
+
+        $gpelletier = new User(
+            '0b507871-8b5e-4575-b297-a630310fc06a',
+            'Gregory',
+            'Pelletier',
+            'gregory@email.org',
+            'password',
+            RoleEnum::ROLE_ADMIN,
+        );
+
+        $mmarchois = new User(
+            '0b507871-8b5e-4575-b297-a630310fc06b',
+            'Mathieu',
+            'Marchois',
+            'mathieu@email.org',
             'password',
             RoleEnum::ROLE_ADMIN,
         );
@@ -41,10 +59,15 @@ final class UserFixture extends Fixture
         );
 
         $manager->persist($bpaquier);
+        $manager->persist($gpelletier);
+        $manager->persist($mmarchois);
         $manager->persist($contributor);
         $manager->persist($admin);
         $manager->flush();
 
+        $this->addReference('bpaquier', $bpaquier);
+        $this->addReference('gpelletier', $gpelletier);
+        $this->addReference('mmarchois', $mmarchois);
         $this->addReference('contributor', $contributor);
         $this->addReference('admin', $admin);
     }

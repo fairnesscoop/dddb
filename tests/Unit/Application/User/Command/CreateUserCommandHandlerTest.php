@@ -35,7 +35,7 @@ final class CreateUserCommandHandlerTest extends TestCase
         $uuid = '239898f3-0c1b-42bd-8b6d-d2d0c506bb86';
         $firstName = 'Benoit';
         $lastName = 'Paquier';
-        $email = 'benoit.paquier@fairness.coop';
+        $email = 'benoit@email.org';
         $hashPassword = 'hashPassword';
         $role = RoleEnum::ROLE_ADMIN;
 
@@ -97,7 +97,7 @@ final class CreateUserCommandHandlerTest extends TestCase
 
         $firstName = 'Benoit';
         $lastName = 'Paquier';
-        $email = 'benoit.paquier@fairness.coop';
+        $email = 'benoit@email.org';
         $hashPassword = 'hashPassword';
         $role = RoleEnum::ROLE_ADMIN;
 

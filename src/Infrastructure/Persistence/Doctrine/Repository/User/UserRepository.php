@@ -7,6 +7,7 @@ namespace App\Infrastructure\Persistence\Doctrine\Repository\User;
 use App\Domain\User\Repository\UserRepositoryInterface;
 use App\Domain\User\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 final class UserRepository extends ServiceEntityRepository implements UserRepositoryInterface
@@ -31,5 +32,34 @@ final class UserRepository extends ServiceEntityRepository implements UserReposi
         $this->getEntityManager()->persist($user);
 
         return $user;
+    }
+
+    public function findUsers(int $page, int $pageSize): array
+    {
+        $query = $this->createQueryBuilder('u')
+            ->addSelect([
+                'u.uuid',
+                'u.firstName',
+                'u.lastName',
+                'u.email',
+                'u.role',
+            ])
+            ->setFirstResult($pageSize * ($page - 1)) // set the offset
+            ->setMaxResults($pageSize)
+            ->getQuery();
+
+        $paginator = new Paginator($query);
+        $count = \count($paginator);
+
+        $result = [
+            'items' => [],
+            'totalItems' => $count,
+        ];
+
+        foreach ($paginator as $user) {
+            array_push($result['items'], $user);
+        }
+
+        return $result;
     }
 }

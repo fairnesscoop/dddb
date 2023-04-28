@@ -64,6 +64,28 @@
                 <source>menu.users.create</source>
                 <target>Créer un utilisateur</target>
             </trans-unit>
+            <trans-unit id="menu.users.list">
+                <source>menu.users.list</source>
+                <target>Users list</target>
+            </trans-unit>
+
+            <!-- Pagination -->
+            <trans-unit id="pagination.previous">
+                <source>pagination.previous</source>
+                <target>Page précédente</target>
+            </trans-unit>
+            <trans-unit id="pagination.next">
+                <source>pagination.next</source>
+                <target>Page suivante</target>
+            </trans-unit>
+            <trans-unit id="pagination.entity.users">
+                <source>pagination.entity.users</source>
+                <target>utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="pagination.count">
+                <source>pagination.count</source>
+                <target>Affichage de %start% à %end% sur %total% %entity%</target>
+            </trans-unit>
 
             <!-- Users create -->
             <trans-unit id="users.create.title">
@@ -121,6 +143,36 @@
             <trans-unit id="users.create.form.submit">
                 <source>users.create.form.submit</source>
                 <target>Créer l'utilisateur</target>
+            </trans-unit>
+
+            <!-- Users list -->
+            <trans-unit id="users.list.title">
+                <source>users.list.title</source>
+                <target>Users list</target>
+            </trans-unit>
+            <trans-unit id="users.list.meta.title">
+                <source>users.list.meta.title</source>
+                <target>Users list</target>
+            </trans-unit>
+            <trans-unit id="users.list.button.create">
+                <source>users.list.button.create</source>
+                <target>Créer un utilisateur</target>
+            </trans-unit>
+            <trans-unit id="users.list.table.thead.first_name">
+                <source>users.list.table.thead.first_name</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="users.list.table.thead.last_name">
+                <source>users.list.table.thead.last_name</source>
+                <target>Nom de famille</target>
+            </trans-unit>
+            <trans-unit id="users.list.table.thead.email">
+                <source>users.list.table.thead.email</source>
+                <target>Adresse e-mail</target>
+            </trans-unit>
+            <trans-unit id="users.list.table.thead.role">
+                <source>users.list.table.thead.role</source>
+                <target>Rôle</target>
             </trans-unit>
 
             <!-- Login -->

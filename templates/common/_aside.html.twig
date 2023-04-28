@@ -1,16 +1,23 @@
+{# Users details #}
+{% set usersListActive = path('app_users_list') == app.request.pathinfo %}
 {% set userCreateActive = path('app_user_create') == app.request.pathinfo %}
-{% set usersDetailsActive = userCreateActive %}
+{% set usersDetailsActive = usersListActive or userCreateActive %}
 
 <aside class="fixed left-0 flex flex-col w-72 h-full border-r border-gray-200">
   <div class="border-b py-8 px-8">
-    <p class="text-xl text-primary-500 underline font-bold tracking-tight md:text-3xl">{{ 'menu.title'|trans }}</p>
+    <p class="text-xl text-primary-600 underline font-bold tracking-tight md:text-3xl">{{ 'menu.title'|trans }}</p>
   </div>
+
+  {# Users details #}
   <details class="rounded-lg py-6 px-6" open={{ usersDetailsActive }}>
     <summary class="marker:content-none font-bold text-lg select-none rounded-lg px-5 py-2.5 hover:bg-gray-100 hover:cursor-pointer">{{ 'menu.users.title'|trans }}</summary>
     <nav>
       <ul>
-        <li class="select-none text-sm rounded-lg px-5 py-2.5 {{ userCreateActive ? 'bg-gray-100' : '' }} hover:bg-gray-100 hover:cursor-pointer">
-          <a href={{ path('app_user_create') }}>{{ 'menu.users.create'|trans }}</a>
+        <li class="mt-1 rounded-lg {{ usersListActive ? 'bg-gray-100' : '' }} hover:bg-gray-100">
+          <a href={{ path('app_users_list') }} class="select-none text-sm px-5 py-2.5 block">{{ 'menu.users.list'|trans }}</a>
+        </li>
+        <li class="mt-1 rounded-lg {{ userCreateActive ? 'bg-gray-100' : '' }} hover:bg-gray-100">
+          <a href={{ path('app_user_create') }} class="select-none text-sm px-5 py-2.5 block">{{ 'menu.users.create'|trans }}</a>
         </li>
       </ul>
     </nav>

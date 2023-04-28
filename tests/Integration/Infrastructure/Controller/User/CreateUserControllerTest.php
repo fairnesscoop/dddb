@@ -43,7 +43,7 @@ final class CreateUserControllerTest extends AbstractWebTestCase
         $form = $saveButton->form();
         $form["create_form[firstName]"] = "Benoit";
         $form["create_form[lastName]"] = "Paquier";
-        $form["create_form[email]"] = "benoit.paquier@fairness.coop";
+        $form["create_form[email]"] = "benoit@email.org";
         $form["create_form[password][first]"] = "temptemp";
         $form["create_form[password][second]"] = "temptemp";
         $form["create_form[role]"] = "0";
