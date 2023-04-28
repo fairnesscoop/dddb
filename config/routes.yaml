@@ -1,6 +1,8 @@
 controllers:
     resource: ../src/Infrastructure/Controller/
     type: attribute
+    prefix: '/{_locale}'
+    trailing_slash_on_root: false
 
 app_logout:
     path: /logout

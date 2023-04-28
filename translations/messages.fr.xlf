@@ -148,11 +148,11 @@
             <!-- Users list -->
             <trans-unit id="users.list.title">
                 <source>users.list.title</source>
-                <target>Users list</target>
+                <target>Liste des utilisateurs</target>
             </trans-unit>
             <trans-unit id="users.list.meta.title">
                 <source>users.list.meta.title</source>
-                <target>Users list</target>
+                <target>Liste des utilisateurs</target>
             </trans-unit>
             <trans-unit id="users.list.button.create">
                 <source>users.list.button.create</source>

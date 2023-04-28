@@ -12,7 +12,7 @@ final class ListUsersControllerTest extends AbstractWebTestCase
     public function testList(): void
     {
         $client = $this->login();
-        $crawler = $client->request('GET', '/users');
+        $crawler = $client->request('GET', '/en/users');
 
         $this->assertResponseStatusCodeSame(200);
         $this->assertSecurityHeaders();
@@ -54,7 +54,7 @@ final class ListUsersControllerTest extends AbstractWebTestCase
     public function testPaginationRendering(): void
     {
         $client = $this->login();
-        $page = $client->request('GET', '/users?page=2&pageSize=1');
+        $page = $client->request('GET', '/en/users?page=2&pageSize=1');
         $this->assertResponseStatusCodeSame(200);
         $this->assertSecurityHeaders();
 
@@ -71,34 +71,34 @@ final class ListUsersControllerTest extends AbstractWebTestCase
     public function testInvalidPageSize(): void
     {
         $client = $this->login();
-        $client->request('GET', '/users?pageSize=0');
+        $client->request('GET', '/en/users?pageSize=0');
         $this->assertResponseStatusCodeSame(400);
 
-        $client->request('GET', '/users?pageSize=-1');
+        $client->request('GET', '/en/users?pageSize=-1');
         $this->assertResponseStatusCodeSame(400);
 
-        $client->request('GET', '/users?pageSize=abc');
+        $client->request('GET', '/en/users?pageSize=abc');
         $this->assertResponseStatusCodeSame(400);
     }
 
     public function testInvalidPageNumber(): void
     {
         $client = $this->login();
-        $client->request('GET', '/users?page=0');
+        $client->request('GET', '/en/users?page=0');
         $this->assertResponseStatusCodeSame(400);
 
-        $client->request('GET', '/users?page=-1');
+        $client->request('GET', '/en/users?page=-1');
         $this->assertResponseStatusCodeSame(400);
 
-        $client->request('GET', '/users?page=abc');
+        $client->request('GET', '/en/users?page=abc');
         $this->assertResponseStatusCodeSame(400);
     }
 
     public function testUnauthenticatedUser(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/users');
+        $client->request('GET', '/en/users');
 
-        $this->assertResponseRedirects('http://localhost/login', 302);
+        $this->assertResponseRedirects('http://localhost/en/login', 302);
     }
 }

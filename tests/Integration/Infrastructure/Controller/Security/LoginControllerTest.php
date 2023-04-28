@@ -9,7 +9,7 @@ class LoginControllerTest extends WebTestCase
     public function testLoginSuccess(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/login');
+        $crawler = $client->request('GET', '/en/login');
 
         $this->assertSelectorTextContains('h1', 'Sign in');
 
@@ -27,7 +27,7 @@ class LoginControllerTest extends WebTestCase
     public function testLoginFailed(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/login');
+        $crawler = $client->request('GET', '/en/login');
 
         $saveButton = $crawler->selectButton('Sign in');
         $form = $saveButton->form();
@@ -35,8 +35,8 @@ class LoginControllerTest extends WebTestCase
         $form['password'] = 'incorrect_password';
         $client->submit($form);
 
-        $crawler = $client->request('GET', '/users/create');
-        $this->assertResponseRedirects('http://localhost/login');
+        $crawler = $client->request('GET', '/en/users/create');
+        $this->assertResponseRedirects('http://localhost/en/login');
     }
 
 }
