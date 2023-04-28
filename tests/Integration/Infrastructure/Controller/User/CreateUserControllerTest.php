@@ -11,7 +11,7 @@ final class CreateUserControllerTest extends AbstractWebTestCase
     public function testSuccessfullUserCreation(): void
     {
         $client = $this->login();
-        $crawler = $client->request('GET', '/users/create');
+        $crawler = $client->request('GET', '/en/users/create');
 
         $this->assertResponseStatusCodeSame(200);
         $this->assertSecurityHeaders();
@@ -33,7 +33,7 @@ final class CreateUserControllerTest extends AbstractWebTestCase
     public function testEmailAlreadyExists(): void
     {
         $client = $this->login();
-        $crawler = $client->request('GET', '/users/create');
+        $crawler = $client->request('GET', '/en/users/create');
 
         $this->assertResponseStatusCodeSame(200);
         $this->assertSecurityHeaders();
@@ -55,7 +55,7 @@ final class CreateUserControllerTest extends AbstractWebTestCase
     public function testBadValues(): void
     {
         $client = $this->login();
-        $crawler = $client->request('GET', '/users/create');
+        $crawler = $client->request('GET', '/en/users/create');
 
         $saveButton = $crawler->selectButton("Create user");
         $form = $saveButton->form();
@@ -77,7 +77,7 @@ final class CreateUserControllerTest extends AbstractWebTestCase
     public function testEmptyValues(): void
     {
         $client = $this->login();
-        $crawler = $client->request('GET', '/users/create');
+        $crawler = $client->request('GET', '/en/users/create');
 
         $saveButton = $crawler->selectButton("Create user");
         $form = $saveButton->form();
