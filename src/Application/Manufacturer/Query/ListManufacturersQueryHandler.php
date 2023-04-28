@@ -14,10 +14,10 @@ final class ListManufacturersQueryHandler
     ) {
     }
 
-    public function __invoke(ListManufacturersQuery $listUsersQuery): Pagination
+    public function __invoke(ListManufacturersQuery $lisManufacturersQuery): Pagination
     {
-        $page = $listUsersQuery->page;
-        $pageSize = $listUsersQuery->pageSize;
+        $page = $lisManufacturersQuery->page;
+        $pageSize = $lisManufacturersQuery->pageSize;
 
         $result = $this->manufacturerRepository->findManufacturers(
             page: $page,
