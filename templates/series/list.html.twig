@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {{ 'series.list.meta.title'|trans }}
+  -
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  {% include "common/_aside.html.twig" %}
+  <main class="ml-72 py-8 px-8">
+    <section>
+      <header class="w-full flex justify-between items-center mb-8 ">
+        <h1 class="text-xl font-bold tracking-tight md:text-2xl">{{ 'series.list.title'|trans }}</h1>
+        <a href={{ path('app_serie_create') }}>
+          <button class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            {{ 'series.list.button.create'|trans }}
+          </button>
+        </a>
+      </header>
+
+      <table class="min-w-full divide-y divide-gray-200 table-fixed">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="p-4 text-sm font-medium text-left text-gray-500">{{ 'series.list.table.thead.manufacturer'|trans }}</th>
+            <th class="p-4 text-sm font-medium text-left text-gray-500">{{ 'series.list.table.thead.name'|trans }}</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          {% for serie in series.items %}
+            <tr class="hover:bg-gray-50">
+              <td class="p-4 text-sm">{{serie.manufacturer}}</td>
+              <td class="p-4 text-sm">{{serie.name}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% include "common/pagination.html.twig" with {
+        pagination: series,
+        page: page,
+        pageSize: pageSize,
+        route: 'app_series_list',
+        entity: 'pagination.entity.series'|trans
+      } %}
+    </section>
+  </main>
+{% endblock %}

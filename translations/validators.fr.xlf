@@ -18,6 +18,10 @@
                 <source>manufacturers.create.form.name.already_exist</source>
                 <target>Ce nom existe déjà.</target>
             </trans-unit>
+            <trans-unit id="series.create.form.name.already_exist">
+                <source>series.create.form.name.already_exist</source>
+                <target>Cette gamme existe déjà pour ce fabriquant.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

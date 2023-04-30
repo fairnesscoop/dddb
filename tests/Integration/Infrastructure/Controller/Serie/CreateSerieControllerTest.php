@@ -2,24 +2,25 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Integration\Infrastructure\Controller\Manufacturer;
+namespace App\Tests\Integration\Infrastructure\Controller\Serie;
 
 use App\Tests\Integration\Infrastructure\Controller\AbstractWebTestCase;
 
-final class CreateManufacturerControllerTest extends AbstractWebTestCase
+final class CreateSerieControllerTest extends AbstractWebTestCase
 {
-    public function testSuccessfullUserCreation(): void
+    public function testSuccessfullSerieCreation(): void
     {
         $client = $this->login();
-        $crawler = $client->request('GET', '/en/manufacturers/create');
+        $crawler = $client->request('GET', '/en/series/create');
 
         $this->assertResponseStatusCodeSame(200);
         $this->assertSecurityHeaders();
-        $this->assertSame('Create manufacturer', $crawler->filter('h1')->text());
+        $this->assertSame('Create serie', $crawler->filter('h1')->text());
 
-        $saveButton = $crawler->selectButton('Create manufacturer');
+        $saveButton = $crawler->selectButton('Create serie');
         $form = $saveButton->form();
-        $form["create_form[name]"] = "Nokia";
+        $form['create_form[name]'] = 'Model 3';
+        $form['create_form[manufacturer]'] = '46918802-8e1c-4959-a201-bda5e41141b8';
         $client->submit($form);
 
         $this->assertResponseStatusCodeSame(303);
@@ -28,15 +29,12 @@ final class CreateManufacturerControllerTest extends AbstractWebTestCase
     public function testNameAlreadyExists(): void
     {
         $client = $this->login();
-        $crawler = $client->request('GET', '/en/manufacturers/create');
+        $crawler = $client->request('GET', '/en/series/create');
 
-        $this->assertResponseStatusCodeSame(200);
-        $this->assertSecurityHeaders();
-        $this->assertSame('Create manufacturer', $crawler->filter('h1')->text());
-
-        $saveButton = $crawler->selectButton('Create manufacturer');
+        $saveButton = $crawler->selectButton('Create serie');
         $form = $saveButton->form();
-        $form["create_form[name]"] = "FAIRphone";
+        $form["create_form[name]"] = "model 4";
+        $form['create_form[manufacturer]'] = '46918802-8e1c-4959-a201-bda5e41141b8';
         $client->submit($form);
 
         $this->assertResponseStatusCodeSame(422);
@@ -45,11 +43,12 @@ final class CreateManufacturerControllerTest extends AbstractWebTestCase
     public function testBadValues(): void
     {
         $client = $this->login();
-        $crawler = $client->request('GET', '/en/manufacturers/create');
+        $crawler = $client->request('GET', '/en/series/create');
 
-        $saveButton = $crawler->selectButton('Create manufacturer');
+        $saveButton = $crawler->selectButton('Create serie');
         $form = $saveButton->form();
         $form["create_form[name]"] = str_repeat('a', 101);
+        $form['create_form[manufacturer]'] = '46918802-8e1c-4959-a201-bda5e41141b8';
         $crawler = $client->submit($form);
 
         $this->assertResponseStatusCodeSame(422);
@@ -59,9 +58,9 @@ final class CreateManufacturerControllerTest extends AbstractWebTestCase
     public function testEmptyValues(): void
     {
         $client = $this->login();
-        $crawler = $client->request('GET', '/en/manufacturers/create');
+        $crawler = $client->request('GET', '/en/series/create');
 
-        $saveButton = $crawler->selectButton('Create manufacturer');
+        $saveButton = $crawler->selectButton('Create serie');
         $form = $saveButton->form();
         $crawler = $client->submit($form);
 
