@@ -8,11 +8,12 @@ use App\Application\User\Query\ListUsersQuery;
 use App\Application\User\Query\ListUsersQueryHandler;
 use App\Domain\Pagination;
 use App\Domain\User\Repository\UserRepositoryInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 final class ListUsersQueryHandlerTest extends TestCase
 {
-    private $userRepository;
+    private MockObject|UserRepositoryInterface $userRepository;
 
     public function setUp(): void
     {

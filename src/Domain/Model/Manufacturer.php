@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Model;
 
-class Constructor
+class Manufacturer
 {
     public function __construct(
         private string $uuid,

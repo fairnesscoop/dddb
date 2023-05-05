@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {{ 'manufacturers.list.meta.title'|trans }}
+  -
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  {% include "common/_aside.html.twig" %}
+  <main class="ml-72 py-8 px-8">
+    <section>
+      <header class="w-full flex justify-between items-center mb-8 ">
+        <h1 class="text-xl font-bold tracking-tight md:text-2xl">{{ 'manufacturers.list.title'|trans }}</h1>
+        <a href={{ path('app_manufacturer_create') }}>
+          <button class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            {{ 'manufacturers.list.button.create'|trans }}
+          </button>
+        </a>
+      </header>
+
+      <table class="min-w-full divide-y divide-gray-200 table-fixed">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="p-4 text-sm font-medium text-left text-gray-500">{{ 'manufacturers.list.table.thead.name'|trans }}</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          {% for manufacturer in manufacturers.items %}
+            <tr class="hover:bg-gray-50">
+              <td class="p-4 text-sm">{{manufacturer.name}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% include "common/pagination.html.twig" with {
+        pagination: manufacturers,
+        page: page,
+        pageSize: pageSize,
+        route: 'app_manufacturers_list',
+        entity: 'pagination.entity.manufacturers'|trans
+      } %}
+    </section>
+  </main>
+{% endblock %}

@@ -54,7 +54,19 @@
             <!-- Menu -->
             <trans-unit id="menu.title">
                 <source>menu.title</source>
-                <target>Vertige</target>
+                <target>Repository</target>
+            </trans-unit>
+            <trans-unit id="menu.manufacturers.title">
+                <source>menu.manufacturers.title</source>
+                <target>Manufacturers</target>
+            </trans-unit>
+            <trans-unit id="menu.manufacturers.create">
+                <source>menu.manufacturers.create</source>
+                <target>Create manufacturer</target>
+            </trans-unit>
+            <trans-unit id="menu.manufacturers.list">
+                <source>menu.manufacturers.list</source>
+                <target>Manufacturers list</target>
             </trans-unit>
             <trans-unit id="menu.users.title">
                 <source>menu.users.title</source>
@@ -81,6 +93,10 @@
             <trans-unit id="pagination.entity.users">
                 <source>pagination.entity.users</source>
                 <target>Users</target>
+            </trans-unit>
+            <trans-unit id="pagination.entity.manufacturers">
+                <source>pagination.entity.manufacturers</source>
+                <target>manufacturers</target>
             </trans-unit>
             <trans-unit id="pagination.count">
                 <source>pagination.count</source>
@@ -173,6 +189,46 @@
             <trans-unit id="users.list.table.thead.role">
                 <source>users.list.table.thead.role</source>
                 <target>Role</target>
+            </trans-unit>
+
+            <!-- Manufacturer create -->
+            <trans-unit id="manufacturers.create.title">
+                <source>manufacturers.create.title</source>
+                <target>Create manufacturer</target>
+            </trans-unit>
+            <trans-unit id="manufacturers.create.meta.title">
+                <source>manufacturers.create.meta.title</source>
+                <target>Create manufacturer</target>
+            </trans-unit>
+            <trans-unit id="manufacturers.create.form.name">
+                <source>manufacturers.create.form.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="manufacturers.create.form.name.placeholder">
+                <source>manufacturers.create.form.name.placeholder</source>
+                <target>Enter manufacturer's name or brand</target>
+            </trans-unit>
+            <trans-unit id="manufacturers.create.form.submit">
+                <source>manufacturers.create.form.submit</source>
+                <target>Create manufacturer</target>
+            </trans-unit>
+
+            <!-- Manufacturers list -->
+            <trans-unit id="manufacturers.list.title">
+                <source>manufacturers.list.title</source>
+                <target>Manufacturers list</target>
+            </trans-unit>
+            <trans-unit id="manufacturers.list.meta.title">
+                <source>manufacturers.list.meta.title</source>
+                <target>Manufacturers list</target>
+            </trans-unit>
+            <trans-unit id="manufacturers.list.button.create">
+                <source>manufacturers.list.button.create</source>
+                <target>Create manufacturer</target>
+            </trans-unit>
+            <trans-unit id="manufacturers.list.table.thead.name">
+                <source>manufacturers.list.table.thead.name</source>
+                <target>Manufacturer name</target>
             </trans-unit>
 
             <!-- Login -->

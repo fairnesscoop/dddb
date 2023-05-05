@@ -11,8 +11,8 @@ nelmio_security:
     # forces Microsoft's XSS-Protection with
     # its block mode
     xss_protection:
-        enabled: true
-        mode_block: true
+        enabled: '%env(bool:SECURITY_ENABLED)%'
+        mode_block: '%env(bool:SECURITY_ENABLED)%'
 
     # Send a full URL in the `Referer` header when performing a same-origin request,
     # only send the origin of the document to secure destination (HTTPS->HTTPS),
@@ -20,19 +20,28 @@ nelmio_security:
     # If `strict-origin-when-cross-origin` is not supported, use `no-referrer` policy,
     # no referrer information is sent along with requests.
     referrer_policy:
-        enabled: true
+        enabled: '%env(bool:SECURITY_ENABLED)%'
         policies:
             - 'no-referrer'
             - 'strict-origin-when-cross-origin'
 
     # Set a Content-Security-Policy
     csp:
-        enabled: true
         enforce:
-            default-src: ['self']
-            script-src: ['self']
-            style-src: ['self']
-            connect-src: ['self']
-            font-src: ['self']
-            img-src: ['self', 'data:']
-            block-all-mixed-content: true
+            block-all-mixed-content: '%env(bool:SECURITY_ENABLED)%'
+
+when@prod:
+    nelmio_security:
+        csp:
+            enforce: &enforce_self
+                default-src: ['self']
+                script-src: ['self']
+                style-src: ['self']
+                connect-src: ['self']
+                font-src: ['self']
+                img-src: ['self', 'data:']
+
+when@test:
+    nelmio_security:
+        csp:
+            enforce: *enforce_self

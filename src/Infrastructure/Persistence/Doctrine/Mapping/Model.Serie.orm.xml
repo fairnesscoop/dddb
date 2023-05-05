@@ -3,8 +3,8 @@
   <entity name="App\Domain\Model\Serie" table="serie">
     <id name="uuid" type="guid" column="uuid"/>
     <field name="name" type="string" column="name" nullable="false" length="100" />
-    <many-to-one field='constructor' target-entity="App\Domain\Model\Constructor">
-      <join-column name="constructor_uuid" referenced-column-name="uuid" on-delete="CASCADE" nullable="false" />
+    <many-to-one field='manufacturer' target-entity="App\Domain\Model\Manufacturer">
+      <join-column name="manufacturer_uuid" referenced-column-name="uuid" on-delete="CASCADE" nullable="false" />
     </many-to-one>
   </entity>
 </doctrine-mapping>

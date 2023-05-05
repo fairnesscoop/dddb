@@ -14,7 +14,7 @@ final class Pagination
     public readonly bool $hasLastPageLandmark;
 
     public function __construct(
-        public readonly array $items,
+        public readonly iterable $items,
         public readonly int $totalItems,
         int $page,
         int $pageSize,
