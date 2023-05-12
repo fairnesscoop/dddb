@@ -45,4 +45,9 @@ class Model
     {
         return $this->parentModel;
     }
+
+    public function __toString(): string
+    {
+        return $this->serie->getName() . ' ' . $this->codeName;
+    }
 }
