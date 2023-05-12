@@ -68,6 +68,18 @@
                 <source>menu.manufacturers.list</source>
                 <target>Manufacturers list</target>
             </trans-unit>
+            <trans-unit id="menu.series.title">
+                <source>menu.series.title</source>
+                <target>Series</target>
+            </trans-unit>
+            <trans-unit id="menu.series.create">
+                <source>menu.series.create</source>
+                <target>Create Serie</target>
+            </trans-unit>
+            <trans-unit id="menu.series.list">
+                <source>menu.series.list</source>
+                <target>Series list</target>
+            </trans-unit>
             <trans-unit id="menu.users.title">
                 <source>menu.users.title</source>
                 <target>Users</target>
@@ -97,6 +109,10 @@
             <trans-unit id="pagination.entity.manufacturers">
                 <source>pagination.entity.manufacturers</source>
                 <target>manufacturers</target>
+            </trans-unit>
+            <trans-unit id="pagination.entity.series">
+                <source>pagination.entity.series</source>
+                <target>series</target>
             </trans-unit>
             <trans-unit id="pagination.count">
                 <source>pagination.count</source>
@@ -229,6 +245,54 @@
             <trans-unit id="manufacturers.list.table.thead.name">
                 <source>manufacturers.list.table.thead.name</source>
                 <target>Manufacturer name</target>
+            </trans-unit>
+
+            <!-- Series create -->
+            <trans-unit id="series.create.title">
+                <source>series.create.title</source>
+                <target>Create serie</target>
+            </trans-unit>
+            <trans-unit id="series.create.meta.title">
+                <source>series.create.meta.title</source>
+                <target>Create serie</target>
+            </trans-unit>
+            <trans-unit id="series.create.form.name">
+                <source>series.create.form.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="series.create.form.name.placeholder">
+                <source>series.create.form.name.placeholder</source>
+                <target>Enter serie's name</target>
+            </trans-unit>
+            <trans-unit id="series.create.form.manufacturer">
+                <source>series.create.form.manufacturer</source>
+                <target>Manufacturer</target>
+            </trans-unit>
+            <trans-unit id="series.create.form.submit">
+                <source>series.create.form.submit</source>
+                <target>Create serie</target>
+            </trans-unit>
+
+            <!-- Series list -->
+            <trans-unit id="series.list.title">
+                <source>series.list.title</source>
+                <target>Series list</target>
+            </trans-unit>
+            <trans-unit id="series.list.meta.title">
+                <source>series.list.meta.title</source>
+                <target>Series list</target>
+            </trans-unit>
+            <trans-unit id="series.list.button.create">
+                <source>series.list.button.create</source>
+                <target>Create serie</target>
+            </trans-unit>
+            <trans-unit id="series.list.table.thead.manufacturer">
+                <source>series.list.table.thead.manufacturer</source>
+                <target>Manufacturer</target>
+            </trans-unit>
+            <trans-unit id="series.list.table.thead.name">
+                <source>series.list.table.thead.name</source>
+                <target>Name</target>
             </trans-unit>
 
             <!-- Login -->

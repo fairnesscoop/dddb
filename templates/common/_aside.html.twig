@@ -12,6 +12,14 @@
   } %}
 
   {% include "common/_aside_nav_group.html.twig" with {
+    'name': 'series',
+    'nav_items': [
+      {route: 'app_series_list', label: 'menu.series.list'},
+      {route: 'app_serie_create', label: 'menu.series.create'},
+    ]
+  } %}
+
+  {% include "common/_aside_nav_group.html.twig" with {
     'name': 'users',
     'nav_items': [
       {route: 'app_users_list', label: 'menu.users.list'},

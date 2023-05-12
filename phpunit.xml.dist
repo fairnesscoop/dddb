@@ -32,6 +32,7 @@
         </include>
         <exclude>
             <directory suffix=".php">src/Infrastructure/Persistence/Doctrine/Migrations/</directory>
+            <directory suffix=".php">src/Infrastructure/Persistence/Doctrine/Fixtures/</directory>
             <file>src/Kernel.php</file>
         </exclude>
     </coverage>
