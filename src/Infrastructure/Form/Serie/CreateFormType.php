@@ -6,6 +6,7 @@ namespace App\Infrastructure\Form\Serie;
 
 use App\Application\Serie\Command\CreateSerieCommand;
 use App\Domain\Model\Manufacturer;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,6 +24,10 @@ final class CreateFormType extends AbstractType
                 options: [
                     'label' => 'series.create.form.manufacturer',
                     'class' => Manufacturer::class,
+                    'query_builder' => function (EntityRepository $er) {
+                        return $er->createQueryBuilder('m')
+                            ->orderBy('m.name', 'ASC');
+                    },
                 ],
             )
             ->add(
