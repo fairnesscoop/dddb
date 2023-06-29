@@ -53,6 +53,7 @@ final class ListModelsController
                     'page' => $page,
                     'pageSize' => $pageSize,
                     'asideDetailsActive' => 'series',
+                    'highlightedItem' => 'app_series_list',
                 ],
             ),
         );

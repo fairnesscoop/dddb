@@ -31,6 +31,11 @@ class Model
         return $this->codeTac;
     }
 
+    public function addCodeTac(string $codeTac): void
+    {
+        $this->codeTac[] = $codeTac;
+    }
+
     public function getAttributes(): array
     {
         return $this->attributes;

@@ -302,8 +302,8 @@
                 <source>series.list.table.thead.name</source>
                 <target>Name</target>
             </trans-unit>
-            <trans-unit id="series.list.table.td.models_link">
-                <source>series.list.table.td.models_link</source>
+            <trans-unit id="series.list.table.td.modelsLink">
+                <source>series.list.table.td.modelsLink</source>
                 <target>Models</target>
             </trans-unit>
 
@@ -316,12 +316,12 @@
                 <source>models.create.meta.title</source>
                 <target>Create device model</target>
             </trans-unit>
-            <trans-unit id="models.create.form.code_name">
-                <source>models.create.form.code_name</source>
+            <trans-unit id="models.create.form.codeName">
+                <source>models.create.form.codeName</source>
                 <target>Codename</target>
             </trans-unit>
-            <trans-unit id="models.create.form.code_name.placeholder">
-                <source>models.create.form.code_name.placeholder</source>
+            <trans-unit id="models.create.form.codeName.placeholder">
+                <source>models.create.form.codeName.placeholder</source>
                 <target>Manufacturer's reference, aka model or codename</target>
             </trans-unit>
             <trans-unit id="models.create.form.parent_model">
@@ -335,6 +335,18 @@
             <trans-unit id="models.create.form.submit">
                 <source>models.create.form.submit</source>
                 <target>Create model</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.codeTac">
+                <source>models.create.form.codeTac</source>
+                <target>Add TAC code</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.codeTac.placeholder">
+                <source>models.create.form.codeTac.placeholder</source>
+                <target>12345678</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.codeTac.submit">
+                <source>models.create.form.codeTac.submit</source>
+                <target>Add</target>
             </trans-unit>
 
             <!-- Models list -->
@@ -353,6 +365,32 @@
             <trans-unit id="models.list.table.thead.codeName">
                 <source>models.list.table.thead.codeName</source>
                 <target>Codename</target>
+            </trans-unit>
+            <trans-unit id="models.list.table.td.modelLink">
+                <source>models.list.table.td.modelLink</source>
+                <target>View model's details</target>
+            </trans-unit>
+
+            <!-- Model view -->
+            <trans-unit id="models.view.title">
+                <source>models.view.title</source>
+                <target>%manufacturer% %serie% - Codename %codeName%</target>
+            </trans-unit>
+            <trans-unit id="models.view.meta.title">
+                <source>models.view.meta.title</source>
+                <target>%manufacturer% %serie% - Codename %codeName%</target>
+            </trans-unit>
+            <trans-unit id="models.view.codeTac.title">
+                <source>models.view.codeTac.title</source>
+                <target>TAC codes</target>
+            </trans-unit>
+            <trans-unit id="models.view.codeTac.none">
+                <source>models.view.codeTac.none</source>
+                <target>No TAC code yet</target>
+            </trans-unit>
+            <trans-unit id="models.view.codeTac.addLink">
+                <source>models.view.codeTac.addLink</source>
+                <target>Add TAC code</target>
             </trans-unit>
 
             <!-- Login -->

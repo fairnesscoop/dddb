@@ -5,8 +5,14 @@
   <nav>
     <ul>
       {% for item in nav_items %}
-      <li class="mt-1 rounded-lg {{ app.request.attributes.get('_route') == item.route ? 'bg-gray-100' : '' }} hover:bg-gray-100">
+      {% set isHighlighted = app.request.attributes.get('_route') == item.route or highlightedItem|default(null) == item.route %}
+      <li class="mt-1 rounded-lg {{ isHighlighted ? 'bg-gray-100' : '' }} hover:bg-gray-100">
         <a href={{ path(item.route) }} class="select-none text-sm px-5 py-2.5 block">{{ item.label|trans }}</a>
+        {% if asideDetailsActiveContextualLink is defined and asideDetailsActiveContextualLink.parent == item.route %}
+          <a href="{{ asideDetailsActiveContextualLink.link }}" class="select-none text-sm px-8 py-1 block">
+            {{ asideDetailsActiveContextualLink.label }}
+          </a>
+        {% endif %}
       </li>
       {% endfor %}
     </ul>

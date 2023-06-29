@@ -27,6 +27,13 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
         return $model;
     }
 
+    public function update(Model $model): Model
+    {
+        $this->getEntityManager()->persist($model);
+
+        return $model;
+    }
+
     public function isCodeNameUsed(Manufacturer $manufacturer, string $codeName): bool
     {
         return $this->createQueryBuilder('m')
@@ -36,6 +43,18 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
             ->join('m.serie', 's')
             ->join('s.manufacturer', 'mf', 'WITH', 'mf = :manufacturer')->setParameter('manufacturer', $manufacturer->getUuid())
             ->andWhere('LOWER(m.codeName) LIKE LOWER(:codeName)')->setParameter('codeName', $codeName)
+            ->getQuery()
+            ->getSingleScalarResult() > 0
+        ;
+    }
+
+    public function isCodeTacUsed(string $codeTac): bool
+    {
+        return $this->createQueryBuilder('m')
+            ->select([
+                'COUNT(m)',
+            ])
+            ->andWhere('m.codeTac LIKE :codeTac')->setParameter('codeTac', $codeTac)
             ->getQuery()
             ->getSingleScalarResult() > 0
         ;

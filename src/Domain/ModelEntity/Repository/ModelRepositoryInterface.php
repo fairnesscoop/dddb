@@ -12,8 +12,10 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 interface ModelRepositoryInterface
 {
     public function add(Model $model): Model;
+    public function update(Model $model): Model;
 
     public function isCodeNameUsed(Manufacturer $manufacturer, string $codeName): bool;
+    public function isCodeTacUsed(string $codeTac): bool;
 
     public function findModels(Serie $serie, int $page, int $pageSize): Paginator;
 }

@@ -33,7 +33,7 @@ final class CreateModelController
     public function __invoke(Request $request, Serie $serie): Response
     {
         $command = new CreateModelCommand($serie);
-        $form = $this->formFactory->create(CreateFormType::class, $command);
+        $form = $this->formFactory->create(CreateFormType::class, $command, ['serieUuid' => $serie->getUuid()]);
         $form->handleRequest($request);
         $hasCommandFailed = false;
 
@@ -47,7 +47,7 @@ final class CreateModelController
                 );
             } catch (CodeNameAlreadyExistsException) {
                 $hasCommandFailed = true;
-                $errorMsg = $this->translator->trans('models.create.form.code_name.already_exist', [], 'validators');
+                $errorMsg = $this->translator->trans('models.create.form.codeName.already_exist', [], 'validators');
                 $form->get('codeName')->addError(new FormError($errorMsg));
             }
         }
