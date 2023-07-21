@@ -46,7 +46,7 @@ final class CreateSerieController
                 );
             } catch (NameAlreadyExistsException) {
                 $hasCommandFailed = true;
-                $errorMsg = $this->translator->trans('series.create.form.name.already_exist', [], 'validators');
+                $errorMsg = $this->translator->trans('series.create.form.name.alreadyExists', [], 'validators');
                 $form->get('name')->addError(new FormError($errorMsg));
             }
         }

@@ -11,7 +11,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 final class CreateCodeTacCommand implements CommandInterface
 {
     public function __construct(
-        public readonly ?Model $model,
+        public readonly Model $model,
+        #[Assert\NotBlank()]
         #[Assert\Regex('/\d{8}/')]
         public ?string $codeTac = null,
     ) {

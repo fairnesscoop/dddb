@@ -30,7 +30,6 @@ class CreateModelCommandHandler
                 $uuid,
                 $createModelCommand->codeName,
                 [],
-                [],
                 $createModelCommand->serie,
                 $createModelCommand->parentModel,
             ),

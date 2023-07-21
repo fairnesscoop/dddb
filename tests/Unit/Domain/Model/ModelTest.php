@@ -14,7 +14,6 @@ final class ModelTest extends TestCase
     {
         $uuid = 'abcde';
         $codeName = 'Redfin';
-        $codeTac = ['0123456'];
         $attributes = [
             "os" => "os_uuid",
             "battery_reference" => "battery_uuid"
@@ -25,7 +24,6 @@ final class ModelTest extends TestCase
         $model = new Model(
             $uuid,
             $codeName,
-            $codeTac,
             $attributes,
             $serie,
             $parentModel
@@ -33,7 +31,6 @@ final class ModelTest extends TestCase
 
         $this->assertSame($model->getUuid(), $uuid);
         $this->assertSame($model->getCodeName(), $codeName);
-        $this->assertSame($model->getCodeTac(), $codeTac);
         $this->assertSame($model->getAttributes(), $attributes);
         $this->assertSame($model->getSerie(), $serie);
         $this->assertSame($model->getParentModel(), $parentModel);

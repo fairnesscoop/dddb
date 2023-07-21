@@ -23,11 +23,11 @@
       </header>
 
       <h2 class="text-l font-bold tracking-tight md:text-2l">{{ 'models.view.codeTac.title'|trans }}</h2>
-      {% if model.codeTac | length > 0 %}
+      {% if codeTacs | length > 0 %}
         <ul>
-          {% for codeTac in model.codeTac %}
+          {% for code in codeTacs %}
           <li>
-            {{codeTac}}
+            {{ code }}
           </li>
           {% endfor %}
         </ul>

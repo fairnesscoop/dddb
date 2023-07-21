@@ -47,7 +47,7 @@ final class CreateModelController
                 );
             } catch (CodeNameAlreadyExistsException) {
                 $hasCommandFailed = true;
-                $errorMsg = $this->translator->trans('models.create.form.codeName.already_exist', [], 'validators');
+                $errorMsg = $this->translator->trans('models.create.form.codeName.alreadyExists', [], 'validators');
                 $form->get('codeName')->addError(new FormError($errorMsg));
             }
         }

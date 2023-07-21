@@ -46,7 +46,7 @@ final class CreateUserController
                 );
             } catch (UserAlreadyRegisteredException) {
                 $hasCommandFailed = true;
-                $errorMsg = $this->translator->trans('users.create.form.email.already_exist', [], 'validators');
+                $errorMsg = $this->translator->trans('users.create.form.email.alreadyExists', [], 'validators');
                 $form->get('email')->addError(new FormError($errorMsg));
             }
         }

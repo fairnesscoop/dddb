@@ -6,25 +6,29 @@
                 <source>users.create.form.password.notmatch</source>
                 <target>Password and passowrd confirmation don't match.</target>
             </trans-unit>
-            <trans-unit id="users.create.form.email.already_exist">
-                <source>users.create.form.email.already_exist</source>
+            <trans-unit id="users.create.form.email.alreadyExists">
+                <source>users.create.form.email.alreadyExists</source>
                 <target>This email address is already used by another user.</target>
             </trans-unit>
             <trans-unit id="invalid.page_or_page_size">
                 <source>invalid.page_or_page_size</source>
                 <target>Page size and/or page number must be greater than 0.</target>
             </trans-unit>
-            <trans-unit id="manufacturers.create.form.name.already_exist">
-                <source>manufacturers.create.form.name.already_exist</source>
+            <trans-unit id="manufacturers.create.form.name.alreadyExists">
+                <source>manufacturers.create.form.name.alreadyExists</source>
                 <target>This name already exists.</target>
             </trans-unit>
-            <trans-unit id="series.create.form.name.already_exist">
-                <source>series.create.form.name.already_exist</source>
+            <trans-unit id="series.create.form.name.alreadyExists">
+                <source>series.create.form.name.alreadyExists</source>
                 <target>This serie already exists for this manufacturer.</target>
             </trans-unit>
-            <trans-unit id="models.create.form.codeName.already_exist">
-                <source>models.create.form.codeName.already_exist</source>
-                <target>This refenrence already exists for this manufacturer.</target>
+            <trans-unit id="models.create.form.codeName.alreadyExists">
+                <source>models.create.form.codeName.alreadyExists</source>
+                <target>This reference already exists for this manufacturer.</target>
+            </trans-unit>
+            <trans-unit id="models.codeTac.create.form.codeTac.alreadyExists">
+                <source>models.codeTac.create.form.codeTac.alreadyExists</source>
+                <target>This TAC code already exists.</target>
             </trans-unit>
         </body>
     </file>

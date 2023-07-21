@@ -4,28 +4,27 @@ declare(strict_types=1);
 
 namespace App\Application\Model\Command;
 
-use App\Application\IdFactoryInterface;
+use App\Domain\Model\CodeTac;
 use App\Domain\ModelEntity\Exception\CodeTacAlreadyExistsException;
-use App\Domain\ModelEntity\Repository\ModelRepositoryInterface;
-use App\Domain\Model\Model;
+use App\Domain\ModelEntity\Repository\CodeTacRepositoryInterface;
 
 class CreateCodeTacCommandHandler
 {
     public function __construct(
-        private ModelRepositoryInterface $modelRepository,
-        private IdFactoryInterface $idFactory,
+        private CodeTacRepositoryInterface $codeTacRepository,
     ) {
     }
 
-    public function __invoke(CreateCodeTacCommand $createCodeTacCommand): Model
+    public function __invoke(CreateCodeTacCommand $createCodeTacCommand): CodeTac
     {
-        if ($this->modelRepository->isCodeTacUsed($createCodeTacCommand->codeTac)) {
+        $code = (int) $createCodeTacCommand->codeTac;
+
+        if ($this->codeTacRepository->isCodeTacUsed($code)) {
             throw new CodeTacAlreadyExistsException();
         }
 
-        $model = $createCodeTacCommand->model;
-        $model->addCodeTac($createCodeTacCommand->codeTac);
+        $codeTacEntity = new CodeTac($code, $createCodeTacCommand->model);
 
-        return $this->modelRepository->update($model);
+        return $this->codeTacRepository->add($codeTacEntity);
     }
 }
