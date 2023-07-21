@@ -9,7 +9,6 @@ class Model
     public function __construct(
         private string $uuid,
         private string $codeName,
-        private array $codeTac,
         private array $attributes,
         private Serie $serie,
         private ?Model $parentModel = null,
@@ -26,11 +25,6 @@ class Model
         return $this->codeName;
     }
 
-    public function getCodeTac(): array
-    {
-        return $this->codeTac;
-    }
-
     public function getAttributes(): array
     {
         return $this->attributes;
@@ -41,8 +35,13 @@ class Model
         return $this->serie;
     }
 
-    public function getParentModel(): Model
+    public function getParentModel(): ?Model
     {
         return $this->parentModel;
+    }
+
+    public function __toString(): string
+    {
+        return $this->serie->getName() . ' ' . $this->codeName;
     }
 }

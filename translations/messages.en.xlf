@@ -50,6 +50,10 @@
                 <source>common.cancel</source>
                 <target>Cancel</target>
             </trans-unit>
+            <trans-unit id="common.none">
+                <source>common.none</source>
+                <target>None</target>
+            </trans-unit>
 
             <!-- Menu -->
             <trans-unit id="menu.title">
@@ -113,6 +117,10 @@
             <trans-unit id="pagination.entity.series">
                 <source>pagination.entity.series</source>
                 <target>series</target>
+            </trans-unit>
+            <trans-unit id="pagination.entity.models">
+                <source>pagination.entity.models</source>
+                <target>models</target>
             </trans-unit>
             <trans-unit id="pagination.count">
                 <source>pagination.count</source>
@@ -293,6 +301,96 @@
             <trans-unit id="series.list.table.thead.name">
                 <source>series.list.table.thead.name</source>
                 <target>Name</target>
+            </trans-unit>
+            <trans-unit id="series.list.table.td.modelsLink">
+                <source>series.list.table.td.modelsLink</source>
+                <target>Models</target>
+            </trans-unit>
+
+            <!-- Model create -->
+            <trans-unit id="models.create.title">
+                <source>models.create.title</source>
+                <target>Create model</target>
+            </trans-unit>
+            <trans-unit id="models.create.meta.title">
+                <source>models.create.meta.title</source>
+                <target>Create device model</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.codeName">
+                <source>models.create.form.codeName</source>
+                <target>Codename</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.codeName.placeholder">
+                <source>models.create.form.codeName.placeholder</source>
+                <target>Manufacturer's reference, aka model or codename</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.parent_model">
+                <source>models.create.form.parent_model</source>
+                <target>Base model</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.parent_model.help">
+                <source>models.create.form.parent_model.help</source>
+                <target>By default, all attributes will be inherited from this model</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.submit">
+                <source>models.create.form.submit</source>
+                <target>Create model</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.codeTac">
+                <source>models.create.form.codeTac</source>
+                <target>Add TAC code</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.codeTac.placeholder">
+                <source>models.create.form.codeTac.placeholder</source>
+                <target>12345678</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.codeTac.submit">
+                <source>models.create.form.codeTac.submit</source>
+                <target>Add</target>
+            </trans-unit>
+
+            <!-- Models list -->
+            <trans-unit id="models.list.title">
+                <source>models.list.title</source>
+                <target>Models list for %manufacturer% %serie%</target>
+            </trans-unit>
+            <trans-unit id="models.list.meta.title">
+                <source>models.list.meta.title</source>
+                <target>Models list for %manufacturer% %serie%</target>
+            </trans-unit>
+            <trans-unit id="models.list.button.create">
+                <source>models.list.button.create</source>
+                <target>Create model</target>
+            </trans-unit>
+            <trans-unit id="models.list.table.thead.codeName">
+                <source>models.list.table.thead.codeName</source>
+                <target>Codename</target>
+            </trans-unit>
+            <trans-unit id="models.list.table.td.modelLink">
+                <source>models.list.table.td.modelLink</source>
+                <target>View model's details</target>
+            </trans-unit>
+
+            <!-- Model view -->
+            <trans-unit id="models.view.title">
+                <source>models.view.title</source>
+                <target>%manufacturer% %serie% - Codename %codeName%</target>
+            </trans-unit>
+            <trans-unit id="models.view.meta.title">
+                <source>models.view.meta.title</source>
+                <target>%manufacturer% %serie% - Codename %codeName%</target>
+            </trans-unit>
+            <trans-unit id="models.view.codeTac.title">
+                <source>models.view.codeTac.title</source>
+                <target>TAC codes</target>
+            </trans-unit>
+            <trans-unit id="models.view.codeTac.none">
+                <source>models.view.codeTac.none</source>
+                <target>No TAC code yet</target>
+            </trans-unit>
+            <trans-unit id="models.view.codeTac.addLink">
+                <source>models.view.codeTac.addLink</source>
+                <target>Add TAC code</target>
             </trans-unit>
 
             <!-- Login -->

@@ -46,7 +46,7 @@ final class CreateManufacturerController
                 );
             } catch (NameAlreadyExistsException) {
                 $hasCommandFailed = true;
-                $errorMsg = $this->translator->trans('manufacturers.create.form.name.already_exist', [], 'validators');
+                $errorMsg = $this->translator->trans('manufacturers.create.form.name.alreadyExists', [], 'validators');
                 $form->get('name')->addError(new FormError($errorMsg));
             }
         }

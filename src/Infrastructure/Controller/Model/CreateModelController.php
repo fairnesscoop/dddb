@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Controller\User;
+namespace App\Infrastructure\Controller\Model;
 
 use App\Application\CommandBusInterface;
-use App\Application\User\Command\CreateUserCommand;
-use App\Domain\User\Exception\UserAlreadyRegisteredException;
-use App\Infrastructure\Form\User\CreateFormType;
+use App\Application\Model\Command\CreateModelCommand;
+use App\Domain\Model\Serie;
+use App\Domain\ModelEntity\Exception\CodeNameAlreadyExistsException;
+use App\Infrastructure\Form\Model\CreateFormType;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -17,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-final class CreateUserController
+final class CreateModelController
 {
     public function __construct(
         private \Twig\Environment $twig,
@@ -28,11 +29,11 @@ final class CreateUserController
     ) {
     }
 
-    #[Route('/users/create', name: 'app_user_create', methods: ['GET', 'POST'])]
-    public function __invoke(Request $request): Response
+    #[Route('/series/{serie}/models/create', name: 'app_model_create', methods: ['GET', 'POST'])]
+    public function __invoke(Request $request, Serie $serie): Response
     {
-        $command = new CreateUserCommand();
-        $form = $this->formFactory->create(CreateFormType::class, $command);
+        $command = new CreateModelCommand($serie);
+        $form = $this->formFactory->create(CreateFormType::class, $command, ['serieUuid' => $serie->getUuid()]);
         $form->handleRequest($request);
         $hasCommandFailed = false;
 
@@ -41,22 +42,21 @@ final class CreateUserController
                 $this->commandBus->handle($command);
 
                 return new RedirectResponse(
-                    url: $this->router->generate('app_users_list'),
+                    url: $this->router->generate('app_models_list', ['serie' => $serie->getUuid()]),
                     status: Response::HTTP_SEE_OTHER,
                 );
-            } catch (UserAlreadyRegisteredException) {
+            } catch (CodeNameAlreadyExistsException) {
                 $hasCommandFailed = true;
-                $errorMsg = $this->translator->trans('users.create.form.email.alreadyExists', [], 'validators');
-                $form->get('email')->addError(new FormError($errorMsg));
+                $errorMsg = $this->translator->trans('models.create.form.codeName.alreadyExists', [], 'validators');
+                $form->get('codeName')->addError(new FormError($errorMsg));
             }
         }
 
         return new Response(
             content: $this->twig->render(
-                name: 'users/create.html.twig',
+                name: 'models/create.html.twig',
                 context: [
                     'form' => $form->createView(),
-                    'asideDetailsActive' => 'users',
                 ],
             ),
             status: ($form->isSubmitted() && !$form->isValid()) || $hasCommandFailed

@@ -27,4 +27,9 @@ class Serie
     {
         return $this->manufacturer;
     }
+
+    public function __toString(): string
+    {
+        return $this->name . ' ' . $this->manufacturer->getName();
+    }
 }
