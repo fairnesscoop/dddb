@@ -27,7 +27,7 @@
         <ul>
           {% for code in codeTacs %}
           <li>
-            {{ code }}
+            {{ '%08d'|format(code) }}
           </li>
           {% endfor %}
         </ul>

@@ -274,7 +274,7 @@
             </trans-unit>
             <trans-unit id="series.create.form.manufacturer">
                 <source>series.create.form.manufacturer</source>
-                <target>fabricant</target>
+                <target>Fabricant</target>
             </trans-unit>
             <trans-unit id="series.create.form.submit">
                 <source>series.create.form.submit</source>
@@ -296,7 +296,7 @@
             </trans-unit>
             <trans-unit id="series.list.table.thead.manufacturer">
                 <source>series.list.table.thead.manufacturer</source>
-                <target>fabricant</target>
+                <target>Fabricant</target>
             </trans-unit>
             <trans-unit id="series.list.table.thead.name">
                 <source>series.list.table.thead.name</source>
