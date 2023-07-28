@@ -21,12 +21,23 @@
           '%codeName%': model.codeName,
         }) }}</h1>
       </header>
+    </section>
 
+    <section>
+      {% for attributeName in allAttributeNames %}
+        {% include "models/attributes/_#{attributeName}.html.twig"
+          with { attribute: attributes[attributeName] | default(null) }
+        %}
+      {% endfor %}
+    </section>
+
+    <section class="mt-6">
       <h2 class="text-l font-bold tracking-tight md:text-2l">{{ 'models.view.codeTac.title'|trans }}</h2>
+
       {% if codeTacs | length > 0 %}
         <ul>
           {% for code in codeTacs %}
-          <li>
+          <li class="font-mono">
             {{ '%08d'|format(code) }}
           </li>
           {% endfor %}
@@ -34,6 +45,7 @@
       {% else %}
       <p class="p-4"><em>{{ 'models.view.codeTac.none'|trans }}</em></p>
       {% endif %}
+
       <div>
         {{ form_start(formCodeTac) }}
         {{ form_row(formCodeTac.codeTac) }}

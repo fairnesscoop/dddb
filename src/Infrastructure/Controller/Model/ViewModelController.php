@@ -6,6 +6,7 @@ namespace App\Infrastructure\Controller\Model;
 
 use App\Application\CommandBusInterface;
 use App\Application\Model\Command\CreateCodeTacCommand;
+use App\Domain\Model\Attribute\Builder\AttributeGenericBuilder;
 use App\Domain\Model\Model;
 use App\Domain\ModelEntity\Exception\CodeTacAlreadyExistsException;
 use App\Domain\ModelEntity\Repository\CodeTacRepositoryInterface;
@@ -26,6 +27,7 @@ final class ViewModelController
         private RouterInterface $router,
         private CodeTacRepositoryInterface $codeTacRepository,
         private FormFactoryInterface $formFactory,
+        private AttributeGenericBuilder $attributeBuilder,
         private CommandBusInterface $commandBus,
         private TranslatorInterface $translator,
     ) {
@@ -42,15 +44,19 @@ final class ViewModelController
         $response = new Response();
 
         try {
-            if ($formCodeTac->isSubmitted() && $formCodeTac->isValid()) {
-                $this->commandBus->handle($command);
+            if ($formCodeTac->isSubmitted()) {
+                if ($formCodeTac->isValid()) {
+                    $this->commandBus->handle($command);
 
-                return new RedirectResponse($request->getUri());
+                    return new RedirectResponse($request->getUri());
+                }
+
+                $response->setStatusCode(Response::HTTP_UNPROCESSABLE_ENTITY);
             }
         } catch (CodeTacAlreadyExistsException) {
             $errorMsg = $this->translator->trans('models.codeTac.create.form.codeTac.alreadyExists', [], 'validators');
             $formCodeTac->get('codeTac')->addError(new FormError($errorMsg));
-            $response->setStatusCode(422);
+            $response->setStatusCode(Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         $codeTacs = $this->codeTacRepository->findCodeTacs($model);
@@ -59,6 +65,8 @@ final class ViewModelController
             name: 'models/view.html.twig',
             context: [
                 'model' => $model,
+                'allAttributeNames' => AttributeGenericBuilder::getAllAttributes(),
+                'attributes' => $this->attributeBuilder->createAttributeCollection($model->getAttributes()),
                 'codeTacs' => $codeTacs,
                 'formCodeTac' => $formCodeTac->createView(),
                 'asideDetailsActive' => 'series',

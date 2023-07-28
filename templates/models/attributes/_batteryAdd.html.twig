@@ -1,0 +1,8 @@
+<turbo-frame id="add-battery-reference">
+    {{ form_start(formBatteryReference, {"attr": {"data-turbo-frame": "model-attribute-battery"}}) }}
+    {{ form_row(formBatteryReference.batteryReference) }}
+    <button class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-1 text-center">
+        {{ 'common.save'|trans }}
+    </button>
+    {{ form_end(formBatteryReference) }}
+</turbo-frame>

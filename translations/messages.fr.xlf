@@ -380,6 +380,18 @@
                 <source>models.view.meta.title</source>
                 <target>%manufacturer% %serie% - Codename %codeName%</target>
             </trans-unit>
+            <trans-unit id="models.view.battery.title">
+                <source>models.view.battery.title</source>
+                <target>Références des batteries</target>
+            </trans-unit>
+            <trans-unit id="models.view.battery.addReference">
+                <source>models.view.battery.addReference</source>
+                <target>Ajouter une référence</target>
+            </trans-unit>
+            <trans-unit id="models.view.battery.form.label">
+                <source>models.view.battery.form.label</source>
+                <target>Reference</target>
+            </trans-unit>
             <trans-unit id="models.view.codeTac.title">
                 <source>models.view.codeTac.title</source>
                 <target>Codes TAC</target>

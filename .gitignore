@@ -1,5 +1,6 @@
 coverage.xml
 docker-compose.override.yml
+/.vscode/
 
 ###> symfony/framework-bundle ###
 /.env.local

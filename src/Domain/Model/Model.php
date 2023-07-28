@@ -30,6 +30,11 @@ class Model
         return $this->attributes;
     }
 
+    public function setAttributes(array $attributes): void
+    {
+        $this->attributes = $attributes;
+    }
+
     public function getSerie(): Serie
     {
         return $this->serie;
