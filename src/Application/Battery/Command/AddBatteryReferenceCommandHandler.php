@@ -34,7 +34,7 @@ class AddBatteryReferenceCommandHandler
             $updatedBatteryReferences = [$command->batteryReference];
         }
 
-        $attributes->set(Battery::NAME, $this->attributeBuilder->createAttribute(Battery::NAME, $updatedBatteryReferences));
+        $attributes->set(Battery::NAME, new Battery($updatedBatteryReferences));
 
         $command->model->setAttributes($this->attributeNormalizer->normalize($attributes));
 

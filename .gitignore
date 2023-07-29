@@ -25,6 +25,7 @@ docker-compose.override.yml
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache
+/.phpunit.cache/
 ###< phpunit/phpunit ###
 
 ###> symfony/webpack-encore-bundle ###

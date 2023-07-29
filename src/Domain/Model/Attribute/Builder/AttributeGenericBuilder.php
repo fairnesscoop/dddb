@@ -34,7 +34,7 @@ class AttributeGenericBuilder
         return $this->builderLocator->get($attributeName)->createAttribute($internalValue);
     }
 
-    public static function getAllAttributes(): array
+    public static function getAllAttributeNames(): array
     {
         return [
             Battery::NAME,

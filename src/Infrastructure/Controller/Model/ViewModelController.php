@@ -65,7 +65,7 @@ final class ViewModelController
             name: 'models/view.html.twig',
             context: [
                 'model' => $model,
-                'allAttributeNames' => AttributeGenericBuilder::getAllAttributes(),
+                'allAttributeNames' => AttributeGenericBuilder::getAllAttributeNames(),
                 'attributes' => $this->attributeBuilder->createAttributeCollection($model->getAttributes()),
                 'codeTacs' => $codeTacs,
                 'formCodeTac' => $formCodeTac->createView(),
