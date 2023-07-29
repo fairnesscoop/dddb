@@ -1,5 +1,6 @@
 coverage.xml
 docker-compose.override.yml
+/.vscode/
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -24,6 +25,7 @@ docker-compose.override.yml
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache
+/.phpunit.cache/
 ###< phpunit/phpunit ###
 
 ###> symfony/webpack-encore-bundle ###
