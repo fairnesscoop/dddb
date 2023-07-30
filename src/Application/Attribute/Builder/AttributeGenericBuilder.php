@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Model\Attribute\Builder;
+namespace App\Application\Attribute\Builder;
 
 use App\Domain\Model\Attribute\AttributeCollection;
 use App\Domain\Model\Attribute\AttributeInterface;
 use App\Domain\Model\Attribute\Battery;
+use App\Domain\Model\Attribute\SupportedOsList;
 use Symfony\Component\DependencyInjection\Argument\ServiceLocator;
 use Symfony\Component\DependencyInjection\Attribute\TaggedLocator;
 
@@ -37,6 +38,7 @@ class AttributeGenericBuilder
     public static function getAllAttributeNames(): array
     {
         return [
+            SupportedOsList::NAME,
             Battery::NAME,
         ];
     }

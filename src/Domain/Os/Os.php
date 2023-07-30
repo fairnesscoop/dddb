@@ -7,14 +7,14 @@ namespace App\Domain\Os;
 class Os
 {
     public function __construct(
-        private string $uuid,
+        private int $id,
         private string $name,
     ) {
     }
 
-    public function getUuid(): string
+    public function getId(): int
     {
-        return $this->uuid;
+        return $this->id;
     }
 
     public function getName(): string

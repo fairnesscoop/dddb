@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Model\Attribute\Builder;
+namespace App\Application\Attribute\Normalizer;
 
 use App\Domain\Model\Attribute\AttributeCollection;
-use App\Domain\Model\Attribute\AttributeInterface;
 
 class AttributeNormalizer
 {

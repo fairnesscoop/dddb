@@ -1,6 +1,6 @@
-<turbo-frame id="model-attribute-battery">
-    <h2 class="text-l font-bold tracking-tight md:text-2l">{{ 'models.view.battery.title'|trans }}</h2>
-    {% if attribute is not empty %}
+<turbo-frame id="model-attribute-battery" class="block mt-3">
+    <h2 class="text-l font-bold tracking-tight md:text-2l">{{ 'attributes.battery.title'|trans }}</h2>
+    {% if attribute.references|default(null) is not empty %}
     <ul>
         {% for reference in attribute.references %}
         <li class="font-mono">{{ reference }}</li>
@@ -11,7 +11,7 @@
     <turbo-frame id="add-battery-reference" class="mt-2 block">
         <a href="{{ path('app_attribute_battery_add', {'model': model.uuid}) }}" class>
             <button class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-1 text-center">
-            {{ 'models.view.battery.addReference'|trans }}
+            {{ 'attributes.battery.addReference'|trans }}
             </button>
         </a>
     </turbo-frame>

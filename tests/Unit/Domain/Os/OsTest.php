@@ -11,15 +11,15 @@ final class OsTest extends TestCase
 {
     public function testGetters(): void
     {
-        $uuid = 'abcde';
+        $id = 42;
         $name = 'Android';
 
         $os = new Os(
-            $uuid,
+            $id,
             $name
         );
 
-        $this->assertSame($os->getUuid(), $uuid);
+        $this->assertSame($os->getId(), $id);
         $this->assertSame($os->getName(), $name);
     }
 }

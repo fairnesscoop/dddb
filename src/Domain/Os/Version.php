@@ -7,20 +7,25 @@ namespace App\Domain\Os;
 class Version
 {
     public function __construct(
-        private string $uuid,
+        private int $id,
         private string $name,
         private Os $os,
     ) {
     }
 
-    public function getUuid(): string
+    public function getId(): int
     {
-        return $this->uuid;
+        return $this->id;
     }
 
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getFullName(): string
+    {
+        return sprintf('%s %s', $this->os->getName(), $this->name);
     }
 
     public function getOs(): Os
