@@ -34,6 +34,10 @@
                 <source>common.delete</source>
                 <target>Supprimer</target>
             </trans-unit>
+            <trans-unit id="common.delete.confirm">
+                <source>common.delete.confirm</source>
+                <target>Veuillez confirmer la suppression de cet élément</target>
+            </trans-unit>
             <trans-unit id="common.back_to_home">
                 <source>common.back_to_home</source>
                 <target>Retour à l'accueil</target>
@@ -380,18 +384,6 @@
                 <source>models.view.meta.title</source>
                 <target>%manufacturer% %serie% - Codename %codeName%</target>
             </trans-unit>
-            <trans-unit id="models.view.battery.title">
-                <source>models.view.battery.title</source>
-                <target>Références des batteries</target>
-            </trans-unit>
-            <trans-unit id="models.view.battery.addReference">
-                <source>models.view.battery.addReference</source>
-                <target>Ajouter une référence</target>
-            </trans-unit>
-            <trans-unit id="models.view.battery.form.label">
-                <source>models.view.battery.form.label</source>
-                <target>Reference</target>
-            </trans-unit>
             <trans-unit id="models.view.codeTac.title">
                 <source>models.view.codeTac.title</source>
                 <target>Codes TAC</target>
@@ -403,6 +395,44 @@
             <trans-unit id="models.view.codeTac.addLink">
                 <source>models.view.tacCode.addLink</source>
                 <target>Ajouter un code TAC</target>
+            </trans-unit>
+
+            <!-- Attributes -->
+            <trans-unit id="attributes.battery.title">
+                <source>attributes.battery.title</source>
+                <target>Références des batteries</target>
+            </trans-unit>
+            <trans-unit id="attributes.battery.addReference">
+                <source>attributes.battery.addReference</source>
+                <target>Ajouter une référence</target>
+            </trans-unit>
+            <trans-unit id="attributes.battery.form.label">
+                <source>attributes.battery.form.label</source>
+                <target>Reference</target>
+            </trans-unit>
+            <trans-unit id="attributes.supportedOsList.title">
+                <source>attributes.supportedOsList.title</source>
+                <target>Liste des OS supportés</target>
+            </trans-unit>
+            <trans-unit id="attributes.supportedOsList.addSupportedOs">
+                <source>attributes.supportedOsList.addSupportedOs</source>
+                <target>Ajouter un OS</target>
+            </trans-unit>
+            <trans-unit id="attributes.supportedOsList.helpLink">
+                <source>attributes.supportedOsList.helpLink</source>
+                <target>Voir la documentation</target>
+            </trans-unit>
+            <trans-unit id="attributes.supportedOsList.form.osVersion">
+                <source>attributes.supportedOsList.form.osVersion</source>
+                <target>OS et version</target>
+            </trans-unit>
+            <trans-unit id="attributes.supportedOsList.form.helpLink">
+                <source>attributes.supportedOsList.form.helpLink</source>
+                <target>URL de la documentation</target>
+            </trans-unit>
+            <trans-unit id="attributes.supportedOsList.form.comment">
+                <source>attributes.supportedOsList.form.comment</source>
+                <target>Commentaire</target>
             </trans-unit>
 
             <!-- Login -->

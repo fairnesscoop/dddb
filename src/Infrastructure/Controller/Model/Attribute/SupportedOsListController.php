@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Infrastructure\Controller\Model\Attribute;
 
 use App\Application\Attribute\Builder\AttributeGenericBuilder;
-use App\Domain\Model\Attribute\Battery;
+use App\Domain\Model\Attribute\SupportedOsList;
 use App\Domain\Model\Model;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class BatteryReferenceController
+class SupportedOsListController
 {
     public function __construct(
         private \Twig\Environment $twig,
@@ -18,14 +18,14 @@ class BatteryReferenceController
     ) {
     }
 
-    #[Route('/models/{model}/battery', name: 'app_attribute_battery', methods: ['GET'])]
+    #[Route('/models/{model}/supported-os-list', name: 'app_attribute_supported_os_list', methods: ['GET'])]
     public function __invoke(Model $model): Response
     {
         $attributeCollection = $this->attributeBuilder->createAttributeCollection($model->getAttributes());
 
-        return new Response($this->twig->render('models/attributes/_battery.html.twig', [
+        return new Response($this->twig->render('models/attributes/_supportedOsList.html.twig', [
             'model' => $model,
-            'attribute' => $attributeCollection->get(Battery::NAME),
+            'attribute' => $attributeCollection->get(SupportedOsList::NAME),
         ]));
     }
 }

@@ -19,7 +19,7 @@ final class AddBatteryReferenceFormType extends AbstractType
                 'batteryReference',
                 TextType::class,
                 options: [
-                    'label' => 'models.view.battery.form.label',
+                    'label' => 'attributes.battery.form.label',
                 ],
             );
     }

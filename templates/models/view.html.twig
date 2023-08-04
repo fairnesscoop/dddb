@@ -13,8 +13,8 @@
 {% block body %}
   {% include "common/_aside.html.twig" %}
   <main class="ml-72 py-8 px-8">
-    <section>
-      <header class="w-full flex justify-between items-center mb-8 ">
+    <section class="mb-4 block">
+      <header class="w-full flex justify-between items-center">
         <h1 class="text-xl font-bold tracking-tight md:text-2xl">{{ 'models.view.title'|trans({
           '%manufacturer%': model.serie.manufacturer,
           '%serie%': model.serie.name,
@@ -23,7 +23,7 @@
       </header>
     </section>
 
-    <section>
+    <section class="my-3 block">
       {% for attributeName in allAttributeNames %}
         {% include "models/attributes/_#{attributeName}.html.twig"
           with { attribute: attributes[attributeName] | default(null) }
@@ -31,7 +31,7 @@
       {% endfor %}
     </section>
 
-    <section class="mt-6">
+    <section class="my-3">
       <h2 class="text-l font-bold tracking-tight md:text-2l">{{ 'models.view.codeTac.title'|trans }}</h2>
 
       {% if codeTacs | length > 0 %}

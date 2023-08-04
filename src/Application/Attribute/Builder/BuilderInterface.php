@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Model\Attribute\Builder;
+namespace App\Application\Attribute\Builder;
 
 use App\Domain\Model\Attribute\AttributeInterface;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;

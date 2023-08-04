@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Controller\Model;
 
+use App\Application\Attribute\Builder\AttributeGenericBuilder;
 use App\Application\CommandBusInterface;
 use App\Application\Model\Command\CreateCodeTacCommand;
-use App\Domain\Model\Attribute\Builder\AttributeGenericBuilder;
 use App\Domain\Model\Model;
 use App\Domain\ModelEntity\Exception\CodeTacAlreadyExistsException;
 use App\Domain\ModelEntity\Repository\CodeTacRepositoryInterface;
