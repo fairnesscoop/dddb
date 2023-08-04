@@ -7,7 +7,9 @@ namespace App\Application\Attribute\Builder;
 use App\Domain\Model\Attribute\AttributeCollection;
 use App\Domain\Model\Attribute\AttributeInterface;
 use App\Domain\Model\Attribute\Battery;
+use App\Domain\Model\Attribute\Memo;
 use App\Domain\Model\Attribute\SupportedOsList;
+use App\Domain\Model\Model;
 use Symfony\Component\DependencyInjection\Argument\ServiceLocator;
 use Symfony\Component\DependencyInjection\Attribute\TaggedLocator;
 
@@ -35,9 +37,20 @@ class AttributeGenericBuilder
         return $this->builderLocator->get($attributeName)->createAttribute($internalValue);
     }
 
+    public function createAttributeFromModel(Model $model, string $attributeName): AttributeInterface|null
+    {
+        $internalValues = $model->getAttributes();
+        if (!isset($internalValues[$attributeName])) {
+            return null;
+        }
+
+        return $this->createAttribute($attributeName, $internalValues[$attributeName]);
+    }
+
     public static function getAllAttributeNames(): array
     {
         return [
+            Memo::NAME,
             SupportedOsList::NAME,
             Battery::NAME,
         ];

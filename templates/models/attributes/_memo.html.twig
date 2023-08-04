@@ -1,0 +1,23 @@
+<turbo-frame id="model-attribute-memo" class="block mt-3">
+    {% if attribute is not empty %}
+    <a href="{{ path('app_attribute_memo_set', {'model': model.uuid}) }}" class="mt-2 float-right block mx-2">
+        <button class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-1 text-center">
+            {{ 'common.update'|trans }}
+        </button>
+    </a>
+
+    <div class="bg-gray-100 rounded-lg px-2 py-1">
+        <h2 class="text-base font-semibold tracking-tight md:text-2l">{{ 'attributes.memo.title'|trans }}</h2>
+        <p class="text-sm">
+            {{ attribute.text|nl2br }}
+        </p>
+    </div>
+
+    {% else %}
+    <a href="{{ path('app_attribute_memo_set', {'model': model.uuid}) }}">
+        <button class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-1 text-center">
+        {{ 'attributes.memo.add'|trans }}
+        </button>
+    </a>
+    {% endif %}
+</turbo-frame>

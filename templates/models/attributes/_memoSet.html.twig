@@ -1,0 +1,11 @@
+<turbo-frame id="model-attribute-memo">
+    {{ form_start(formMemo, {"attr": {"data-turbo-frame": "model-attribute-memo"}}) }}
+    {{ form_row(formMemo.text, {"attr": {"autofocus": true}}) }}
+    <button class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-1 text-center">
+        {{ 'common.save'|trans }}
+    </button>
+    <a href="{{ path('app_attribute_memo', {'model': model.uuid}) }}" class="font-small text-sm">
+        {{ 'common.cancel'|trans }}
+    </a>
+    {{ form_end(formMemo) }}
+</turbo-frame>

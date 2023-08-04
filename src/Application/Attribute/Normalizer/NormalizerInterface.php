@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 #[AutoconfigureTag()]
 interface NormalizerInterface
 {
-    public function normalize(AttributeInterface $attribute): array;
+    public function normalize(AttributeInterface $attribute): array|string;
 
     public static function supports(): string;
 }
