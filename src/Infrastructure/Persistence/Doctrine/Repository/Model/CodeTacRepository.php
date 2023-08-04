@@ -25,8 +25,9 @@ final class CodeTacRepository extends ServiceEntityRepository implements CodeTac
         return $codeTac;
     }
 
-    public function remove(CodeTac $codeTac): void
+    public function remove(int $code): void
     {
+        $codeTac = $this->find($code);
         $this->getEntityManager()->remove($codeTac);
     }
 

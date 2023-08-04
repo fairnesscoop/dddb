@@ -13,7 +13,7 @@
 {% block body %}
   {% include "common/_aside.html.twig" %}
   <main class="ml-72 py-8 px-8">
-    <section class="mb-4 block">
+    <section class="mb-4">
       <header class="w-full flex justify-between items-center">
         <h1 class="text-xl font-bold tracking-tight md:text-2xl">{{ 'models.view.title'|trans({
           '%manufacturer%': model.serie.manufacturer,
@@ -23,7 +23,7 @@
       </header>
     </section>
 
-    <section class="my-3 block">
+    <section class="my-3">
       {% for attributeName in allAttributeNames %}
         {% include "models/attributes/_#{attributeName}.html.twig"
           with { attribute: attributes[attributeName] | default(null) }
@@ -37,13 +37,27 @@
       {% if codeTacs | length > 0 %}
         <ul>
           {% for code in codeTacs %}
-          <li class="font-mono">
-            {{ '%08d'|format(code) }}
+          <li class="list-disc ml-4">
+            <span class="font-mono">{{ '%08d'|format(code) }}</span>
+            <form
+              method="POST"
+              class="inline-block"
+              action="{{ path('app_code_tac_delete', {'model': model.uuid, 'codeTac': '%08d'|format(code)}) }}"
+              data-turbo-confirm="{{ 'common.delete.confirm'|trans }}"
+            >
+              <button
+                type="submit"
+                class="text-white bg-slate-400 rounded-lg text-xs px-2 py-0.5 text-center"
+              >
+                <span class="text-lg/4 font-bold inline" aria-hidden="true">&times;</span>
+                <span class="align-text-bottom">{{ 'common.delete'|trans }}</span>
+              </button>
+            </form>
           </li>
           {% endfor %}
         </ul>
       {% else %}
-      <p class="p-4"><em>{{ 'models.view.codeTac.none'|trans }}</em></p>
+        <p class="p-4"><em>{{ 'models.view.codeTac.none'|trans }}</em></p>
       {% endif %}
 
       <div>
