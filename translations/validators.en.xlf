@@ -30,6 +30,10 @@
                 <source>models.codeTac.create.form.codeTac.alreadyExists</source>
                 <target>This TAC code already exists.</target>
             </trans-unit>
+            <trans-unit id="models.codeTac.create.form.codeTac.invalidFormat">
+                <source>models.codeTac.create.form.codeTac.invalidFormat</source>
+                <target>TAC code must consist of 8 digits.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

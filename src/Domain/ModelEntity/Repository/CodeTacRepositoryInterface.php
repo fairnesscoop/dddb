@@ -11,7 +11,7 @@ interface CodeTacRepositoryInterface
 {
     public function add(CodeTac $codeTac): CodeTac;
 
-    public function remove(CodeTac $codeTac): void;
+    public function remove(int $codeTac): void;
 
     public function isCodeTacUsed(int $codeTac): bool;
 
