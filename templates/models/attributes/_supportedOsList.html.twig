@@ -1,38 +1,44 @@
 <turbo-frame id="model-attribute-supported-os-list" class="block mt-3">
-    <h2 class="text-l font-bold tracking-tight md:text-2l">{{ 'attributes.supportedOsList.title'|trans }}</h2>
+    <h2 class="text-lg font-bold tracking-tight md:text-2l">{{ 'attributes.supportedOsList.title'|trans }}</h2>
     {% if attribute is not empty %}
     <ul>
         {% for supportedOs in attribute.value %}
-        <li class="mb-2">
-            <h3 class="font-bold inline-block">{{ supportedOs.osVersion.fullName }}</h3>
+        <li class="mb-2 text-sm">
+            <h3 class="text-base font-semibold inline-block">{{ supportedOs.osVersion.fullName }}</h3>
             {% if supportedOs.helpLink is not empty %}
             <a href="{{ supportedOs.helpLink }}" target="_blank" class="text-primary-800">
                 {{ 'attributes.supportedOsList.helpLink'|trans }}
             </a>
             {% endif %}
-            {% if supportedOs.comment is not empty %}
-            <p>{{ supportedOs.comment }}</p>
-            {% endif %}
 
             <form
                 method="POST"
+                class="inline-block"
                 action="{{ path('app_attribute_supported_os_list_delete', {'model': model.uuid, 'supportedOsId': supportedOs.id}) }}"
                 data-turbo-confirm="{{ 'common.delete.confirm'|trans }}"
                 data-turbo-frame="model-attribute-supported-os-list"
             >
                 <button
                     type="submit"
-                    class="text-white bg-slate-400 rounded-lg text-sm px-5 py-1 text-center"
-                >{{ 'common.delete'|trans }}</button>
+                    class="text-white bg-slate-400 rounded-lg text-sm px-2 py-0.5 text-center"
+                >
+                    <span class="text-lg/4 font-bold inline" aria-hidden="true">&times;</span>
+                    <span class="align-text-bottom">{{ 'common.delete'|trans }}</span>
+                    </button>
             </form>
 
+            {% if supportedOs.comment is not empty %}
+            <p class="bg-gray-100 rounded-lg px-2 py-1 mt-1">
+                {{ supportedOs.comment }}
+            </p>
+            {% endif %}
         </li>
         {% endfor %}
     </ul>
     {% endif %}
 
     <turbo-frame id="add-supported-os" class="mt-2 block">
-        <a href="{{ path('app_attribute_supported_os_list_add', {'model': model.uuid}) }}" class>
+        <a href="{{ path('app_attribute_supported_os_list_add', {'model': model.uuid}) }}">
             <button class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-1 text-center">
             {{ 'attributes.supportedOsList.addSupportedOs'|trans }}
             </button>

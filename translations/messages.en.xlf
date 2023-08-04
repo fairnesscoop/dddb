@@ -434,6 +434,18 @@
                 <source>attributes.supportedOsList.form.comment</source>
                 <target>Comment</target>
             </trans-unit>
+            <trans-unit id="attributes.memo.title">
+                <source>attributes.memo.title</source>
+                <target>Memo</target>
+            </trans-unit>
+            <trans-unit id="attributes.memo.add">
+                <source>attributes.memo.add</source>
+                <target>Add a memo</target>
+            </trans-unit>
+            <trans-unit id="attributes.memo.form.label">
+                <source>attributes.memo.form.label</source>
+                <target>Memo</target>
+            </trans-unit>
 
             <!-- Login -->
             <trans-unit id="login.form.email">

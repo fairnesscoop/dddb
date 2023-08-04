@@ -1,0 +1,33 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Infrastructure\Form\Model\Attribute;
+
+use App\Application\Memo\Command\SetMemoCommand;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+final class SetMemoFormType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add(
+                'text',
+                TextareaType::class,
+                options: [
+                    'label' => 'attributes.memo.form.label',
+                ],
+            );
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => SetMemoCommand::class,
+        ]);
+    }
+}
