@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <header class="bg-teal-700 px-6 pt-6 pb-3">
+    <h1 class="font-bold text-teal-100">
+      <a href="{{ path('app_series_public_list') }}" class="text-[30px]/6 font-black text-teal-400">
+        DDDB
+      </a>
+      <span class="align-text-bottom">{{ 'common.site_name'|trans }}</span>
+    </h1>
+  </header>
+
+  <main class="px-6 py-3">
+    <h2 class="text-lg font-bold block">{{ serie.manufacturer.name }} {{ serie.name }}</h2>
+    <ul>
+      {% for model in models %}
+        <li>{{ model.codeName }}</li>
+      {% endfor %}
+    </ul>
+  </main>
+{% endblock %}

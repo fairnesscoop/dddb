@@ -119,7 +119,7 @@ shell: ## Connect to the container
 # Individual tools
 
 phpstan: ## PHP Stan
-	${BIN_PHP} ./vendor/bin/phpstan analyse -l 5 --xdebug src
+	${BIN_PHP} ./vendor/bin/phpstan analyse -l 5 src
 
 php_lint: ## PHP linter
 	${BIN_PHP} ./vendor/bin/php-cs-fixer fix -n ${ARGS}

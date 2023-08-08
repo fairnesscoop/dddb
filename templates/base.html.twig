@@ -29,7 +29,7 @@
       {{ encore_entry_script_tags('app') }}
     {% endblock %}
   </head>
-  <body class="bg-white">
+  <body class="bg-primary-100">
     {% for label, messages in app.flashes %}
       {% if loop.first %}
         <div class="fr-container fr-mt-4w">
@@ -44,8 +44,9 @@
       {% endif %}
     {% endfor %}
 
-    <main id="contenu"> {% block body %}{% endblock %}
-      </main>
-      {% block body_end %}{% endblock %}
-    </body>
-  </html>
+    <div id="contenu" class="lg:container lg:mx-auto bg-white">
+      {% block body %}{% endblock %}
+    </div>
+    {% block body_end %}{% endblock %}
+  </body>
+</html>

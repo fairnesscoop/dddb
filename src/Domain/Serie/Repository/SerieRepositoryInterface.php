@@ -15,4 +15,6 @@ interface SerieRepositoryInterface
     public function isNameUsed(Manufacturer $manufacturer, string $name): bool;
 
     public function findSeries(int $page, int $pageSize): Paginator;
+
+    public function findAllSerieHeaders(): iterable;
 }

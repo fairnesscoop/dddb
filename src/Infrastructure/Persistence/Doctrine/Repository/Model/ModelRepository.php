@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\Repository\Model;
 
+use App\Application\Model\View\ModelHeader;
 use App\Domain\Model\Manufacturer;
 use App\Domain\Model\Model;
 use App\Domain\Model\Serie;
@@ -77,5 +78,20 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
         $paginator = new Paginator($query);
 
         return $paginator;
+    }
+
+    /** @return ModelHeader[] */
+    public function findAllModelHeaders(Serie $serie): iterable
+    {
+        return $this->createQueryBuilder('m')
+            ->addSelect([
+                sprintf('NEW %s(m.uuid, m.codeName)', ModelHeader::class),
+            ])
+            ->andWhere('m.serie = :serie')
+            ->setParameter('serie', $serie)
+            ->orderBy('m.codeName', Criteria::ASC)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 }

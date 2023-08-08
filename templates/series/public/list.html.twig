@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <header class="bg-teal-700 lg:px-12 px-6 pt-6 pb-3">
+    <h1 class="font-bold text-teal-100">
+      <a href="{{ path('app_series_public_list') }}" class="text-[50px]/6 font-black text-teal-400">
+        DDDB
+      </a>
+      <div>{{ 'common.site_name'|trans }}</div>
+    </h1>
+  </header>
+
+  <main class="px-6 py-3 flex flex-wrap">
+  {% for seriesFromManufacturer in series %}
+      <div class="mb-4 md:w-1/4 sm:w-1/2 w-full flex-none">
+        <h2 class="text-lg font-bold block">{{ seriesFromManufacturer.manufacturer }}</h2>
+        {% for serie in seriesFromManufacturer.series %}
+          <a
+            class="inline-block mr-4"
+            href="{{ path('app_series_public_view', {'slug': "#{serie.manufacturer}-#{serie.name}"|slug, 'serie': serie.uuid}) }}"
+          >
+            {{ serie.name }}
+          </a>
+        {% endfor %}
+      </div>
+  {% endfor %}
+  </main>
+{% endblock %}

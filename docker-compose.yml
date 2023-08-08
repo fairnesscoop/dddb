@@ -6,7 +6,7 @@ volumes:
 
 services:
   database:
-    image: postgres:15.2-alpine
+    image: postgres:15.3-alpine
     environment:
       POSTGRES_DB: device
       POSTGRES_PASSWORD: app
