@@ -4,11 +4,11 @@
         <body>
             <trans-unit id="common.title">
                 <source>common.title</source>
-                <target>Référentiel Smartphones</target>
+                <target>DDDB - Base de données des appareils numériques</target>
             </trans-unit>
             <trans-unit id="common.site_name">
                 <source>common.site_name</source>
-                <target>Référentiel Smartphones</target>
+                <target>Base de données d'appareils numériques</target>
             </trans-unit>
             <trans-unit id="common.login">
                 <source>common.login</source>

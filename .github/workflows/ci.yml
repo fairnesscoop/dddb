@@ -2,11 +2,11 @@ name: CI
 on: [push]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     services:
       postgresql:
-        image: postgres:15.2-alpine
+        image: postgres:15.3-alpine
         env:
           POSTGRES_USER: app
           POSTGRES_PASSWORD: app

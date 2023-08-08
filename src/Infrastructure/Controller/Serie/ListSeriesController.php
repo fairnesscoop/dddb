@@ -6,7 +6,6 @@ namespace App\Infrastructure\Controller\Serie;
 
 use App\Application\QueryBusInterface;
 use App\Application\Serie\Query\ListSeriesQuery;
-use App\Domain\User\Enum\RoleEnum;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -48,8 +47,6 @@ final class ListSeriesController
                     'series' => $series,
                     'page' => $page,
                     'pageSize' => $pageSize,
-                    'adminRole' => RoleEnum::ROLE_ADMIN->value,
-                    'contributorRole' => RoleEnum::ROLE_CONTRIBUTOR->value,
                     'asideDetailsActive' => 'series',
                 ],
             ),

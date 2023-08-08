@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\Repository\Serie;
 
+use App\Application\Serie\View\SerieHeader;
 use App\Domain\Model\Manufacturer;
+use App\Domain\Model\Model;
 use App\Domain\Model\Serie;
 use App\Domain\Serie\Repository\SerieRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -58,5 +60,29 @@ final class SerieRepository extends ServiceEntityRepository implements SerieRepo
         $paginator = new Paginator($query);
 
         return $paginator;
+    }
+
+    /** @return SerieHeader[] */
+    public function findAllSerieHeaders(): iterable
+    {
+        $subQb = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('model.uuid')
+            ->from(Model::class, 'model')
+            ->where('model.serie = s.uuid');
+
+        $expr = $this->getEntityManager()->getExpressionBuilder();
+
+        return $this->createQueryBuilder('s')
+            ->addSelect([
+                sprintf('NEW %s(s.uuid, s.name, m.name)', SerieHeader::class),
+            ])
+            ->join('s.manufacturer', 'm')
+            ->where($expr->exists($subQb->getDQL()))
+            ->orderBy('m.name', Criteria::ASC)
+            ->addOrderBy('s.name', Criteria::ASC)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 }

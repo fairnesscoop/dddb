@@ -20,4 +20,6 @@ interface ModelRepositoryInterface
     public function isCodeTacUsed(string $codeTac): bool;
 
     public function findModels(Serie $serie, int $page, int $pageSize): Paginator;
+
+    public function findAllModelHeaders(Serie $serie): iterable;
 }

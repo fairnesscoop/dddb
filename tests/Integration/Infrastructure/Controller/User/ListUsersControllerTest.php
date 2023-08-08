@@ -17,7 +17,7 @@ final class ListUsersControllerTest extends AbstractWebTestCase
         $this->assertResponseStatusCodeSame(200);
         $this->assertSecurityHeaders();
         $this->assertSame('Users list', $crawler->filter('h1')->text());
-        $this->assertMetaTitle('Users list - Smartphones Referential', $crawler);
+        $this->assertMetaTitle('Users list - DDDB - Digital devices database', $crawler);
 
         $rows = $crawler->filter('tbody > tr');
         $this->assertSame(5, $rows->count());

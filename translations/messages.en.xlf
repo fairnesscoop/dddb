@@ -4,11 +4,11 @@
         <body>
             <trans-unit id="common.title">
                 <source>common.title</source>
-                <target>Smartphones Referential</target>
+                <target>DDDB - Digital devices database</target>
             </trans-unit>
             <trans-unit id="common.site_name">
                 <source>common.site_name</source>
-                <target>Digital devices referential</target>
+                <target>Digital devices database</target>
             </trans-unit>
             <trans-unit id="common.login">
                 <source>common.login</source>
