@@ -18,7 +18,7 @@ final class PublicViewController
     ) {
     }
 
-    #[Route('/device/{slug}/{serie}', name: 'app_series_public_view', methods: ['GET'])]
+    #[Route('/public/device/{slug}/{serie}', name: 'app_series_public_view', methods: ['GET'])]
     public function __invoke(Serie $serie)
     {
         $models = $this->queryBus->handle(new ListSerieModelsQuery($serie));

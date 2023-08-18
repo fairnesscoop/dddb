@@ -7,40 +7,39 @@ namespace App\Infrastructure\Controller\Model;
 use App\Application\Model\Query\ListModelsQuery;
 use App\Application\QueryBusInterface;
 use App\Domain\Model\Serie;
+use App\Infrastructure\Controller\Pagination\Builder;
+use App\Infrastructure\Controller\ResponseBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class ListModelsController
 {
     public function __construct(
-        private \Twig\Environment $twig,
-        private QueryBusInterface $queryBus,
-        private TranslatorInterface $translator,
+        private readonly \Twig\Environment $twig,
+        private readonly QueryBusInterface $queryBus,
+        private readonly ResponseBuilder $responseBuilder,
+        private readonly Builder $paginationBuilder,
     ) {
     }
 
     #[Route('/series/{serie}/models', name: 'app_models_list', methods: ['GET'])]
     public function __invoke(Request $request, Serie $serie): Response
     {
-        $page = $request->query->getInt('page', 1);
-        $pageSize = min($request->query->getInt('pageSize', 20), 100);
-
-        if ($pageSize <= 0 || $page <= 0) {
-            throw new BadRequestHttpException(
-                $this->translator->trans('invalid.page_or_page_size', [], 'validators'),
-            );
+        try {
+            $pagination = $this->paginationBuilder->fromRequest($request);
+        } catch (BadRequestHttpException $exception) {
+            return $this->responseBuilder->badRequest($exception->getMessage());
         }
 
         /** @var Paginator $models */
         $models = $this->queryBus->handle(
             new ListModelsQuery(
                 serie: $serie,
-                page: $page,
-                pageSize: $pageSize,
+                page: $pagination->page,
+                pageSize: $pagination->pageSize,
             ),
         );
 
@@ -50,8 +49,8 @@ final class ListModelsController
                 context: [
                     'serie' => $serie,
                     'models' => $models,
-                    'page' => $page,
-                    'pageSize' => $pageSize,
+                    'page' => $pagination->page,
+                    'pageSize' => $pagination->pageSize,
                     'asideDetailsActive' => 'series',
                     'highlightedItem' => 'app_series_list',
                 ],

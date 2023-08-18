@@ -42,7 +42,3 @@ when@prod:
                     adapter: cache.app
                 doctrine.system_cache_pool:
                     adapter: cache.system
-
-doctrine_native_enums:
-    enum_types:
-        App\Domain\User\Enum\RoleEnum: role

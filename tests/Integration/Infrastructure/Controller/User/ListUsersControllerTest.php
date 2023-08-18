@@ -6,6 +6,7 @@ namespace App\Tests\Integration\Infrastructure\Controller\User;
 
 use App\Domain\User\Enum\RoleEnum;
 use App\Tests\Integration\Infrastructure\Controller\AbstractWebTestCase;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 final class ListUsersControllerTest extends AbstractWebTestCase
 {

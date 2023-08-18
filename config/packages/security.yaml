@@ -34,6 +34,7 @@ security:
     access_control:
         - { path: ^/(en|fr)/login, roles: PUBLIC_ACCESS }
         - { path: ^/(en|fr)$, roles: PUBLIC_ACCESS }
+        - { path: ^/(en|fr)/public/, roles: PUBLIC_ACCESS }
         - { path: ^/$, roles: PUBLIC_ACCESS }
         - { path: ^/, roles: ROLE_CONTRIBUTOR }
 
