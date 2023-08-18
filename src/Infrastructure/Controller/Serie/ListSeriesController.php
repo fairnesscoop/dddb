@@ -6,37 +6,36 @@ namespace App\Infrastructure\Controller\Serie;
 
 use App\Application\QueryBusInterface;
 use App\Application\Serie\Query\ListSeriesQuery;
+use App\Infrastructure\Controller\Pagination\Builder;
+use App\Infrastructure\Controller\ResponseBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class ListSeriesController
 {
     public function __construct(
-        private \Twig\Environment $twig,
-        private QueryBusInterface $queryBus,
-        private TranslatorInterface $translator,
+        private readonly \Twig\Environment $twig,
+        private readonly QueryBusInterface $queryBus,
+        private readonly ResponseBuilder $responseBuilder,
+        private readonly Builder $paginationBuilder,
     ) {
     }
 
     #[Route('/series', name: 'app_series_list', methods: ['GET'])]
     public function __invoke(Request $request)
     {
-        $page = $request->query->getInt('page', 1);
-        $pageSize = min($request->query->getInt('pageSize', 20), 100);
-
-        if ($pageSize <= 0 || $page <= 0) {
-            throw new BadRequestHttpException(
-                $this->translator->trans('invalid.page_or_page_size', [], 'validators'),
-            );
+        try {
+            $pagination = $this->paginationBuilder->fromRequest($request);
+        } catch (BadRequestHttpException $exception) {
+            return $this->responseBuilder->badRequest($exception->getMessage());
         }
 
         $series = $this->queryBus->handle(
             new ListSeriesQuery(
-                page: $page,
-                pageSize: $pageSize,
+                page: $pagination->page,
+                pageSize: $pagination->pageSize,
             ),
         );
 
@@ -45,8 +44,8 @@ final class ListSeriesController
                 name: 'series/list.html.twig',
                 context: [
                     'series' => $series,
-                    'page' => $page,
-                    'pageSize' => $pageSize,
+                    'page' => $pagination->page,
+                    'pageSize' => $pagination->pageSize,
                     'asideDetailsActive' => 'series',
                 ],
             ),

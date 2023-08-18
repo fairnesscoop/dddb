@@ -12,7 +12,7 @@
             </trans-unit>
             <trans-unit id="invalid.page_or_page_size">
                 <source>invalid.page_or_page_size</source>
-                <target>Le nombre d'éléments par page et/ou le numéro de la page doivent être supérieur à 0.</target>
+                <target>Le nombre d'éléments par page et/ou le numéro de la page doivent être supérieurs à 0.</target>
             </trans-unit>
             <trans-unit id="manufacturers.create.form.name.alreadyExists">
                 <source>manufacturers.create.form.name.alreadyExists</source>
