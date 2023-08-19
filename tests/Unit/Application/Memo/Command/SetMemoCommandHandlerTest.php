@@ -10,7 +10,6 @@ use App\Application\Memo\Command\SetMemoCommandHandler;
 use App\Domain\Model\Attribute\AttributeRepositoryInterface;
 use App\Domain\Model\Attribute\Memo;
 use App\Tests\Factory\ModelFactory;
-use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -68,7 +67,7 @@ final class SetMemoCommandHandlerTest extends TestCase
     #[DataProvider('emptyValues')]
     public function testSetEmptyMemo(mixed $emptyValue): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $model = ModelFactory::create();
 

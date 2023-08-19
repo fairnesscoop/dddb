@@ -44,11 +44,7 @@ final class SerieRepository extends ServiceEntityRepository implements SerieRepo
     public function findSeries(int $page, int $pageSize): Paginator
     {
         $query = $this->createQueryBuilder('s')
-            ->addSelect([
-                's.uuid',
-                's.name',
-                'm.name AS manufacturer',
-            ])
+            ->addSelect('m')
             ->join('s.manufacturer', 'm')
             ->orderBy('m.name', Criteria::ASC)
             ->addOrderBy('s.name', Criteria::ASC)
@@ -74,9 +70,9 @@ final class SerieRepository extends ServiceEntityRepository implements SerieRepo
         $expr = $this->getEntityManager()->getExpressionBuilder();
 
         return $this->createQueryBuilder('s')
-            ->addSelect([
+            ->select(
                 sprintf('NEW %s(s.uuid, s.name, m.name)', SerieHeader::class),
-            ])
+            )
             ->join('s.manufacturer', 'm')
             ->where($expr->exists($subQb->getDQL()))
             ->orderBy('m.name', Criteria::ASC)

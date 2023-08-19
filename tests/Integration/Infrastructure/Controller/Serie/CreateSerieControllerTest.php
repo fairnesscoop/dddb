@@ -33,7 +33,7 @@ final class CreateSerieControllerTest extends AbstractWebTestCase
 
         $saveButton = $crawler->selectButton('Create serie');
         $form = $saveButton->form();
-        $form["create_form[name]"] = "model 4";
+        $form["create_form[name]"] = "serie 4";
         $form['create_form[manufacturer]'] = '46918802-8e1c-4959-a201-bda5e41141b8';
         $client->submit($form);
 

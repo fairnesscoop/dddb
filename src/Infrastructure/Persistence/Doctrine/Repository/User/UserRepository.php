@@ -9,6 +9,7 @@ use App\Domain\User\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 
 final class UserRepository extends ServiceEntityRepository implements UserRepositoryInterface
 {
@@ -27,6 +28,17 @@ final class UserRepository extends ServiceEntityRepository implements UserReposi
             ->getOneOrNullResult();
     }
 
+    public function findByUuid(string $uuid): User
+    {
+        $user = $this->find($uuid);
+
+        if (\is_null($user)) {
+            throw new UserNotFoundException();
+        }
+
+        return $user;
+    }
+
     public function add(User $user): User
     {
         $this->getEntityManager()->persist($user);
@@ -37,13 +49,6 @@ final class UserRepository extends ServiceEntityRepository implements UserReposi
     public function findUsers(int $page, int $pageSize): array
     {
         $query = $this->createQueryBuilder('u')
-            ->addSelect([
-                'u.uuid',
-                'u.firstName',
-                'u.lastName',
-                'u.email',
-                'u.role',
-            ])
             ->setFirstResult($pageSize * ($page - 1)) // set the offset
             ->setMaxResults($pageSize)
             ->getQuery();

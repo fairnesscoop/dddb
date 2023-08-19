@@ -1,21 +1,54 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <header class="bg-teal-700 px-6 pt-6 pb-3">
-    <h1 class="font-bold text-teal-100">
-      <a href="{{ path('app_series_public_list') }}" class="text-[30px]/6 font-black text-teal-400">
-        DDDB
-      </a>
-      <span class="align-text-bottom">{{ 'common.site_name'|trans }}</span>
-    </h1>
+  <header class="bg-teal-700 px-6 pt-6 pb-3 font-bold text-teal-100 flex items-end">
+    <a href="{{ path('app_series_public_list') }}" class="text-[36px]/[26px] font-black text-teal-400">
+      DDDB
+    </a>
+    <span class="leading-none ml-3">{{ 'common.site_name'|trans }}</span>
   </header>
 
   <main class="px-6 py-3">
-    <h2 class="text-lg font-bold block">{{ serie.manufacturer.name }} {{ serie.name }}</h2>
-    <ul>
-      {% for model in models %}
-        <li>{{ model.codeName }}</li>
-      {% endfor %}
-    </ul>
+
+    <h1 class="text-lg text-teal-800 font-bold block mb-3">
+      {{ serie.manufacturer.name }} {{ serie.name }}
+      <span class="text-base text-black font-normal before:content-['▶'] before:text-teal-400 before:text-sm ml-2">
+        {{ selectedModel.codeName }}
+      </span>
+    </h1>
+
+    <turbo-frame id="model-details" class="sm:flex">
+      <ul class="basis-1/5">
+        {% for model in models %}
+          <li class="my-1">
+            <a href="{{ path('app_series_public_view', {
+                'slug': "#{serie.manufacturer}-#{serie.name}"|slug,
+                'serie': serie.uuid,
+                'modelUuid': model.uuid,
+              }) }}"
+              target="model-details"
+              class="{{ model.uuid == selectedModel.uuid ? 'bg-teal-200' : '' }} p-1 rounded"
+            >
+              {{ model.codeName }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <section class="sm:ml-3 flex-grow">
+        {% include 'models/attributes/public/_attributes.html.twig' with {'model': selectedModel} %}
+      </section>
+
+      {% if selectedModel.codeTacs is not empty %}
+      <section class="sm:ml-3 sm:mt-0 mt-3 first:mt-0 basis-1/5 bg-teal-100 rounded-lg px-3 py-1">
+        <h2 class="text-lg font-medium">{{ 'models.view.codeTac.title'|trans }}</h2>
+        <ul>
+          {% for codeTac in selectedModel.codeTacs %}
+          <li class="font-mono">{{ codeTac }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+    </turbo-frame>
   </main>
 {% endblock %}

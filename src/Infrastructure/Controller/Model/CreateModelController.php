@@ -6,8 +6,8 @@ namespace App\Infrastructure\Controller\Model;
 
 use App\Application\CommandBusInterface;
 use App\Application\Model\Command\CreateModelCommand;
+use App\Domain\Model\Exception\CodeNameAlreadyExistsException;
 use App\Domain\Model\Serie;
-use App\Domain\ModelEntity\Exception\CodeNameAlreadyExistsException;
 use App\Infrastructure\Form\Model\CreateFormType;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;

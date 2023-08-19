@@ -11,7 +11,6 @@ use App\Domain\Model\Attribute\AttributeRepositoryInterface;
 use App\Domain\Model\Attribute\Battery;
 use App\Application\Attribute\Builder\AttributeGenericBuilder;
 use App\Tests\Factory\ModelFactory;
-use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -81,7 +80,7 @@ final class AddBatteryReferenceCommandHandlerTest extends TestCase
     #[DataProvider('emptyValues')]
     public function testAddBatteryEmptyReference(mixed $emptyValue): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $model = ModelFactory::create();
 

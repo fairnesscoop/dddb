@@ -10,6 +10,8 @@ interface UserRepositoryInterface
 {
     public function findOneByEmail(string $email): ?User;
 
+    public function findByUuid(string $uuid): User;
+
     public function add(User $user): User;
 
     public function findUsers(int $page, int $pageSize): array;

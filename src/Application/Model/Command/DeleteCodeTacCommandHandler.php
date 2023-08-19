@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\Model\Command;
 
-use App\Domain\ModelEntity\Repository\CodeTacRepositoryInterface;
+use App\Domain\Model\Repository\CodeTacRepositoryInterface;
 
 class DeleteCodeTacCommandHandler
 {

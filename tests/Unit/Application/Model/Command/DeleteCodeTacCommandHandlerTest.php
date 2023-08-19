@@ -6,7 +6,7 @@ namespace App\Tests\Unit\Application\Model\Command;
 
 use App\Application\Model\Command\DeleteCodeTacCommand;
 use App\Application\Model\Command\DeleteCodeTacCommandHandler;
-use App\Domain\ModelEntity\Repository\CodeTacRepositoryInterface;
+use App\Domain\Model\Repository\CodeTacRepositoryInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

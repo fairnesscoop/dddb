@@ -6,7 +6,7 @@ namespace App\Infrastructure\Persistence\Doctrine\Repository\Model;
 
 use App\Domain\Model\CodeTac;
 use App\Domain\Model\Model;
-use App\Domain\ModelEntity\Repository\CodeTacRepositoryInterface;
+use App\Domain\Model\Repository\CodeTacRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\Persistence\ManagerRegistry;

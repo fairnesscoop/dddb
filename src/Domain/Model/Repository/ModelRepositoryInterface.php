@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\ModelEntity\Repository;
+namespace App\Domain\Model\Repository;
 
 use App\Domain\Model\Manufacturer;
 use App\Domain\Model\Model;
@@ -18,6 +18,8 @@ interface ModelRepositoryInterface
     public function isCodeNameUsed(Manufacturer $manufacturer, string $codeName): bool;
 
     public function isCodeTacUsed(string $codeTac): bool;
+
+    public function findModelByUuid(string $modelUuid): Model|null;
 
     public function findModels(Serie $serie, int $page, int $pageSize): Paginator;
 

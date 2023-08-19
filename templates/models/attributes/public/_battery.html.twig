@@ -1,0 +1,6 @@
+<h2 class="text-lg font-medium mt-3 first:mt-0">{{ 'attributes.battery.title'|trans }}</h2>
+<ul>
+  {% for reference in attribute.value %}
+  <li class="font-mono">{{ reference }}</li>
+  {% endfor %}
+</ul>

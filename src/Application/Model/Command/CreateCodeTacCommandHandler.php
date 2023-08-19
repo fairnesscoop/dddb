@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Application\Model\Command;
 
 use App\Domain\Model\CodeTac;
-use App\Domain\ModelEntity\Exception\CodeTacAlreadyExistsException;
-use App\Domain\ModelEntity\Repository\CodeTacRepositoryInterface;
+use App\Domain\Model\Exception\CodeTacAlreadyExistsException;
+use App\Domain\Model\Repository\CodeTacRepositoryInterface;
 
 class CreateCodeTacCommandHandler
 {

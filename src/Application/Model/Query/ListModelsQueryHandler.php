@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\Model\Query;
 
-use App\Domain\ModelEntity\Repository\ModelRepositoryInterface;
+use App\Domain\Model\Repository\ModelRepositoryInterface;
 use App\Domain\Pagination;
 
 final class ListModelsQueryHandler

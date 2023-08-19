@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\ModelEntity\Repository;
+namespace App\Domain\Model\Repository;
 
 use App\Domain\Model\CodeTac;
 use App\Domain\Model\Model;
