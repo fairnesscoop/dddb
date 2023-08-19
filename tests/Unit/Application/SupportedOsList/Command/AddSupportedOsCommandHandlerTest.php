@@ -8,18 +8,16 @@ use App\Application\SupportedOsList\Command\AddSupportedOsCommand;
 use App\Application\SupportedOsList\Command\AddSupportedOsCommandHandler;
 use App\Domain\Model\Attribute\AttributeCollection;
 use App\Domain\Model\Attribute\AttributeRepositoryInterface;
-use App\Application\Attribute\Builder\AttributeGenericBuilder;
 use App\Domain\Model\Attribute\SupportedOs;
 use App\Domain\Model\Attribute\SupportedOsList;
 use App\Domain\Os\OsVersionList;
 use App\Tests\Factory\ModelFactory;
-use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 final class AddSupportedOsCommandHandlerTest extends TestCase
 {
-    private MockObject|AttributeGenericBuilder $attributeRepository;
+    private MockObject|AttributeRepositoryInterface $attributeRepository;
     private AddSupportedOsCommandHandler $handler;
 
     public function setUp(): void
@@ -89,7 +87,7 @@ final class AddSupportedOsCommandHandlerTest extends TestCase
 
     public function testAddEmptyOsVersion(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $model = ModelFactory::create();
 

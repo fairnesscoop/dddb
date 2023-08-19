@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Application\Model\Query;
 
-use App\Application\Attribute\Builder\AttributeGenericBuilder;
 use App\Application\Model\View\ModelView;
+use App\Domain\Model\Attribute\AttributeRepositoryInterface;
 use App\Domain\Model\Exception\ModelNotFoundException;
 use App\Domain\ModelEntity\Repository\CodeTacRepositoryInterface;
 use App\Domain\ModelEntity\Repository\ModelRepositoryInterface;
@@ -14,7 +14,7 @@ final class ModelQueryHandler
 {
     public function __construct(
         private readonly ModelRepositoryInterface $modelRepository,
-        private readonly AttributeGenericBuilder $attributeBuilder,
+        private readonly AttributeRepositoryInterface $attributeRepository,
         private readonly CodeTacRepositoryInterface $codeTacRepository,
     ) {
     }
@@ -27,7 +27,7 @@ final class ModelQueryHandler
             throw new ModelNotFoundException(sprintf('Model #%s not found', $query->modelUuid));
         }
 
-        $attributeCollection = $this->attributeBuilder->createAttributeCollection($modelEntity->getAttributes());
+        $attributeCollection = $this->attributeRepository->getModelAttributes($modelEntity);
         $codeTacs = $this->codeTacRepository->findCodeTacs($modelEntity);
 
         return new ModelView(
