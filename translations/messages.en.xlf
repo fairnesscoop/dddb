@@ -384,6 +384,10 @@
                 <source>models.view.meta.title</source>
                 <target>%manufacturer% %serie% - Codename %codeName%</target>
             </trans-unit>
+            <trans-unit id="models.view.basedOn">
+                <source>models.view.basedOn</source>
+                <target>based on %codeName%</target>
+            </trans-unit>
             <trans-unit id="models.view.codeTac.title">
                 <source>models.view.codeTac.title</source>
                 <target>TAC codes</target>
@@ -413,6 +417,10 @@
             <trans-unit id="attributes.supportedOsList.title">
                 <source>attributes.supportedOsList.title</source>
                 <target>Supported OS list</target>
+            </trans-unit>
+            <trans-unit id="attributes.supportedOsList.none">
+                <source>attributes.supportedOsList.none</source>
+                <target>No supported OS</target>
             </trans-unit>
             <trans-unit id="attributes.supportedOsList.addSupportedOs">
                 <source>attributes.supportedOsList.addSupportedOs</source>

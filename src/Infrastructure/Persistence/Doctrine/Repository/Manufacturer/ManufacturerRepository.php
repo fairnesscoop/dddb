@@ -28,9 +28,7 @@ final class ManufacturerRepository extends ServiceEntityRepository implements Ma
     public function isNameUsed(string $name): bool
     {
         return $this->createQueryBuilder('m')
-            ->select([
-                'COUNT(m)',
-            ])
+            ->select('COUNT(m)')
             ->andWhere('LOWER(m.name) LIKE LOWER(:name)')
             ->setParameter('name', $name)
             ->getQuery()
@@ -41,10 +39,6 @@ final class ManufacturerRepository extends ServiceEntityRepository implements Ma
     public function findManufacturers(int $page, int $pageSize): Paginator
     {
         $query = $this->createQueryBuilder('m')
-            ->addSelect([
-                'm.uuid',
-                'm.name',
-            ])
             ->orderBy('m.name', Criteria::ASC)
             ->setFirstResult($pageSize * ($page - 1)) // set the offset
             ->setMaxResults($pageSize)

@@ -32,7 +32,6 @@ class SetMemoController
     public function __invoke(Request $request, Model $model): Response
     {
         $memo = $this->attributeBuider->createAttributeFromModel($model, Memo::NAME);
-        dump($memo);
         $command = new SetMemoCommand($model, $memo?->getValue());
 
         $formMemo = $this->formFactory->create(SetMemoFormType::class, $command, [

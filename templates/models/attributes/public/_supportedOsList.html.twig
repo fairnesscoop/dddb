@@ -1,0 +1,22 @@
+<h2 class="text-lg font-medium mt-3 first:mt-0">{{ 'attributes.supportedOsList.title'|trans }}</h2>
+<ul>
+{% for supportedOs in attribute.value %}
+  <li class="mb-2 border border-teal-400 rounded">
+
+    <div class="px-2 py-1">
+      <h3 class="inline">{{ supportedOs.osVersion.fullName }}</h3>
+      {% if supportedOs.helpLink is not empty %}
+      <a href="{{ supportedOs.helpLink }}" target="_blank" class="text-teal-800 after:content-['_↗']">
+        {{ 'attributes.supportedOsList.helpLink'|trans }}
+      </a>
+      {% endif %}
+    </div>
+
+    {% if supportedOs.comment is not empty %}
+    <p class="bg-teal-100 italic px-2 py-1 rounded-b">
+      {{ supportedOs.comment }}
+    </p>
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>

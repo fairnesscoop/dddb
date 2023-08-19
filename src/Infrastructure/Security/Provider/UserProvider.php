@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 final class UserProvider implements UserProviderInterface
 {
     public function __construct(
-        private UserRepositoryInterface $userRepository,
+        private readonly UserRepositoryInterface $userRepository,
     ) {
     }
 
@@ -26,6 +26,25 @@ final class UserProvider implements UserProviderInterface
             throw new UserNotFoundException(sprintf('Unable to find the user %s', $identifier));
         }
 
+        return $this->createFromDomainUser($user);
+    }
+
+    public function refreshUser(UserInterface $user): UserInterface
+    {
+        if ($user instanceof SymfonyUser) {
+            return $this->createFromDomainUser($this->userRepository->findByUuid($user->getUuid()));
+        }
+
+        return $this->loadUserByIdentifier($user->getUserIdentifier());
+    }
+
+    public function supportsClass(string $class): bool
+    {
+        return SymfonyUser::class === $class;
+    }
+
+    private function createFromDomainUser(User $user): SymfonyUser
+    {
         return new SymfonyUser(
             $user->getUuid(),
             $user->getEmail(),
@@ -33,15 +52,5 @@ final class UserProvider implements UserProviderInterface
             $user->getPassword(),
             [$user->getRole()->value],
         );
-    }
-
-    public function refreshUser(UserInterface $user): UserInterface
-    {
-        return $this->loadUserByIdentifier($user->getUserIdentifier());
-    }
-
-    public function supportsClass(string $class): bool
-    {
-        return SymfonyUser::class === $class;
     }
 }
