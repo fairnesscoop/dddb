@@ -7,7 +7,7 @@ namespace App\Tests\Unit\Application\Model\Query;
 use App\Application\Model\Query\ListModelsQuery;
 use App\Application\Model\Query\ListModelsQueryHandler;
 use App\Domain\Model\Serie;
-use App\Domain\ModelEntity\Repository\ModelRepositoryInterface;
+use App\Domain\Model\Repository\ModelRepositoryInterface;
 use App\Domain\Pagination;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use PHPUnit\Framework\MockObject\MockObject;

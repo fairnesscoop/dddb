@@ -10,8 +10,8 @@ use App\Application\Model\Command\CreateModelCommandHandler;
 use App\Domain\Model\Manufacturer;
 use App\Domain\Model\Model;
 use App\Domain\Model\Serie;
-use App\Domain\ModelEntity\Exception\CodeNameAlreadyExistsException;
-use App\Domain\ModelEntity\Repository\ModelRepositoryInterface;
+use App\Domain\Model\Exception\CodeNameAlreadyExistsException;
+use App\Domain\Model\Repository\ModelRepositoryInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

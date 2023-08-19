@@ -7,9 +7,9 @@ namespace App\Tests\Unit\Application\Model\Command;
 use App\Application\Model\Command\CreateCodeTacCommand;
 use App\Application\Model\Command\CreateCodeTacCommandHandler;
 use App\Domain\Model\CodeTac;
-use App\Domain\ModelEntity\Repository\CodeTacRepositoryInterface;
+use App\Domain\Model\Repository\CodeTacRepositoryInterface;
 use App\Domain\Model\Model;
-use App\Domain\ModelEntity\Exception\CodeTacAlreadyExistsException;
+use App\Domain\Model\Exception\CodeTacAlreadyExistsException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

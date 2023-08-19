@@ -10,7 +10,7 @@ use App\Domain\Model\Attribute\AttributeCollection;
 use App\Domain\Model\Attribute\AttributeInterface;
 use App\Domain\Model\Attribute\AttributeRepositoryInterface;
 use App\Domain\Model\Model;
-use App\Domain\ModelEntity\Repository\ModelRepositoryInterface;
+use App\Domain\Model\Repository\ModelRepositoryInterface;
 use Symfony\Component\DependencyInjection\Argument\ServiceLocator;
 use Symfony\Component\DependencyInjection\Attribute\TaggedLocator;
 

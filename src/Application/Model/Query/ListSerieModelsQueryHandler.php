@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Application\Model\Query;
 
 use App\Application\Model\View\ModelHeader;
-use App\Domain\ModelEntity\Repository\ModelRepositoryInterface;
+use App\Domain\Model\Repository\ModelRepositoryInterface;
 
 final class ListSerieModelsQueryHandler
 {

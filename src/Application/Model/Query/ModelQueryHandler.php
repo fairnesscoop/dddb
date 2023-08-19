@@ -7,8 +7,8 @@ namespace App\Application\Model\Query;
 use App\Application\Model\View\ModelView;
 use App\Domain\Model\Attribute\AttributeRepositoryInterface;
 use App\Domain\Model\Exception\ModelNotFoundException;
-use App\Domain\ModelEntity\Repository\CodeTacRepositoryInterface;
-use App\Domain\ModelEntity\Repository\ModelRepositoryInterface;
+use App\Domain\Model\Repository\CodeTacRepositoryInterface;
+use App\Domain\Model\Repository\ModelRepositoryInterface;
 
 final class ModelQueryHandler
 {

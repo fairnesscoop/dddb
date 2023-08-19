@@ -8,7 +8,7 @@ use App\Application\Model\View\ModelHeader;
 use App\Domain\Model\Manufacturer;
 use App\Domain\Model\Model;
 use App\Domain\Model\Serie;
-use App\Domain\ModelEntity\Repository\ModelRepositoryInterface;
+use App\Domain\Model\Repository\ModelRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Tools\Pagination\Paginator;
