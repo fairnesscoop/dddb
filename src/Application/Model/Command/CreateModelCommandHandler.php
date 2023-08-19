@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Application\Model\Command;
 
 use App\Application\IdFactoryInterface;
-use App\Domain\Model\Model;
 use App\Domain\Model\Exception\CodeNameAlreadyExistsException;
+use App\Domain\Model\Model;
 use App\Domain\Model\Repository\ModelRepositoryInterface;
 
 class CreateModelCommandHandler
