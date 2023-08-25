@@ -7,4 +7,6 @@ namespace App\Domain\Model\Attribute;
 interface AttributeInterface
 {
     public function getValue(): mixed;
+
+    public function isDerived(): bool;
 }

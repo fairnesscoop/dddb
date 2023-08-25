@@ -2,22 +2,20 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Attribute\Builder;
+namespace App\Infrastructure\Persistence\Doctrine\Repository\Model\Attribute;
 
 use App\Domain\Model\Attribute\AttributeCollection;
 use App\Domain\Model\Attribute\AttributeInterface;
-use App\Domain\Model\Attribute\Battery;
-use App\Domain\Model\Attribute\Memo;
-use App\Domain\Model\Attribute\SupportedOsList;
 use App\Domain\Model\Model;
+use App\Infrastructure\Persistence\Doctrine\Repository\Model\Attribute\Denormalizer\DenormalizerInterface;
 use Symfony\Component\DependencyInjection\Argument\ServiceLocator;
 use Symfony\Component\DependencyInjection\Attribute\TaggedLocator;
 
-class AttributeGenericBuilder
+class AttributeBuilder
 {
     public function __construct(
-        #[TaggedLocator(BuilderInterface::class, defaultIndexMethod: 'supports')]
-        private readonly ServiceLocator $builderLocator,
+        #[TaggedLocator(DenormalizerInterface::class, defaultIndexMethod: 'supports')]
+        private readonly ServiceLocator $denormalizerLocator,
     ) {
     }
 
@@ -32,9 +30,9 @@ class AttributeGenericBuilder
         return $attributeCollection;
     }
 
-    public function createAttribute(string $attributeName, mixed $internalValue): AttributeInterface
+    private function createAttribute(string $attributeName, mixed $internalValue): AttributeInterface
     {
-        return $this->builderLocator->get($attributeName)->createAttribute($internalValue);
+        return $this->denormalizerLocator->get($attributeName)->createAttribute($internalValue);
     }
 
     public function createAttributeFromModel(Model $model, string $attributeName): AttributeInterface|null
@@ -45,14 +43,5 @@ class AttributeGenericBuilder
         }
 
         return $this->createAttribute($attributeName, $internalValues[$attributeName]);
-    }
-
-    public static function getAllAttributeNames(): array
-    {
-        return [
-            Memo::NAME,
-            SupportedOsList::NAME,
-            Battery::NAME,
-        ];
     }
 }

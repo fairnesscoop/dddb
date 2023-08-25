@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Model\Attribute;
 
-class SupportedOsList implements AttributeInterface
+class SupportedOsList extends BaseAttribute
 {
     public const NAME = 'supportedOsList';
 
@@ -12,7 +12,7 @@ class SupportedOsList implements AttributeInterface
      * @param SupportedOs[] $supportedOsList
      */
     public function __construct(
-        public iterable $supportedOsList,
+        private iterable $supportedOsList,
     ) {
     }
 

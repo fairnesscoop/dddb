@@ -402,6 +402,14 @@
             </trans-unit>
 
             <!-- Attributes -->
+            <trans-unit id="attributes.derivedValue">
+                <source>attributes.derivedValue</source>
+                <target>Valeur dérivée</target>
+            </trans-unit>
+            <trans-unit id="attributes.overrideValue">
+                <source>attributes.overrideValue</source>
+                <target>Modifier la valeur pour ce modèle</target>
+            </trans-unit>
             <trans-unit id="attributes.battery.title">
                 <source>attributes.battery.title</source>
                 <target>Références des batteries</target>

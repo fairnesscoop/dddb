@@ -334,7 +334,7 @@
             </trans-unit>
             <trans-unit id="models.create.form.parent_model.help">
                 <source>models.create.form.parent_model.help</source>
-                <target>By default, all attributes will be inherited from this model</target>
+                <target>By default, all attributes will be derived from this model</target>
             </trans-unit>
             <trans-unit id="models.create.form.submit">
                 <source>models.create.form.submit</source>
@@ -402,6 +402,14 @@
             </trans-unit>
 
             <!-- Attributes -->
+            <trans-unit id="attributes.derivedValue">
+                <source>attributes.derivedValue</source>
+                <target>Derived value</target>
+            </trans-unit>
+            <trans-unit id="attributes.overrideValue">
+                <source>attributes.overrideValue</source>
+                <target>Override value for this model</target>
+            </trans-unit>
             <trans-unit id="attributes.battery.title">
                 <source>attributes.battery.title</source>
                 <target>Battery references</target>

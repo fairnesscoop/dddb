@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Application\Model\Query;
 
-use App\Application\Attribute\Builder\AttributeGenericBuilder;
+use App\Application\Attribute\Builder\MergedAttributesBuilder;
 use App\Application\Model\Query\ModelQuery;
 use App\Application\Model\Query\ModelQueryHandler;
 use App\Application\Model\View\ModelView;
 use App\Domain\Model\Repository\CodeTacRepositoryInterface;
 use App\Domain\Model\Repository\ModelRepositoryInterface;
 use App\Domain\Model\Attribute\AttributeCollection;
-use App\Domain\Model\Attribute\AttributeRepositoryInterface;
 use App\Domain\Model\Attribute\Battery;
 use App\Domain\Model\Exception\ModelNotFoundException;
 use App\Tests\Factory\ModelFactory;
@@ -21,18 +20,18 @@ use PHPUnit\Framework\TestCase;
 final class ModelQueryHandlerTest extends TestCase
 {
     private MockObject|ModelRepositoryInterface $modelRepository;
-    private MockObject|AttributeRepositoryInterface $attributeRepository;
+    private MockObject|MergedAttributesBuilder $attributesBuilder;
     private MockObject|CodeTacRepositoryInterface $codeTacRepository;
     private ModelQueryHandler $handler;
 
     public function setUp(): void
     {
         $this->modelRepository = $this->createMock(ModelRepositoryInterface::class);
-        $this->attributeRepository = $this->createMock(AttributeRepositoryInterface::class);
+        $this->attributesBuilder = $this->createMock(MergedAttributesBuilder::class);
         $this->codeTacRepository = $this->createMock(CodeTacRepositoryInterface::class);
         $this->handler = new ModelQueryHandler(
             $this->modelRepository,
-            $this->attributeRepository,
+            $this->attributesBuilder,
             $this->codeTacRepository,
         );
     }
@@ -47,8 +46,8 @@ final class ModelQueryHandlerTest extends TestCase
             ->method('findModelByUuid')
             ->with(ModelFactory::MODEL_UUID)
             ->willReturn($model);
-        $this->attributeRepository
-            ->method('getModelAttributes')
+        $this->attributesBuilder
+            ->method('getMergedAttributes')
             ->with($model)
             ->willReturn($attributes);
         $this->codeTacRepository

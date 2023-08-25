@@ -9,7 +9,7 @@ use App\Application\Battery\Command\AddBatteryReferenceCommandHandler;
 use App\Domain\Model\Attribute\AttributeCollection;
 use App\Domain\Model\Attribute\AttributeRepositoryInterface;
 use App\Domain\Model\Attribute\Battery;
-use App\Application\Attribute\Builder\AttributeGenericBuilder;
+use App\Application\Attribute\Builder\AttributeBuilder;
 use App\Tests\Factory\ModelFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 
 final class AddBatteryReferenceCommandHandlerTest extends TestCase
 {
-    private MockObject|AttributeGenericBuilder $attributeRepository;
+    private MockObject|AttributeBuilder $attributeRepository;
     private AddBatteryReferenceCommandHandler $handler;
 
     public function setUp(): void
