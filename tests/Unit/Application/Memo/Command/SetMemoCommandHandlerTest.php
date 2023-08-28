@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Application\Memo\Command;
 
-use App\Application\Attribute\Builder\AttributeGenericBuilder;
+use App\Application\Attribute\Builder\AttributeBuilder;
 use App\Application\Memo\Command\SetMemoCommand;
 use App\Application\Memo\Command\SetMemoCommandHandler;
 use App\Domain\Model\Attribute\AttributeRepositoryInterface;
@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 
 final class SetMemoCommandHandlerTest extends TestCase
 {
-    private MockObject|AttributeGenericBuilder $attributeRepository;
+    private MockObject|AttributeBuilder $attributeRepository;
     private SetMemoCommandHandler $handler;
 
     public function setUp(): void

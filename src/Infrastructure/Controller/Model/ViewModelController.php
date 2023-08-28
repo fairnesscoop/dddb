@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Controller\Model;
 
-use App\Application\Attribute\Builder\AttributeGenericBuilder;
 use App\Application\CommandBusInterface;
 use App\Application\Model\Command\CreateCodeTacCommand;
+use App\Domain\Model\Attribute\AttributeRepositoryInterface;
 use App\Domain\Model\Exception\CodeTacAlreadyExistsException;
 use App\Domain\Model\Model;
 use App\Domain\Model\Repository\CodeTacRepositoryInterface;
@@ -27,7 +27,7 @@ final class ViewModelController
         private RouterInterface $router,
         private CodeTacRepositoryInterface $codeTacRepository,
         private FormFactoryInterface $formFactory,
-        private AttributeGenericBuilder $attributeBuilder,
+        private AttributeRepositoryInterface $attributeRepository,
         private CommandBusInterface $commandBus,
         private TranslatorInterface $translator,
     ) {
@@ -65,8 +65,8 @@ final class ViewModelController
             name: 'models/view.html.twig',
             context: [
                 'model' => $model,
-                'allAttributeNames' => AttributeGenericBuilder::getAllAttributeNames(),
-                'attributes' => $this->attributeBuilder->createAttributeCollection($model->getAttributes()),
+                'allAttributeNames' => $this->attributeRepository->getAllAttributeNames(),
+                'attributes' => $this->attributeRepository->getModelAttributes($model),
                 'codeTacs' => $codeTacs,
                 'formCodeTac' => $formCodeTac->createView(),
                 'asideDetailsActive' => 'series',

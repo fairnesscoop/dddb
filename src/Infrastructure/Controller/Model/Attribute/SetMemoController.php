@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Controller\Model\Attribute;
 
-use App\Application\Attribute\Builder\AttributeGenericBuilder;
 use App\Application\CommandBusInterface;
 use App\Application\Memo\Command\SetMemoCommand;
+use App\Domain\Model\Attribute\AttributeRepositoryInterface;
 use App\Domain\Model\Attribute\Memo;
 use App\Domain\Model\Model;
 use App\Infrastructure\Form\Model\Attribute\SetMemoFormType;
@@ -24,14 +24,14 @@ class SetMemoController
         private RouterInterface $router,
         private FormFactoryInterface $formFactory,
         private CommandBusInterface $commandBus,
-        private AttributeGenericBuilder $attributeBuider,
+        private AttributeRepositoryInterface $attributeRepository,
     ) {
     }
 
     #[Route('/models/{model}/memo/set', name: 'app_attribute_memo_set', methods: ['GET', 'POST'])]
     public function __invoke(Request $request, Model $model): Response
     {
-        $memo = $this->attributeBuider->createAttributeFromModel($model, Memo::NAME);
+        $memo = $this->attributeRepository->createAttributeFromModel($model, Memo::NAME);
         $command = new SetMemoCommand($model, $memo?->getValue());
 
         $formMemo = $this->formFactory->create(SetMemoFormType::class, $command, [

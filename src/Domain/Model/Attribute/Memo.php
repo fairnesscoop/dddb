@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Domain\Model\Attribute;
 
-class Memo implements AttributeInterface
+class Memo extends BaseAttribute
 {
     public const NAME = 'memo';
 
     public function __construct(
-        public string $text,
+        private readonly string $text,
     ) {
     }
 

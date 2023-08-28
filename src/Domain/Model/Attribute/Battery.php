@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Domain\Model\Attribute;
 
-class Battery implements AttributeInterface
+class Battery extends BaseAttribute
 {
     public const NAME = 'battery';
 
     public function __construct(
-        public readonly array $references,
+        private readonly array $references,
     ) {
     }
 
