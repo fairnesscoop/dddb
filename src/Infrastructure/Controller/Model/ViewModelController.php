@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Controller\Model;
 
+use App\Application\Attribute\Builder\MergedAttributesBuilder;
 use App\Application\CommandBusInterface;
 use App\Application\Model\Command\CreateCodeTacCommand;
-use App\Domain\Model\Attribute\AttributeRepositoryInterface;
 use App\Domain\Model\Exception\CodeTacAlreadyExistsException;
 use App\Domain\Model\Model;
 use App\Domain\Model\Repository\CodeTacRepositoryInterface;
 use App\Infrastructure\Form\Model\CreateCodeTacFormType;
+use App\Infrastructure\Persistence\Doctrine\Repository\Model\Attribute\AttributeRepository;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -27,7 +28,8 @@ final class ViewModelController
         private RouterInterface $router,
         private CodeTacRepositoryInterface $codeTacRepository,
         private FormFactoryInterface $formFactory,
-        private AttributeRepositoryInterface $attributeRepository,
+        private AttributeRepository $attributeRepository,
+        private MergedAttributesBuilder $mergedAttributesBuilder,
         private CommandBusInterface $commandBus,
         private TranslatorInterface $translator,
     ) {
@@ -66,7 +68,7 @@ final class ViewModelController
             context: [
                 'model' => $model,
                 'allAttributeNames' => $this->attributeRepository->getAllAttributeNames(),
-                'attributes' => $this->attributeRepository->getModelAttributes($model),
+                'attributes' => $this->mergedAttributesBuilder->getMergedAttributes($model),
                 'codeTacs' => $codeTacs,
                 'formCodeTac' => $formCodeTac->createView(),
                 'asideDetailsActive' => 'series',
