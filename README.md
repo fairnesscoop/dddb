@@ -1,6 +1,6 @@
 # Device referential
-[![CI](https://github.com/fairness/device-referential/actions/workflows/ci.yml/badge.svg)](https://github.com/fairness/device-referential/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/fairness/device-referential/branch/main/graph/badge.svg?token=VJpXBny7YB)](https://codecov.io/gh/fairness/device-referential)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/fairnesscoop/permacoop/ci.yml?branch=main)
+[![codecov](https://codecov.io/gh/fairnesscoop/device-referential/graph/badge.svg?token=OEHEH4MAFA)](https://codecov.io/gh/fairnesscoop/device-referential)
 
 Description to come
 
