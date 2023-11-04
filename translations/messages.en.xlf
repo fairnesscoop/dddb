@@ -62,7 +62,7 @@
             <!-- Menu -->
             <trans-unit id="menu.title">
                 <source>menu.title</source>
-                <target>Repository</target>
+                <target>DDDB Repository</target>
             </trans-unit>
             <trans-unit id="menu.manufacturers.title">
                 <source>menu.manufacturers.title</source>

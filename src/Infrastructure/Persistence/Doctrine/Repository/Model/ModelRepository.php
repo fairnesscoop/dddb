@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\Repository\Model;
 
+use App\Application\Model\View\ModelFlatView;
 use App\Application\Model\View\ModelHeader;
 use App\Domain\Model\Manufacturer;
 use App\Domain\Model\Model;
@@ -47,6 +48,17 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
         ;
     }
 
+    public function findModelByCodeName(string $serieUuid, string $codeName): Model|null
+    {
+        return $this->createQueryBuilder('m')
+            ->select('m')
+            ->andWhere('m.serie = :serie')->setParameter('serie', $serieUuid)
+            ->andWhere('LOWER(m.codeName) LIKE LOWER(:codeName)')->setParameter('codeName', $codeName)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
     public function isCodeTacUsed(string $codeTac): bool
     {
         return $this->createQueryBuilder('m')
@@ -68,7 +80,7 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
         ;
     }
 
-    public function findModels(Serie $serie, int $page, int $pageSize): Paginator
+    public function findPaginatedModels(Serie $serie, int $page, int $pageSize): Paginator
     {
         $query = $this->createQueryBuilder('m')
             ->andWhere('m.serie = :serie')->setParameter('serie', $serie)
@@ -83,7 +95,6 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
         return $paginator;
     }
 
-    /** @return ModelHeader[] */
     public function findAllModelHeaders(Serie $serie): iterable
     {
         return $this->createQueryBuilder('m')
@@ -95,6 +106,39 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
             ->orderBy('m.codeName', Criteria::ASC)
             ->getQuery()
             ->getResult()
+        ;
+    }
+
+    public function findAllModels(): iterable
+    {
+        $result = $this->createQueryBuilder('m')
+            ->select(['m', 's', 'manufacturer'])
+            ->join('m.serie', 's')
+            ->join('s.manufacturer', 'manufacturer')
+            ->orderBy('m.codeName', Criteria::ASC)
+            ->getQuery()
+            ->toIterable()
+        ;
+
+        /** @var Model $model */
+        foreach ($result as $model) {
+            yield new ModelFlatView(
+                $model->getUuid(),
+                $model->getSerie()->getManufacturer()->getName(),
+                $model->getSerie()->getName(),
+                $model->getCodeName(),
+                $model->getParentModel()?->getCodeName() ?: '',
+            );
+        }
+    }
+
+    public function findAllAttributesIterable(): iterable
+    {
+        return $this->createQueryBuilder('m')
+            ->select(['m.uuid', 'm.attributes'])
+            ->orderBy('m.codeName', Criteria::ASC)
+            ->getQuery()
+            ->toIterable()
         ;
     }
 }
