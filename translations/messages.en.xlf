@@ -258,6 +258,10 @@
                 <source>manufacturers.list.table.thead.name</source>
                 <target>Manufacturer name</target>
             </trans-unit>
+            <trans-unit id="manufacturers.list.table.td.seriesLink">
+                <source>manufacturers.list.table.td.seriesLink</source>
+                <target>Series</target>
+            </trans-unit>
 
             <!-- Series create -->
             <trans-unit id="series.create.title">

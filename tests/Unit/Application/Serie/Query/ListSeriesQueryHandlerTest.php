@@ -29,7 +29,7 @@ final class ListSeriesQueryHandlerTest extends TestCase
 
         $this->serieRepository
             ->expects(self::once())
-            ->method('findSeries')
+            ->method('findPaginatedSeries')
             ->with(1, 20)
             ->willReturn($paginator);
 
@@ -39,7 +39,8 @@ final class ListSeriesQueryHandlerTest extends TestCase
 
         $query = new ListSeriesQuery(
             page: 1,
-            pageSize: 20
+            pageSize: 20,
+            manufacturerUuid: null,
         );
 
         $result = $handler($query);
