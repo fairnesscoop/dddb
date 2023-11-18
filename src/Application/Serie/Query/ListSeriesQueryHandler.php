@@ -19,9 +19,10 @@ final class ListSeriesQueryHandler
         $page = $listSeriesQuery->page;
         $pageSize = $listSeriesQuery->pageSize;
 
-        $result = $this->serieRepository->findSeries(
+        $result = $this->serieRepository->findPaginatedSeries(
             page: $page,
             pageSize: $pageSize,
+            manufacturerUuid: $listSeriesQuery->manufacturerUuid,
         );
 
         return new Pagination(

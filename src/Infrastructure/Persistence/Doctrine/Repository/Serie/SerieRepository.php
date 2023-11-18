@@ -41,21 +41,22 @@ final class SerieRepository extends ServiceEntityRepository implements SerieRepo
         ;
     }
 
-    public function findSeries(int $page, int $pageSize): Paginator
+    public function findPaginatedSeries(int $page, int $pageSize, string|null $manufacturerUuid): Paginator
     {
-        $query = $this->createQueryBuilder('s')
+        $queryBuilder = $this->createQueryBuilder('s')
             ->addSelect('m')
-            ->join('s.manufacturer', 'm')
-            ->orderBy('m.name', Criteria::ASC)
+            ->join('s.manufacturer', 'm');
+
+        if ($manufacturerUuid !== null) {
+            $queryBuilder->andWhere('s.manufacturer = :manufacturer')->setParameter('manufacturer', $manufacturerUuid);
+        }
+
+        $queryBuilder->orderBy('m.name', Criteria::ASC)
             ->addOrderBy('s.name', Criteria::ASC)
             ->setFirstResult($pageSize * ($page - 1)) // set the offset
-            ->setMaxResults($pageSize)
-            ->getQuery()
-        ;
+            ->setMaxResults($pageSize);
 
-        $paginator = new Paginator($query);
-
-        return $paginator;
+        return new Paginator($queryBuilder->getQuery());
     }
 
     /** @return SerieHeader[] */

@@ -26,7 +26,7 @@ class Builder
         if ($request->query->has('pageSize')) {
             $pageSize = $request->query->getInt('pageSize');
         } else {
-            $pageSize = 20;
+            $pageSize = 10;
         }
 
         if ($pageSize <= 0 || $page <= 0 || $pageSize > 100) {

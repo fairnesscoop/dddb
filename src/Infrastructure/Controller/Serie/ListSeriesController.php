@@ -36,6 +36,7 @@ final class ListSeriesController
             new ListSeriesQuery(
                 page: $pagination->page,
                 pageSize: $pagination->pageSize,
+                manufacturerUuid: $request->get('manufacturer'),
             ),
         );
 
