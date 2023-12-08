@@ -16,6 +16,7 @@ class ModelFactory
         return new Model(
             self::MODEL_UUID,
             'F1234G',
+            'starlte',
             is_null($attributes) ? [
                 Battery::NAME => ['F4BATT-1ZW-WW1', 'BLP613'],
             ] : $attributes,

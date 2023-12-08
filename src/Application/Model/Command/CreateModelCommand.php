@@ -13,8 +13,10 @@ final class CreateModelCommand implements CommandInterface
 {
     public function __construct(
         public ?Serie $serie = null,
+        public ?string $reference = null,
         #[Assert\NotBlank()]
-        public ?string $codeName = null,
+        public ?string $androidCodeName = null,
+        public ?int $variant = 0,
         public ?Model $parentModel = null,
     ) {
     }

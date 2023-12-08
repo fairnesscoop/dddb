@@ -6,7 +6,7 @@ namespace App\Infrastructure\Controller\Model;
 
 use App\Application\CommandBusInterface;
 use App\Application\Model\Command\CreateModelCommand;
-use App\Domain\Model\Exception\CodeNameAlreadyExistsException;
+use App\Domain\Model\Exception\ReferenceAlreadyExistsException;
 use App\Domain\Model\Serie;
 use App\Infrastructure\Form\Model\CreateFormType;
 use Symfony\Component\Form\FormError;
@@ -45,10 +45,10 @@ final class CreateModelController
                     url: $this->router->generate('app_models_list', ['serie' => $serie->getUuid()]),
                     status: Response::HTTP_SEE_OTHER,
                 );
-            } catch (CodeNameAlreadyExistsException) {
+            } catch (ReferenceAlreadyExistsException) {
                 $hasCommandFailed = true;
-                $errorMsg = $this->translator->trans('models.create.form.codeName.alreadyExists', [], 'validators');
-                $form->get('codeName')->addError(new FormError($errorMsg));
+                $errorMsg = $this->translator->trans('models.create.form.reference.alreadyExists', [], 'validators');
+                $form->get('reference')->addError(new FormError($errorMsg));
             }
         }
 

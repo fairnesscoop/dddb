@@ -6,12 +6,16 @@ namespace App\Domain\Model;
 
 class Model
 {
+    private \DateTimeInterface $updatedAt;
+
     public function __construct(
         private string $uuid,
-        private string $codeName,
+        private string|null $reference,
+        private string $androidCodeName,
         private array $attributes,
         private Serie $serie,
         private ?Model $parentModel = null,
+        private int $variant = 0,
     ) {
     }
 
@@ -20,9 +24,19 @@ class Model
         return $this->uuid;
     }
 
-    public function getCodeName(): string
+    public function getReference(): string|null
     {
-        return $this->codeName;
+        return $this->reference;
+    }
+
+    public function getAndroidCodeName(): string
+    {
+        return $this->androidCodeName;
+    }
+
+    public function getVariant(): int
+    {
+        return $this->variant;
     }
 
     public function getAttributes(): array
@@ -33,6 +47,16 @@ class Model
     public function setAttributes(array $attributes): void
     {
         $this->attributes = $attributes;
+    }
+
+    public function getUpdatedAt(): \DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $date): void
+    {
+        $this->updatedAt = $date;
     }
 
     public function getSerie(): Serie
@@ -47,6 +71,6 @@ class Model
 
     public function __toString(): string
     {
-        return $this->serie->getName() . ' ' . $this->codeName;
+        return $this->serie->getName() . ' ' . $this->reference;
     }
 }

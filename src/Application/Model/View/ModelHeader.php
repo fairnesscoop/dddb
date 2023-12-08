@@ -8,7 +8,8 @@ readonly class ModelHeader
 {
     public function __construct(
         public string $uuid,
-        public string $codeName,
+        public string|null $reference,
+        public string $androidCodeName,
     ) {
     }
 }

@@ -17,13 +17,16 @@ use Doctrine\Persistence\ManagerRegistry;
 
 final class ModelRepository extends ServiceEntityRepository implements ModelRepositoryInterface
 {
-    public function __construct(ManagerRegistry $registry)
-    {
+    public function __construct(
+        ManagerRegistry $registry,
+        private readonly \DateTimeInterface $now,
+    ) {
         parent::__construct($registry, Model::class);
     }
 
     public function add(Model $model): Model
     {
+        $model->setUpdatedAt($this->now);
         $this->getEntityManager()->persist($model);
 
         return $model;
@@ -31,29 +34,46 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
 
     public function update(Model $model): Model
     {
+        $model->setUpdatedAt($this->now);
         $this->getEntityManager()->persist($model);
 
         return $model;
     }
 
-    public function isCodeNameUsed(Manufacturer $manufacturer, string $codeName): bool
+    public function isReferenceUsed(Manufacturer $manufacturer, string $reference, int $variant): bool
     {
         return $this->createQueryBuilder('m')
             ->select('COUNT(m)')
             ->join('m.serie', 's')
             ->join('s.manufacturer', 'mf', 'WITH', 'mf = :manufacturer')->setParameter('manufacturer', $manufacturer->getUuid())
-            ->andWhere('LOWER(m.codeName) LIKE LOWER(:codeName)')->setParameter('codeName', $codeName)
+            ->andWhere('LOWER(m.reference) LIKE LOWER(:reference)')->setParameter('reference', $reference)
+            ->andWhere('m.variant = :variant')->setParameter('variant', $variant)
             ->getQuery()
             ->getSingleScalarResult() > 0
         ;
     }
 
-    public function findModelByCodeName(string $serieUuid, string $codeName): Model|null
+    public function findModelByReference(string $serieUuid, string $reference, int $variant): Model|null
     {
         return $this->createQueryBuilder('m')
             ->select('m')
             ->andWhere('m.serie = :serie')->setParameter('serie', $serieUuid)
-            ->andWhere('LOWER(m.codeName) LIKE LOWER(:codeName)')->setParameter('codeName', $codeName)
+            ->andWhere('LOWER(m.reference) LIKE LOWER(:reference)')->setParameter('reference', $reference)
+            ->andWhere('m.variant = :variant')->setParameter('variant', $variant)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    public function findModelByAndroidCodeName(string $serieUuid, string $codeName, int $variant): Model|null
+    {
+        return $this->createQueryBuilder('m')
+            ->select('m')
+            ->andWhere('m.serie = :serie')->setParameter('serie', $serieUuid)
+            ->andWhere('LOWER(m.androidCodeName) LIKE LOWER(:codeName)')->setParameter('codeName', $codeName)
+            ->andWhere('m.variant = :variant')->setParameter('variant', $variant)
+            ->orderBy('m.parentModel', 'ASC')
+            ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()
         ;
@@ -84,7 +104,7 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
     {
         $query = $this->createQueryBuilder('m')
             ->andWhere('m.serie = :serie')->setParameter('serie', $serie)
-            ->orderBy('m.codeName', Criteria::ASC)
+            ->orderBy('m.reference', Criteria::ASC)
             ->setFirstResult($pageSize * ($page - 1)) // set the offset
             ->setMaxResults($pageSize)
             ->getQuery()
@@ -99,11 +119,11 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
     {
         return $this->createQueryBuilder('m')
             ->select([
-                sprintf('NEW %s(m.uuid, m.codeName)', ModelHeader::class),
+                sprintf('NEW %s(m.uuid, m.reference, m.androidCodeName)', ModelHeader::class),
             ])
             ->andWhere('m.serie = :serie')
             ->setParameter('serie', $serie)
-            ->orderBy('m.codeName', Criteria::ASC)
+            ->orderBy('m.reference', Criteria::ASC)
             ->getQuery()
             ->getResult()
         ;
@@ -115,7 +135,7 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
             ->select(['m', 's', 'manufacturer'])
             ->join('m.serie', 's')
             ->join('s.manufacturer', 'manufacturer')
-            ->orderBy('m.codeName', Criteria::ASC)
+            ->orderBy('m.reference', Criteria::ASC)
             ->getQuery()
             ->toIterable()
         ;
@@ -126,8 +146,8 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
                 $model->getUuid(),
                 $model->getSerie()->getManufacturer()->getName(),
                 $model->getSerie()->getName(),
-                $model->getCodeName(),
-                $model->getParentModel()?->getCodeName() ?: '',
+                $model->getReference(),
+                $model->getParentModel()?->getReference() ?: '',
             );
         }
     }
@@ -136,7 +156,8 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
     {
         return $this->createQueryBuilder('m')
             ->select(['m.uuid', 'm.attributes'])
-            ->orderBy('m.codeName', Criteria::ASC)
+            ->orderBy('m.reference', Criteria::ASC)
+            ->addOrderBy('m.androidCodeName', Criteria::ASC)
             ->getQuery()
             ->toIterable()
         ;

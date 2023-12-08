@@ -66,6 +66,7 @@ class ImportLineageModelCommand extends Command
 
         /** @var LineageModel $lineageModel */
         $lineageModel = $this->serializer->deserialize(file_get_contents($filename), LineageModel::class, YamlEncoder::FORMAT);
+
         $existingManufacturerUuid = $this->manufacturerRepository->findUuidByName($lineageModel->vendor);
         if ($existingManufacturerUuid === null) {
             $question = sprintf('"%s" manufacturer not found, do you want to create it?', $lineageModel->vendor);
@@ -105,36 +106,39 @@ class ImportLineageModelCommand extends Command
 
         $mainVersion = strtok($lineageModel->currentBranch, '.');
 
-        $codeNames = empty($lineageModel->models) ? [$lineageModel->androidCode] : $lineageModel->models;
-        foreach ($codeNames as $codeName) {
-            $existingModel = $this->modelRepository->findModelByCodeName($serieUuid, $codeName);
+        $modelReferences = empty($lineageModel->models) ? [null] : $lineageModel->models;
+        foreach ($modelReferences as $modelReference) {
+            if ($modelReference === null) {
+                $existingModel = $this->modelRepository->findModelByAndroidCodeName($serieUuid, $lineageModel->codename, $lineageModel->variant);
+            } else {
+                $existingModel = $this->modelRepository->findModelByReference($serieUuid, $modelReference, $lineageModel->variant);
+            }
             if (\is_null($existingModel)) {
-                $this->createModel($serieUuid, $codeName, $lineageModel->androidCode, $mainVersion);
-                $io->info("Codename {$codeName} has been imported.");
+                $this->createModel($serieUuid, $modelReference, $lineageModel->codename, $lineageModel->variant, $mainVersion);
+                $io->info("Model {$lineageModel->name} {$modelReference} has been imported.");
             } elseif ($this->mainModel === null) {
                 $this->mainModel = $existingModel;
             }
         }
 
-        $io->success('Model has been imported.');
-
         return Command::SUCCESS;
     }
 
-    private function createModel(string $serieUuid, string $codeName, string $androidCode, string $latestLineageVersion): void
+    private function createModel(string $serieUuid, string|null $reference, string $codeName, int $variant, string $latestLineageVersion): void
     {
-        $serieReference = $this->entityManager->getReference(Serie::class, $serieUuid);
+        $serie = $this->entityManager->getReference(Serie::class, $serieUuid);
 
-        $model = $this->commandBus->handle(new CreateModelCommand($serieReference, $codeName, $this->mainModel));
+        $model = $this->commandBus->handle(new CreateModelCommand($serie, $reference, $codeName, $variant, $this->mainModel));
         if ($this->mainModel === null) {
             $this->mainModel = $model;
+            $osList = new OsVersionList();
+            $osVersion = $osList->getLineageOsVersion($latestLineageVersion);
+            $variantSuffix = $variant > 0 ? "variant{$variant}/" : '';
+            $this->commandBus->handle(new AddSupportedOsCommand(
+                $model,
+                $osVersion,
+                "https://wiki.lineageos.org/devices/{$codeName}/{$variantSuffix}",
+            ));
         }
-        $osList = new OsVersionList();
-        $osVersion = $osList->getLineageOsVersion($latestLineageVersion);
-        $this->commandBus->handle(new AddSupportedOsCommand(
-            $model,
-            $osVersion,
-            "https://wiki.lineageos.org/devices/{$androidCode}/",
-        ));
     }
 }

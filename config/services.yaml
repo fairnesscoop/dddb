@@ -27,6 +27,9 @@ services:
     App\Domain\User\Specification\IsUserAlreadyRegistred:
         autowire: true
 
+    DateTimeInterface:
+        class: DateTimeImmutable
+
     # ------------
     # Controllers
     # ------------

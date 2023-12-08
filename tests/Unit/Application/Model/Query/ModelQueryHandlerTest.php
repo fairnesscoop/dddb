@@ -56,7 +56,14 @@ final class ModelQueryHandlerTest extends TestCase
             ->with($model)
             ->willReturn(['12345678']);
 
-        $expectedView = new ModelView(ModelFactory::MODEL_UUID, $model->getCodeName(), $attributes, ['12345678']);
+        $expectedView = new ModelView(
+            ModelFactory::MODEL_UUID,
+            $model->getAndroidCodeName(),
+            $model->getVariant(),
+            $model->getReference(),
+            $attributes,
+            ['12345678']
+        );
 
         $query = new ModelQuery(ModelFactory::MODEL_UUID);
         $result = ($this->handler)($query);

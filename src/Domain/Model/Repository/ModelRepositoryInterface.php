@@ -17,13 +17,15 @@ interface ModelRepositoryInterface
 
     public function update(Model $model): Model;
 
-    public function isCodeNameUsed(Manufacturer $manufacturer, string $codeName): bool;
+    public function isReferenceUsed(Manufacturer $manufacturer, string $reference, int $variant): bool;
 
     public function isCodeTacUsed(string $codeTac): bool;
 
     public function findModelByUuid(string $modelUuid): Model|null;
 
-    public function findModelByCodeName(string $serieUuid, string $codeName): Model|null;
+    public function findModelByReference(string $serieUuid, string $reference, int $variant): Model|null;
+
+    public function findModelByAndroidCodeName(string $serieUuid, string $codeName, int $variant): Model|null;
 
     public function findPaginatedModels(Serie $serie, int $page, int $pageSize): Paginator;
 

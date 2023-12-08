@@ -25,6 +25,7 @@ final class ModelFixture extends Fixture implements DependentFixtureInterface
         $fp4Model = new Model(
             'b4b0f83d-b70a-461d-a822-1f4451111efc',
             'FP4',
+            'adnroid-fp4',
             [
                 Memo::NAME => 'Memo example',
                 SupportedOsList::NAME => [
@@ -39,6 +40,7 @@ final class ModelFixture extends Fixture implements DependentFixtureInterface
             ],
             $fairphone4Serie,
         );
+        $fp4Model->setUpdatedAt(\DateTimeImmutable::createFromFormat('Y-m-d H:i', '2023-12-08 08:00'));
 
         $manager->persist($fp4Model);
         $manager->flush();

@@ -9,6 +9,7 @@ use App\Domain\Model\Model;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,13 +20,32 @@ final class CreateFormType extends AbstractType
     {
         $builder
             ->add(
-                'codeName',
+                'reference',
                 TextType::class,
                 options: [
-                    'label' => 'models.create.form.codeName',
+                    'label' => 'models.create.form.reference',
                     'attr' => [
-                        'placeholder' => 'models.create.form.codeName.placeholder',
+                        'placeholder' => 'models.create.form.reference.placeholder',
                     ],
+                    'required' => false,
+                ],
+            )
+            ->add(
+                'androidCodeName',
+                TextType::class,
+                options: [
+                    'label' => 'models.create.form.androidCodeName',
+                    'attr' => [
+                        'placeholder' => 'models.create.form.androidCodeName.placeholder',
+                    ],
+                ],
+            )
+            ->add(
+                'variant',
+                IntegerType::class,
+                options: [
+                    'label' => 'models.create.form.variant',
+                    'required' => false,
                 ],
             )
             ->add(
@@ -39,7 +59,7 @@ final class CreateFormType extends AbstractType
                             ->join('m.serie', 's', 'WITH', 's = :serie')
                             ->setParameter('serie', $options['serieUuid'])
                             ->orderBy('s.name', 'ASC')
-                            ->addOrderBy('m.codeName', 'ASC');
+                            ->addOrderBy('m.reference', 'ASC');
                     },
                     'empty_data' => null,
                     'placeholder' => 'common.none',

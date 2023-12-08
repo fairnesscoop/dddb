@@ -324,13 +324,25 @@
                 <source>models.create.meta.title</source>
                 <target>Créer un modèle d'appareil</target>
             </trans-unit>
-            <trans-unit id="models.create.form.codeName">
-                <source>models.create.form.codeName</source>
-                <target>Codename</target>
+            <trans-unit id="models.create.form.reference">
+                <source>models.create.form.reference</source>
+                <target>Référence</target>
             </trans-unit>
-            <trans-unit id="models.create.form.codeName.placeholder">
-                <source>models.create.form.codeName.placeholder</source>
-                <target>Référence du fabricant, aussi connu comme model ou codename</target>
+            <trans-unit id="models.create.form.reference.placeholder">
+                <source>models.create.form.reference.placeholder</source>
+                <target>Référence du fabricant, aussi connu comme modèle ou codename</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.androidCodeName">
+                <source>models.create.form.androidCodeName</source>
+                <target>Android alias</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.androidCodeName.placeholder">
+                <source>models.create.form.androidCodeName.placeholder</source>
+                <target>Référence android pour ce modèle (codename)</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.variant">
+                <source>models.create.form.variant</source>
+                <target>Variante</target>
             </trans-unit>
             <trans-unit id="models.create.form.parent_model">
                 <source>models.create.form.parent_model</source>
@@ -370,9 +382,13 @@
                 <source>models.list.button.create</source>
                 <target>Créer un modèle</target>
             </trans-unit>
-            <trans-unit id="models.list.table.thead.codeName">
-                <source>models.list.table.thead.codeName</source>
-                <target>Codename</target>
+            <trans-unit id="models.list.table.thead.reference">
+                <source>models.list.table.thead.reference</source>
+                <target>Reference</target>
+            </trans-unit>
+            <trans-unit id="models.list.table.thead.androidCodeName">
+                <source>models.list.table.thead.androidCodeName</source>
+                <target>Android codename</target>
             </trans-unit>
             <trans-unit id="models.list.table.td.modelLink">
                 <source>models.list.table.td.modelLink</source>
@@ -382,15 +398,23 @@
             <!-- Model view -->
             <trans-unit id="models.view.title">
                 <source>models.view.title</source>
-                <target>%manufacturer% %serie% - Codename %codeName%</target>
+                <target>%manufacturer% %serie%%reference%</target>
             </trans-unit>
             <trans-unit id="models.view.meta.title">
                 <source>models.view.meta.title</source>
-                <target>%manufacturer% %serie% - Codename %codeName%</target>
+                <target>%manufacturer% %serie%%reference%</target>
             </trans-unit>
             <trans-unit id="models.view.basedOn">
                 <source>models.view.basedOn</source>
-                <target>basé sur %codeName%</target>
+                <target>basé sur %reference%</target>
+            </trans-unit>
+            <trans-unit id="models.view.androidCodeName">
+                <source>models.view.androidCodeName</source>
+                <target>Alias android:</target>
+            </trans-unit>
+            <trans-unit id="models.view.variant">
+                <source>models.view.variant</source>
+                <target>(variante %variant%)</target>
             </trans-unit>
             <trans-unit id="models.view.codeTac.title">
                 <source>models.view.codeTac.title</source>

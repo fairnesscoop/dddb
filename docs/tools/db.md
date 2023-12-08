@@ -29,7 +29,7 @@ class Series {
 
 class Model {
     uuid*: uuid
-    codeName: varchar[50]
+    reference: varchar[50]
     codeTac: array
     attributes: json
 }

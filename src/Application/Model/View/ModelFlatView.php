@@ -10,7 +10,7 @@ readonly class ModelFlatView
         public string $uuid,
         public string $manufacturer,
         public string $serie,
-        public string $codeName,
+        public string $reference,
         public string $parent,
     ) {
     }

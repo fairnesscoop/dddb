@@ -32,7 +32,9 @@ final class ModelQueryHandler
 
         return new ModelView(
             uuid: $modelEntity->getUuid(),
-            codeName: $modelEntity->getCodeName(),
+            androidCodeName: $modelEntity->getAndroidCodeName(),
+            variant: $modelEntity->getVariant(),
+            reference: $modelEntity->getReference(),
             attributes: $attributeCollection,
             codeTacs: $codeTacs,
         );

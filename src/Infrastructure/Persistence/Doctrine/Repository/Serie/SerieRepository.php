@@ -47,6 +47,8 @@ final class SerieRepository extends ServiceEntityRepository implements SerieRepo
             ->select('s.uuid')
             ->andWhere('LOWER(s.name) LIKE LOWER(:name)')
             ->setParameter('name', $name)
+            ->andWhere('s.manufacturer = :manufacturer')
+            ->setParameter('manufacturer', $manufacturerUuid)
             ->getQuery()
             ->getSingleColumnResult()
         ;

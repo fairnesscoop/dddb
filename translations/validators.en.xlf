@@ -22,8 +22,8 @@
                 <source>series.create.form.name.alreadyExists</source>
                 <target>This serie already exists for this manufacturer.</target>
             </trans-unit>
-            <trans-unit id="models.create.form.codeName.alreadyExists">
-                <source>models.create.form.codeName.alreadyExists</source>
+            <trans-unit id="models.create.form.reference.alreadyExists">
+                <source>models.create.form.reference.alreadyExists</source>
                 <target>This reference already exists for this manufacturer.</target>
             </trans-unit>
             <trans-unit id="models.codeTac.create.form.codeTac.alreadyExists">

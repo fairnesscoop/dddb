@@ -13,9 +13,8 @@ class LineageModel
     public string $vendor;
     public string $name;
     public array $models = [];
-    // android codename, not codename used in model of domain
-    #[SerializedName('codename')]
-    public string $androidCode;
+    public string $codename;
+    public int $variant = 0;
     #[SerializedName('current_branch')]
     #[Context(denormalizationContext: [ObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     public string $currentBranch;
