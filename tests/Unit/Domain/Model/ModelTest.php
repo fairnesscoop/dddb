@@ -13,7 +13,7 @@ final class ModelTest extends TestCase
     public function testGetters(): void
     {
         $uuid = 'abcde';
-        $codeName = 'Redfin';
+        $androidCodeName = 'twolip';
         $attributes = [
             "os" => "os_uuid",
             "battery_reference" => "battery_uuid"
@@ -23,14 +23,15 @@ final class ModelTest extends TestCase
 
         $model = new Model(
             $uuid,
-            $codeName,
+            null,
+            $androidCodeName,
             $attributes,
             $serie,
             $parentModel
         );
 
         $this->assertSame($model->getUuid(), $uuid);
-        $this->assertSame($model->getCodeName(), $codeName);
+        $this->assertNull($model->getReference());
         $this->assertSame($model->getAttributes(), $attributes);
         $this->assertSame($model->getSerie(), $serie);
         $this->assertSame($model->getParentModel(), $parentModel);

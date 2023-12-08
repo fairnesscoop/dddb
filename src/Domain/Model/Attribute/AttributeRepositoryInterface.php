@@ -16,4 +16,6 @@ interface AttributeRepositoryInterface
     public function createAttributeFromModel(Model $model, string $attributeName): AttributeInterface|null;
 
     public function updateModelAttribute(Model $model, string $attributeName, AttributeInterface $attribute): void;
+
+    public function findAllAttributes(): iterable;
 }

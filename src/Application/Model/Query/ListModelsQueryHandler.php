@@ -19,7 +19,7 @@ final class ListModelsQueryHandler
         $page = $listModelsQuery->page;
         $pageSize = $listModelsQuery->pageSize;
 
-        $result = $this->modelRepository->findModels(
+        $result = $this->modelRepository->findPaginatedModels(
             serie: $listModelsQuery->serie,
             page: $page,
             pageSize: $pageSize,

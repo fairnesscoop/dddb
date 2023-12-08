@@ -12,7 +12,7 @@
 
   <main class="px-6 py-3 flex flex-wrap">
   {% for seriesFromManufacturer in series %}
-      <div class="mb-4 md:w-1/4 sm:w-1/2 w-full flex-none">
+      <div class="mb-4 md:w-1/4 sm:w-1/2 w-full max-height flex-none">
         <h2 class="text-lg font-bold block">{{ seriesFromManufacturer.manufacturer }}</h2>
         {% for serie in seriesFromManufacturer.series %}
           <a

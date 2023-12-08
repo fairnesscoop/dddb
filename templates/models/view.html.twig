@@ -4,7 +4,7 @@
   {{ 'models.view.meta.title'|trans({
       '%manufacturer%': model.serie.manufacturer,
       '%serie%': model.serie.name,
-      '%codeName%': model.codeName,
+      '%reference%': model.reference ? " - #{model.reference}" : '',
   }) }}
   -
   {{ parent() }}
@@ -19,16 +19,20 @@
           {{ 'models.view.title'|trans({
             '%manufacturer%': model.serie.manufacturer,
             '%serie%': model.serie.name,
-            '%codeName%': model.codeName,
+            '%reference%': model.reference ? " - #{model.reference}" : '',
           }) }}
           {% if model.parentModel %}
-          <span class="font-light">{{ 'models.view.basedOn'|trans({'%codeName%': model.parentModel.codeName}) }}<span>
+          <span class="font-light">{{ 'models.view.basedOn'|trans({'%reference%': model.parentModel.reference}) }}<span>
           {% endif %}
         </h1>
       </header>
     </section>
 
     <section class="my-3">
+      <h2 class="text-lg">
+        {{ 'models.view.androidCodeName'|trans }}
+        <span class="font-bold">{{ model.androidCodeName }}</span>
+      </h2>
       {% for attributeName in allAttributeNames %}
         {% include "models/attributes/_#{attributeName}.html.twig"
           with { attribute: attributes[attributeName] | default(null) }

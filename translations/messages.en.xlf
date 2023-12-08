@@ -62,7 +62,7 @@
             <!-- Menu -->
             <trans-unit id="menu.title">
                 <source>menu.title</source>
-                <target>Repository</target>
+                <target>DDDB Repository</target>
             </trans-unit>
             <trans-unit id="menu.manufacturers.title">
                 <source>menu.manufacturers.title</source>
@@ -324,13 +324,25 @@
                 <source>models.create.meta.title</source>
                 <target>Create device model</target>
             </trans-unit>
-            <trans-unit id="models.create.form.codeName">
-                <source>models.create.form.codeName</source>
-                <target>Codename</target>
+            <trans-unit id="models.create.form.reference">
+                <source>models.create.form.reference</source>
+                <target>Reference</target>
             </trans-unit>
-            <trans-unit id="models.create.form.codeName.placeholder">
-                <source>models.create.form.codeName.placeholder</source>
+            <trans-unit id="models.create.form.reference.placeholder">
+                <source>models.create.form.reference.placeholder</source>
                 <target>Manufacturer's reference, aka model or codename</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.androidCodeName">
+                <source>models.create.form.androidCodeName</source>
+                <target>Android codename</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.androidCodeName.placeholder">
+                <source>models.create.form.androidCodeName.placeholder</source>
+                <target>Android's reference, for this model</target>
+            </trans-unit>
+            <trans-unit id="models.create.form.variant">
+                <source>models.create.form.variant</source>
+                <target>Variant</target>
             </trans-unit>
             <trans-unit id="models.create.form.parent_model">
                 <source>models.create.form.parent_model</source>
@@ -382,15 +394,23 @@
             <!-- Model view -->
             <trans-unit id="models.view.title">
                 <source>models.view.title</source>
-                <target>%manufacturer% %serie% - Codename %codeName%</target>
+                <target>%manufacturer% %serie%%reference%</target>
             </trans-unit>
             <trans-unit id="models.view.meta.title">
                 <source>models.view.meta.title</source>
-                <target>%manufacturer% %serie% - Codename %codeName%</target>
+                <target>%manufacturer% %serie%%reference%</target>
             </trans-unit>
             <trans-unit id="models.view.basedOn">
                 <source>models.view.basedOn</source>
-                <target>based on %codeName%</target>
+                <target>based on %reference%</target>
+            </trans-unit>
+            <trans-unit id="models.view.androidCodeName">
+                <source>models.view.androidCodeName</source>
+                <target>Android codename:</target>
+            </trans-unit>
+            <trans-unit id="models.view.variant">
+                <source>models.view.variant</source>
+                <target>(variant %variant%)</target>
             </trans-unit>
             <trans-unit id="models.view.codeTac.title">
                 <source>models.view.codeTac.title</source>

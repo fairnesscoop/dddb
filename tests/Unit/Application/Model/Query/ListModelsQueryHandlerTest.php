@@ -36,7 +36,7 @@ final class ListModelsQueryHandlerTest extends TestCase
 
         $this->modelRepository
             ->expects(self::once())
-            ->method('findModels')
+            ->method('findPaginatedModels')
             ->with($serie, 1, 20)
             ->willReturn($paginator);
 

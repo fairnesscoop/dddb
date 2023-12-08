@@ -16,5 +16,7 @@ interface SerieRepositoryInterface
 
     public function findPaginatedSeries(int $page, int $pageSize, string|null $manufacturerUuid): Paginator;
 
+    public function findUuidByName(string $manufacturerUuid, string $name): string|null;
+
     public function findAllSerieHeaders(): iterable;
 }

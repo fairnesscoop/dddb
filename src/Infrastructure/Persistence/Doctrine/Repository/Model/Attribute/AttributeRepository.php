@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\Persistence\Doctrine\Repository\Model\Attribute;
 
 use App\Application\Attribute\Normalizer\NormalizerInterface;
+use App\Application\Attribute\View\AttributeFlatView;
 use App\Domain\Model\Attribute\AttributeCollection;
 use App\Domain\Model\Attribute\AttributeInterface;
 use App\Domain\Model\Attribute\AttributeRepositoryInterface;
@@ -12,17 +13,20 @@ use App\Domain\Model\Attribute\Battery;
 use App\Domain\Model\Attribute\Memo;
 use App\Domain\Model\Attribute\SupportedOsList;
 use App\Domain\Model\Model;
-use App\Domain\Model\Repository\ModelRepositoryInterface;
+use App\Infrastructure\Persistence\Doctrine\Repository\Model\ModelRepository;
 use Symfony\Component\DependencyInjection\Argument\ServiceLocator;
 use Symfony\Component\DependencyInjection\Attribute\TaggedLocator;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class AttributeRepository implements AttributeRepositoryInterface
 {
     public function __construct(
         private readonly AttributeBuilder $attributeBuilder,
-        private readonly ModelRepositoryInterface $modelRepository,
+        private readonly ModelRepository $modelRepository,
         #[TaggedLocator(NormalizerInterface::class, defaultIndexMethod: 'supports')]
         private readonly ServiceLocator $attributeNormalizerLocator,
+        private readonly SerializerInterface $serializer,
     ) {
     }
 
@@ -52,5 +56,20 @@ class AttributeRepository implements AttributeRepositoryInterface
         $model->setAttributes($attributes);
 
         $this->modelRepository->update($model);
+    }
+
+    public function findAllAttributes(): iterable
+    {
+        $models = $this->modelRepository->findAllAttributesIterable();
+
+        foreach ($models as $model) {
+            foreach ($model['attributes'] as $name => $value) {
+                yield new AttributeFlatView(
+                    $model['uuid'],
+                    $name,
+                    $this->serializer->serialize($value, JsonEncoder::FORMAT),
+                );
+            }
+        }
     }
 }

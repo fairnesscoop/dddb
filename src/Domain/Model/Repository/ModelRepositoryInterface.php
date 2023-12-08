@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domain\Model\Repository;
 
+use App\Application\Model\View\ModelFlatView;
+use App\Application\Model\View\ModelHeader;
 use App\Domain\Model\Manufacturer;
 use App\Domain\Model\Model;
 use App\Domain\Model\Serie;
@@ -15,13 +17,21 @@ interface ModelRepositoryInterface
 
     public function update(Model $model): Model;
 
-    public function isCodeNameUsed(Manufacturer $manufacturer, string $codeName): bool;
+    public function isReferenceUsed(Manufacturer $manufacturer, string $reference, int $variant): bool;
 
     public function isCodeTacUsed(string $codeTac): bool;
 
     public function findModelByUuid(string $modelUuid): Model|null;
 
-    public function findModels(Serie $serie, int $page, int $pageSize): Paginator;
+    public function findModelByReference(string $serieUuid, string $reference, int $variant): Model|null;
 
+    public function findModelByAndroidCodeName(string $serieUuid, string $codeName, int $variant): Model|null;
+
+    public function findPaginatedModels(Serie $serie, int $page, int $pageSize): Paginator;
+
+    /** @return ModelHeader[] */
     public function findAllModelHeaders(Serie $serie): iterable;
+
+    /** @return ModelFlatView[] */
+    public function findAllModels(): iterable;
 }

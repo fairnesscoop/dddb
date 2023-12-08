@@ -14,9 +14,11 @@
 
       <h1 class="text-lg text-teal-800 font-bold block mb-3">
         {{ serie.manufacturer.name }} {{ serie.name }}
-        <span class="text-base text-black font-normal before:content-['▶'] before:text-teal-400 before:text-sm ml-2">
-          {{ selectedModel.codeName }}
-        </span>
+        {% if selectedModel.reference %}
+          <span class="text-base text-black font-normal before:content-['▶'] before:text-teal-400 before:text-sm ml-2">
+            {{ selectedModel.reference }}
+          </span>
+        {% endif %}
       </h1>
 
       <div class="sm:flex">
@@ -30,13 +32,22 @@
                 }) }}"
                 class="{{ model.uuid == selectedModel.uuid ? 'bg-teal-200' : '' }} p-1 rounded"
               >
-                {{ model.codeName }}
+                {{ model.reference|default(serie.name) }}
               </a>
             </li>
           {% endfor %}
         </ul>
 
         <section class="sm:ml-3 flex-grow">
+          <h2>
+            {{ 'models.view.androidCodeName'|trans }}
+            <span class="font-mono bg-teal-100 rounded-lg px-2 py-1">
+              {{ selectedModel.androidCodeName }}
+              {% if selectedModel.variant %}
+                {{ 'models.view.variant'|trans({'%variant%': selectedModel.variant}) }}
+              {% endif %}
+            </span>
+          </h2>
           {% include 'models/attributes/public/_attributes.html.twig' with {'model': selectedModel} %}
         </section>
 

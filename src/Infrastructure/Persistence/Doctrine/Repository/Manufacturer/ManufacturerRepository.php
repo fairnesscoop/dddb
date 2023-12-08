@@ -36,6 +36,19 @@ final class ManufacturerRepository extends ServiceEntityRepository implements Ma
         ;
     }
 
+    public function findUuidByName(string $name): string|null
+    {
+        $result = $this->createQueryBuilder('m')
+            ->select('m.uuid')
+            ->andWhere('LOWER(m.name) LIKE LOWER(:name)')
+            ->setParameter('name', $name)
+            ->getQuery()
+            ->getSingleColumnResult()
+        ;
+
+        return $result[0] ?? null;
+    }
+
     public function findManufacturers(int $page, int $pageSize): Paginator
     {
         $query = $this->createQueryBuilder('m')
