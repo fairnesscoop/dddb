@@ -62,7 +62,8 @@ final class ModelQueryHandlerTest extends TestCase
             $model->getVariant(),
             $model->getReference(),
             $attributes,
-            ['12345678']
+            ['12345678'],
+            $model->getUpdatedAt()
         );
 
         $query = new ModelQuery(ModelFactory::MODEL_UUID);

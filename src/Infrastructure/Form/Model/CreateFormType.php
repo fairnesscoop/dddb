@@ -34,9 +34,9 @@ final class CreateFormType extends AbstractType
                 'androidCodeName',
                 TextType::class,
                 options: [
-                    'label' => 'models.create.form.androidCodeName',
+                    'label' => 'models.form.androidCodeName',
                     'attr' => [
-                        'placeholder' => 'models.create.form.androidCodeName.placeholder',
+                        'placeholder' => 'models.form.androidCodeName.placeholder',
                     ],
                 ],
             )
@@ -44,7 +44,7 @@ final class CreateFormType extends AbstractType
                 'variant',
                 IntegerType::class,
                 options: [
-                    'label' => 'models.create.form.variant',
+                    'label' => 'models.form.variant',
                     'required' => false,
                 ],
             )

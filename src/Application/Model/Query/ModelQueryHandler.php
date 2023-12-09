@@ -37,6 +37,7 @@ final class ModelQueryHandler
             reference: $modelEntity->getReference(),
             attributes: $attributeCollection,
             codeTacs: $codeTacs,
+            updatedAt: $modelEntity->getUpdatedAt(),
         );
     }
 }

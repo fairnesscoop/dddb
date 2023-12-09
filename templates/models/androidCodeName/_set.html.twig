@@ -1,0 +1,12 @@
+<turbo-frame id="model-android-code-name">
+  {{ form_start(formAndroidCodeName, {"attr": {"data-turbo-frame": "model-android-code-name"}}) }}
+  {{ form_row(formAndroidCodeName.androidCodeName, {"attr": {"autofocus": true}}) }}
+  {{ form_row(formAndroidCodeName.variant) }}
+  <button class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-1 text-center">
+    {{ 'common.save'|trans }}
+  </button>
+  <a href="{{ path('app_android_code_name', {'model': model.uuid}) }}" class="font-small text-sm">
+    {{ 'common.cancel'|trans }}
+  </a>
+  {{ form_end(formAndroidCodeName) }}
+</turbo-frame>

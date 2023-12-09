@@ -2,12 +2,20 @@
 <constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping https://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
-    <class name="App\Application\Serie\Command\CreateModelCommand">
-        <property name="reference">
+    <class name="App\Application\Model\Command\CreateModelCommand">
+        <property name="androidCodeName">
             <constraint name="NotBlank" />
             <constraint name="Length">
                 <option name="max">50</option>
             </constraint>
+        </property>
+        <property name="reference">
+            <constraint name="Length">
+                <option name="max">50</option>
+            </constraint>
+        </property>
+        <property name="variant">
+            <constraint name="PositiveOrZero" />
         </property>
     </class>
 </constraint-mapping>

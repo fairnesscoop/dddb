@@ -40,7 +40,7 @@ final class ModelFixture extends Fixture implements DependentFixtureInterface
             ],
             $fairphone4Serie,
         );
-        $fp4Model->setUpdatedAt(\DateTimeImmutable::createFromFormat('Y-m-d H:i', '2023-12-08 08:00'));
+        $fp4Model->setUpdatedAt(\DateTimeImmutable::createFromFormat('!Y-m-d H:i', '2023-12-08 08:00'));
 
         $manager->persist($fp4Model);
         $manager->flush();

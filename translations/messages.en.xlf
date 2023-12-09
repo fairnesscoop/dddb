@@ -58,6 +58,10 @@
                 <source>common.none</source>
                 <target>None</target>
             </trans-unit>
+            <trans-unit id="common.lastUpdate">
+                <source>common.lastUpdate</source>
+                <target>Last update</target>
+            </trans-unit>
 
             <!-- Menu -->
             <trans-unit id="menu.title">
@@ -332,16 +336,16 @@
                 <source>models.create.form.reference.placeholder</source>
                 <target>Manufacturer's reference, aka model or codename</target>
             </trans-unit>
-            <trans-unit id="models.create.form.androidCodeName">
-                <source>models.create.form.androidCodeName</source>
+            <trans-unit id="models.form.androidCodeName">
+                <source>models.form.androidCodeName</source>
                 <target>Android codename</target>
             </trans-unit>
-            <trans-unit id="models.create.form.androidCodeName.placeholder">
-                <source>models.create.form.androidCodeName.placeholder</source>
+            <trans-unit id="models.form.androidCodeName.placeholder">
+                <source>models.form.androidCodeName.placeholder</source>
                 <target>Android's reference, for this model</target>
             </trans-unit>
-            <trans-unit id="models.create.form.variant">
-                <source>models.create.form.variant</source>
+            <trans-unit id="models.form.variant">
+                <source>models.form.variant</source>
                 <target>Variant</target>
             </trans-unit>
             <trans-unit id="models.create.form.parent_model">
@@ -382,9 +386,13 @@
                 <source>models.list.button.create</source>
                 <target>Create model</target>
             </trans-unit>
-            <trans-unit id="models.list.table.thead.codeName">
-                <source>models.list.table.thead.codeName</source>
+            <trans-unit id="models.list.table.thead.androidCodeName">
+                <source>models.list.table.thead.androidCodeName</source>
                 <target>Codename</target>
+            </trans-unit>
+            <trans-unit id="models.list.table.thead.variant">
+                <source>models.list.table.thead.variant</source>
+                <target>Variant</target>
             </trans-unit>
             <trans-unit id="models.list.table.td.modelLink">
                 <source>models.list.table.td.modelLink</source>

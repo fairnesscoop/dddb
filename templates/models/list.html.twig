@@ -30,6 +30,7 @@
           <tr>
             <th class="p-4 text-sm font-medium text-left text-gray-500">{{ 'models.list.table.thead.reference'|trans }}</th>
             <th class="p-4 text-sm font-medium text-left text-gray-500">{{ 'models.list.table.thead.androidCodeName'|trans }}</th>
+            <th class="p-4 text-sm font-medium text-left text-gray-500">{{ 'models.list.table.thead.variant'|trans }}</th>
             <th></th>
           </tr>
         </thead>
@@ -38,6 +39,7 @@
             <tr class="hover:bg-gray-50">
               <td class="p-4 text-sm">{{ model.reference }}</td>
               <td class="p-4 text-sm">{{ model.androidCodeName }}</td>
+              <td class="p-4 text-sm">{{ model.variant > 0 ? model.variant : '' }}</td>
               <td class="p-4 text-sm">
                 <a href="{{ path('app_model_view', {serie: serie.uuid, model: model.uuid}) }}" class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-sm text-sm px-3 py-1 text-center">
                   {{ 'models.list.table.td.modelLink'|trans }}

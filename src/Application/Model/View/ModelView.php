@@ -15,6 +15,7 @@ readonly class ModelView
         public string|null $reference,
         public AttributeCollection $attributes,
         public iterable $codeTacs,
+        public \DateTimeInterface $updatedAt,
     ) {
     }
 }
