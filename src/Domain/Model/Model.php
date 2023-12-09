@@ -34,6 +34,12 @@ class Model
         return $this->androidCodeName;
     }
 
+    public function setAndroidCodeName(string $androidCodeName, int $variant): void
+    {
+        $this->androidCodeName = $androidCodeName;
+        $this->variant = $variant;
+    }
+
     public function getVariant(): int
     {
         return $this->variant;

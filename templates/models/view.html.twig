@@ -29,10 +29,10 @@
     </section>
 
     <section class="my-3">
-      <h2 class="text-lg">
-        {{ 'models.view.androidCodeName'|trans }}
-        <span class="font-bold">{{ model.androidCodeName }}</span>
-      </h2>
+      <turbo-frame id="model-android-code-name" class="block mt-3">
+        {% include "models/androidCodeName/_view.html.twig" %}
+      </turbo-frame>
+
       {% for attributeName in allAttributeNames %}
         {% include "models/attributes/_#{attributeName}.html.twig"
           with { attribute: attributes[attributeName] | default(null) }

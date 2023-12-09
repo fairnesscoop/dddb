@@ -13,7 +13,7 @@ class ModelFactory
     {
         $serie = SerieFactory::create();
 
-        return new Model(
+        $model = new Model(
             self::MODEL_UUID,
             'F1234G',
             'starlte',
@@ -22,5 +22,8 @@ class ModelFactory
             ] : $attributes,
             $serie,
         );
+        $model->setUpdatedAt(\DateTimeImmutable::createFromFormat('!Y-m-d H:i', '2023-12-25 11:12'));
+
+        return $model;
     }
 }
