@@ -15,12 +15,14 @@
   <main class="ml-72 py-8 px-8">
     <section class="mb-4">
       <header class="w-full flex justify-between items-center">
+        {% set seriesPath = path('app_series_list', {'manufacturer': model.serie.manufacturer.uuid}) %}
+        {% set modelsPath = path('app_models_list', {'serie': model.serie.uuid}) %}
         <h1 class="text-xl font-bold tracking-tight md:text-2xl">
           {{ 'models.view.title'|trans({
-            '%manufacturer%': model.serie.manufacturer,
-            '%serie%': model.serie.name,
+            '%manufacturer%': "<a href=\"#{seriesPath}\" class=\"text-primary-700 after:content-['_‣']\">#{model.serie.manufacturer}</a>",
+            '%serie%': "<a href=\"#{modelsPath}\" class=\"text-primary-700 after:content-['_‣']\">#{model.serie.name}</a>",
             '%reference%': model.reference ? " - #{model.reference}" : '',
-          }) }}
+          })|raw }}
           {% if model.parentModel %}
           <span class="font-light">{{ 'models.view.basedOn'|trans({'%reference%': model.parentModel.reference}) }}<span>
           {% endif %}

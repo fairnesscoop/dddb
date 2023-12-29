@@ -376,7 +376,7 @@
             <!-- Models list -->
             <trans-unit id="models.list.title">
                 <source>models.list.title</source>
-                <target>Liste des modèles de %manufacturer% %serie%</target>
+                <target>Liste des modèles %manufacturer% %serie%</target>
             </trans-unit>
             <trans-unit id="models.list.meta.title">
                 <source>models.list.meta.title</source>
