@@ -14,10 +14,11 @@
   <main class="ml-72 py-8 px-8">
     <section>
       <header class="w-full flex justify-between items-center mb-8 ">
+        {% set seriesPath = path('app_series_list', {'manufacturer': serie.manufacturer.uuid}) %}
         <h1 class="text-xl font-bold tracking-tight md:text-2xl">{{ 'models.list.title'|trans({
-          '%manufacturer%': serie.manufacturer,
+          '%manufacturer%': "<a href=\"#{seriesPath}\" class=\"text-primary-700 after:content-['_‣']\">#{serie.manufacturer}</a>",
           '%serie%': serie.name,
-        }) }}</h1>
+        })|raw }}</h1>
         <a href={{ path('app_model_create', {serie: serie.uuid}) }}>
           <button class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
             {{ 'models.list.button.create'|trans }}
