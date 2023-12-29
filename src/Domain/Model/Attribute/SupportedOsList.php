@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domain\Model\Attribute;
 
+use App\Domain\Os\OsVersionList;
+
 class SupportedOsList extends BaseAttribute
 {
     public const NAME = 'supportedOsList';
@@ -19,6 +21,17 @@ class SupportedOsList extends BaseAttribute
     public function add(SupportedOs $supportedOs): void
     {
         $this->supportedOsList[] = $supportedOs;
+    }
+
+    public function hasEOs(): bool
+    {
+        foreach ($this->supportedOsList as $os) {
+            if ($os->osVersion->getOs()->getId() === OsVersionList::E_OS) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function deleteById(int $supportedOsId): void

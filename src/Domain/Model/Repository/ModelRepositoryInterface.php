@@ -23,9 +23,9 @@ interface ModelRepositoryInterface
 
     public function findModelByUuid(string $modelUuid): Model|null;
 
-    public function findModelByReference(string $serieUuid, string $reference, int $variant): Model|null;
+    public function findModelByReference(string $serieUuid, string $reference, int $variant = null): Model|null;
 
-    public function findModelByAndroidCodeName(string $serieUuid, string $codeName, int $variant): Model|null;
+    public function findModelByAndroidCodeName(string $serieUuid, string $codeName, int $variant = null): Model|null;
 
     public function findPaginatedModels(Serie $serie, int $page, int $pageSize): Paginator;
 
