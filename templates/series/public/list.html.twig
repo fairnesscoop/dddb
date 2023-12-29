@@ -10,9 +10,9 @@
     </h1>
   </header>
 
-  <main class="px-6 py-3 flex flex-wrap">
+  <main class="px-6 py-3 flex flex-wrap gap-4">
   {% for seriesFromManufacturer in series %}
-      <div class="mb-4 md:w-1/4 sm:w-1/2 w-full max-height flex-none">
+      <div>
         <h2 class="text-lg font-bold block">{{ seriesFromManufacturer.manufacturer }}</h2>
         {% for serie in seriesFromManufacturer.series %}
           <a
