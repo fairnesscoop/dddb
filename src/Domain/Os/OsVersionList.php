@@ -11,7 +11,7 @@ class OsVersionList implements \Iterator
     private int $index = 0;
 
     private const LINEAGE = 1;
-    private const E_OS = 2;
+    public const E_OS = 2;
 
     public function __construct()
     {
@@ -27,9 +27,13 @@ class OsVersionList implements \Iterator
             new Version(6, '15', $lineage),
             new Version(7, '14', $lineage),
             new Version(11, '13', $lineage),
+            new Version(12, 'T', $eOs),
             new Version(8, 'S', $eOs),
             new Version(10, 'R', $eOs),
             new Version(9, 'Q', $eOs),
+            new Version(13, 'Pie', $eOs),
+            new Version(14, 'Oreo', $eOs),
+            new Version(15, 'Nougat', $eOs),
         ];
     }
 
@@ -53,6 +57,17 @@ class OsVersionList implements \Iterator
         }
 
         throw new \InvalidArgumentException("Version $version unsupported for Lineage OS");
+    }
+
+    public function getEOsVersion(string $version): Version
+    {
+        foreach ($this->list as $osVersion) {
+            if ($osVersion->getName() === $version && $osVersion->getOs()->getId() === self::E_OS) {
+                return $osVersion;
+            }
+        }
+
+        throw new \InvalidArgumentException("Version $version unsupported for /e/OS");
     }
 
     public function current(): Version

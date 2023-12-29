@@ -53,30 +53,36 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
         ;
     }
 
-    public function findModelByReference(string $serieUuid, string $reference, int $variant): Model|null
+    public function findModelByReference(string $serieUuid, string $reference, int $variant = null): Model|null
     {
-        return $this->createQueryBuilder('m')
+        $builder = $this->createQueryBuilder('m')
             ->select('m')
             ->andWhere('m.serie = :serie')->setParameter('serie', $serieUuid)
             ->andWhere('LOWER(m.reference) LIKE LOWER(:reference)')->setParameter('reference', $reference)
-            ->andWhere('m.variant = :variant')->setParameter('variant', $variant)
-            ->getQuery()
-            ->getOneOrNullResult()
         ;
+        if ($variant !== null) {
+            $builder->andWhere('m.variant = :variant')->setParameter('variant', $variant);
+        }
+
+        return $builder->getQuery()->getOneOrNullResult();
     }
 
-    public function findModelByAndroidCodeName(string $serieUuid, string $codeName, int $variant): Model|null
+    public function findModelByAndroidCodeName(string $serieUuid, string $codeName, int $variant = null): Model|null
     {
-        return $this->createQueryBuilder('m')
-            ->select('m')
+        $builder = $this->createQueryBuilder('m');
+        $builder->select('m')
             ->andWhere('m.serie = :serie')->setParameter('serie', $serieUuid)
             ->andWhere('LOWER(m.androidCodeName) LIKE LOWER(:codeName)')->setParameter('codeName', $codeName)
-            ->andWhere('m.variant = :variant')->setParameter('variant', $variant)
-            ->orderBy('m.parentModel', 'ASC')
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getOneOrNullResult()
         ;
+        if ($variant !== null) {
+            $builder->andWhere('m.variant = :variant')->setParameter('variant', $variant);
+        }
+        $builder->orderBy('m.parentModel', 'ASC')
+            ->orderBy('m.variant', 'ASC')
+            ->setMaxResults(1)
+        ;
+
+        return $builder->getQuery()->getOneOrNullResult();
     }
 
     public function isCodeTacUsed(string $codeTac): bool
