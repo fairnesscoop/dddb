@@ -35,6 +35,16 @@ final class SerieFixture extends Fixture implements DependentFixtureInterface
         );
 
         $manager->persist($fairphone3);
+
+        $google = $this->getReference('google');
+        $pixel = new Serie(
+            'fe9881a2-58a0-40ff-acac-14c276ce15f1',
+            'Pixel',
+            $google,
+        );
+
+        $manager->persist($pixel);
+
         $manager->flush();
 
         $this->addReference('fairphone4', $fairphone4);

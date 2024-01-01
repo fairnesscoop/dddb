@@ -10,6 +10,10 @@ readonly class ModelHeader
         public string $uuid,
         public string|null $reference,
         public string $androidCodeName,
+        public int $variant,
+        public string|null $serie = null,
+        public string|null $serieUuid = null,
+        public string|null $manufacturer = null,
     ) {
     }
 }

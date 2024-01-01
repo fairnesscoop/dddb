@@ -19,7 +19,7 @@ interface ModelRepositoryInterface
 
     public function isReferenceUsed(Manufacturer $manufacturer, string $reference, int $variant): bool;
 
-    public function isCodeTacUsed(string $codeTac): bool;
+    public function findModelByCodeTac(string $codeTac): ModelHeader|null;
 
     public function findModelByUuid(string $modelUuid): Model|null;
 

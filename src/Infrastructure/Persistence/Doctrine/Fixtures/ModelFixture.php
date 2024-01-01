@@ -7,6 +7,7 @@ namespace App\Infrastructure\Persistence\Doctrine\Fixtures;
 use App\Domain\Model\Attribute\Battery;
 use App\Domain\Model\Attribute\Memo;
 use App\Domain\Model\Attribute\SupportedOsList;
+use App\Domain\Model\CodeTac;
 use App\Domain\Model\Model;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -25,7 +26,7 @@ final class ModelFixture extends Fixture implements DependentFixtureInterface
         $fp4Model = new Model(
             'b4b0f83d-b70a-461d-a822-1f4451111efc',
             'FP4',
-            'adnroid-fp4',
+            'android-fp4',
             [
                 Memo::NAME => 'Memo example',
                 SupportedOsList::NAME => [
@@ -42,7 +43,10 @@ final class ModelFixture extends Fixture implements DependentFixtureInterface
         );
         $fp4Model->setUpdatedAt(\DateTimeImmutable::createFromFormat('!Y-m-d H:i', '2023-12-08 08:00'));
 
+        $codeTac = new CodeTac(35525509, $fp4Model);
+
         $manager->persist($fp4Model);
+        $manager->persist($codeTac);
         $manager->flush();
 
         $this->addReference('fp4', $fp4Model);
