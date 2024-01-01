@@ -222,6 +222,7 @@ class ImportEOsModelCommand extends Command
         'miatoll' => 'POCO M2 Pro',
         'nairo' => 'moto g 5G plus',
         'nio' => 'edge s',
+        'oneplus3' => '3',
         'osprey' => 'moto g (2015)',
         'r5' => 'R5 (International)',
         'surnia' => 'moto e LTE (2015)',
