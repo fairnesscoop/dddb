@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\Model\Query;
 
+use App\Application\Model\View\ModelHeader;
 use App\Domain\Model\Repository\ModelRepositoryInterface;
 use App\Domain\Model\Repository\SearchRepositoryInterface;
 
@@ -15,6 +16,7 @@ final class SearchQueryHandler
     ) {
     }
 
+    /** @return ModelHeader[] */
     public function __invoke(SearchQuery $searchQuery): iterable
     {
         if (ctype_digit($searchQuery->search) && \strlen($searchQuery->search) >= 8) {

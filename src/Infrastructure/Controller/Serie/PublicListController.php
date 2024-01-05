@@ -27,7 +27,7 @@ final class PublicListController
 
         return new Response(
             content: $this->twig->render(
-                name: 'series/public/list.html.twig',
+                name: 'public/index.html.twig',
                 context: [
                     'series' => $this->aggregateByManufacturer($series),
                 ],

@@ -1,0 +1,38 @@
+<turbo-frame id="main" class="block" data-turbo-action="advance">
+  {% if models is empty %}
+    <p class="p-16 text-teal-500 font-bold text-center">{{ 'models.list.empty'|trans }}</p>
+  {% else %}
+    <table class="table-auto w-full border-separate border-spacing-y-3">
+      <thead class="text-teal-700 border-b">
+        <tr>
+          <th class="font-light text-left text-sm">{{ 'models.list.table.thead.serie'|trans }}</th>
+          <th class="font-light text-left">{{ 'models.list.table.thead.reference'|trans }}</th>
+          <th class="font-light text-left">{{ 'models.list.table.thead.androidCodeName'|trans }}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for model in models %}
+        <tr class="mb-4">
+          <td>{{ model.manufacturer }} {{ model.serie }}</td>
+          <td class="font-bold text-teal-800">{{ model.reference }}</td>
+          <td>
+            <span class="font-bold text-teal-800">{{ model.androidCodeName }}</span>
+            {% if model.variant > 0 %}(var. {{ model.variant }}){% endif %}
+          </td>
+          <td>
+            <a
+              href="{{ path('app_series_public_view', {
+                'slug': "#{model.manufacturer}-#{model.serie}"|slug,
+                'serie': model.serieUuid,
+                'modelUuid': model.uuid,
+              }) }}"
+              class="underline text-teal-800"
+            >{{ 'common.see'|trans }}</a>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+</turbo-frame>

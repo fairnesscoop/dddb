@@ -33,7 +33,7 @@ final class PublicViewController
 
         return new Response(
             content: $this->twig->render(
-                name: 'series/public/view.html.twig',
+                name: 'public/models/view.html.twig',
                 context: [
                     'serie' => $serie,
                     'models' => $modelHeaders,

@@ -66,6 +66,10 @@
                 <source>common.search</source>
                 <target>Search</target>
             </trans-unit>
+            <trans-unit id="common.searchModel">
+                <source>common.searchModel</source>
+                <target>Search model</target>
+            </trans-unit>
             <trans-unit id="common.send">
                 <source>common.send</source>
                 <target>Send</target>
@@ -397,6 +401,10 @@
             <trans-unit id="models.list.button.create">
                 <source>models.list.button.create</source>
                 <target>Create model</target>
+            </trans-unit>
+            <trans-unit id="models.list.empty">
+                <source>models.list.empty</source>
+                <target>No model found</target>
             </trans-unit>
             <trans-unit id="models.list.table.thead.serie">
                 <source>models.list.table.thead.serie</source>
