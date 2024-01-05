@@ -6,6 +6,7 @@ namespace App\Infrastructure\Persistence\Doctrine\Repository\Model;
 
 use App\Application\Model\View\ModelFlatView;
 use App\Application\Model\View\ModelHeader;
+use App\Domain\Model\CodeTac;
 use App\Domain\Model\Manufacturer;
 use App\Domain\Model\Model;
 use App\Domain\Model\Repository\ModelRepositoryInterface;
@@ -85,16 +86,35 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
         return $builder->getQuery()->getOneOrNullResult();
     }
 
-    public function isCodeTacUsed(string $codeTac): bool
+    public function findModelByCodeTac(string $codeTac): ModelHeader|null
     {
-        return $this->createQueryBuilder('m')
-            ->select([
-                'COUNT(m)',
-            ])
-            ->andWhere('m.codeTac LIKE :codeTac')->setParameter('codeTac', $codeTac)
+        /** @var CodeTac|null */
+        $codeTac = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('tac', 'model', 's', 'manufacturer')
+            ->from(CodeTac::class, 'tac')
+            ->join('tac.model', 'model')
+            ->join('model.serie', 's')
+            ->join('s.manufacturer', 'manufacturer')
+            ->andWhere('tac.code = :code')->setParameter('code', $codeTac)
             ->getQuery()
-            ->getSingleScalarResult() > 0
+            ->getOneOrNullResult()
         ;
+        if (\is_null($codeTac)) {
+            return null;
+        }
+
+        $model = $codeTac->getModel();
+
+        return new ModelHeader(
+            $model->getUuid(),
+            $model->getReference(),
+            $model->getAndroidCodeName(),
+            $model->getVariant(),
+            $model->getSerie()->getName(),
+            $model->getSerie()->getUuid(),
+            $model->getSerie()->getManufacturer()->getName(),
+        );
     }
 
     public function findModelByUuid(string $modelUuid): Model|null
@@ -121,12 +141,13 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
         return $paginator;
     }
 
+    /** @return ModelHeader[] */
     public function findAllModelHeaders(Serie $serie): iterable
     {
         return $this->createQueryBuilder('m')
-            ->select([
-                sprintf('NEW %s(m.uuid, m.reference, m.androidCodeName)', ModelHeader::class),
-            ])
+            ->select(
+                sprintf('NEW %s(m.uuid, m.reference, m.androidCodeName, m.variant)', ModelHeader::class),
+            )
             ->andWhere('m.serie = :serie')
             ->setParameter('serie', $serie)
             ->orderBy('m.reference', Criteria::ASC)
@@ -152,6 +173,8 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
                 $model->getUuid(),
                 $model->getSerie()->getManufacturer()->getName(),
                 $model->getSerie()->getName(),
+                $model->getAndroidCodeName(),
+                $model->getVariant(),
                 $model->getReference(),
                 $model->getParentModel()?->getReference() ?: '',
             );

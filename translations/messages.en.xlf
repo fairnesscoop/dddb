@@ -62,11 +62,27 @@
                 <source>common.lastUpdate</source>
                 <target>Last update</target>
             </trans-unit>
+            <trans-unit id="common.search">
+                <source>common.search</source>
+                <target>Search</target>
+            </trans-unit>
+            <trans-unit id="common.searchModel">
+                <source>common.searchModel</source>
+                <target>Search model</target>
+            </trans-unit>
+            <trans-unit id="common.send">
+                <source>common.send</source>
+                <target>Send</target>
+            </trans-unit>
 
             <!-- Menu -->
             <trans-unit id="menu.title">
                 <source>menu.title</source>
                 <target>DDDB Repository</target>
+            </trans-unit>
+            <trans-unit id="menu.search.placeholder">
+                <source>menu.search.placeholder</source>
+                <target>Reference, TAC, codename, TAC, model...</target>
             </trans-unit>
             <trans-unit id="menu.manufacturers.title">
                 <source>menu.manufacturers.title</source>
@@ -385,6 +401,18 @@
             <trans-unit id="models.list.button.create">
                 <source>models.list.button.create</source>
                 <target>Create model</target>
+            </trans-unit>
+            <trans-unit id="models.list.empty">
+                <source>models.list.empty</source>
+                <target>No model found</target>
+            </trans-unit>
+            <trans-unit id="models.list.table.thead.serie">
+                <source>models.list.table.thead.serie</source>
+                <target>Serie</target>
+            </trans-unit>
+            <trans-unit id="models.list.table.thead.reference">
+                <source>models.list.table.thead.reference</source>
+                <target>Reference</target>
             </trans-unit>
             <trans-unit id="models.list.table.thead.androidCodeName">
                 <source>models.list.table.thead.androidCodeName</source>

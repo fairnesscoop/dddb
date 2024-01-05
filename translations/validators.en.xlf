@@ -34,6 +34,10 @@
                 <source>models.codeTac.create.form.codeTac.invalidFormat</source>
                 <target>TAC code must consist of 8 digits.</target>
             </trans-unit>
+            <trans-unit id="models.search.form.codeTac.invalidQuery">
+                <source>models.search.form.codeTac.invalidQuery</source>
+                <target>Invalid search query.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

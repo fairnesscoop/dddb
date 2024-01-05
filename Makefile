@@ -85,6 +85,7 @@ dbshell: ## Connect to the database
 dbfixtures: ## Load tests fixtures
 	make dbmigrate ARGS="--env=test"
 	make console CMD="doctrine:fixtures:load --env=test -n --purge-with-truncate"
+	make console CMD="app:search:index --env=test"
 
 ##
 ## ----------------

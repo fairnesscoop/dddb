@@ -1,6 +1,28 @@
 <aside class="fixed left-0 flex flex-col w-72 h-full border-r border-gray-200 bg-white">
   <div class="border-b py-8 px-8">
-    <p class="text-xl text-primary-600 font-bold tracking-tight md:text-xl">{{ 'menu.title'|trans }}</p>
+    <p class="text-xl text-primary-600 font-bold tracking-tight md:text-xl mb-4">{{ 'menu.title'|trans }}</p>
+
+    <form method="GET" action="{{ path('app_search') }}">
+      <label for="search">{{ 'common.search'|trans }}</label>
+      <div class="flex">
+        <input
+          id="search"
+          name="search"
+          class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+          type="text"
+          value="{{ search|default('') }}"
+          placeholder="{{ 'menu.search.placeholder'|trans }}"
+          maxlength="30"
+          required
+        />
+        <button
+          type="submit"
+          class="text-primary-600 w-8 truncate before:content-['🔎'] pl-2"
+        >
+          {{ 'common.send'|trans }}
+        </button>
+      </div>
+    </form>
   </div>
 
   {% include "common/_aside_nav_group.html.twig" with {

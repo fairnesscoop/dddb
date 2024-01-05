@@ -10,7 +10,9 @@ readonly class ModelFlatView
         public string $uuid,
         public string $manufacturer,
         public string $serie,
-        public string $reference,
+        public string $androidCodeName,
+        public int $variant,
+        public string|null $reference,
         public string $parent,
     ) {
     }

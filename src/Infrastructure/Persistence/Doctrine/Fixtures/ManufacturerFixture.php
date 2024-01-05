@@ -18,8 +18,17 @@ final class ManufacturerFixture extends Fixture
         );
 
         $manager->persist($fairphone);
+
+        $google = new Manufacturer(
+            '985153e1-0204-4b31-a790-1f2b794adbea',
+            'Google',
+        );
+
+        $manager->persist($google);
+
         $manager->flush();
 
         $this->addReference('fairphone', $fairphone);
+        $this->addReference('google', $google);
     }
 }

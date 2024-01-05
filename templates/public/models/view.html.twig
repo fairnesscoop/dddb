@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <header class="bg-teal-700 px-6 pt-6 pb-3 font-bold text-teal-100 flex items-end">
+  <header class="bg-teal-700 px-6 pt-2 pb-3 text-teal-100 flex flex-wrap gap-4 items-end">
     <a href="{{ path('app_series_public_list') }}" class="text-[36px]/[26px] font-black text-teal-400">
       DDDB
     </a>
-    <span class="leading-none ml-3">{{ 'common.site_name'|trans }}</span>
+    <span class="leading-none font-bold me-auto">{{ 'common.site_name'|trans }}</span>
+    {% include "public/_searchForm.html.twig" %}
   </header>
 
   <main class="px-6 py-3">
 
-    <turbo-frame id="model-details" data-turbo-action="advance">
+    <turbo-frame id="main" data-turbo-action="advance">
 
       <h1 class="text-lg text-teal-800 font-bold block mb-3">
         {{ serie.manufacturer.name }} {{ serie.name }}
@@ -44,14 +45,14 @@
           </aside>
           <h2>
             {{ 'models.view.androidCodeName'|trans }}
-            <span class="font-mono bg-teal-100 rounded-lg px-2 py-1">
+            <span class="inline-block font-mono bg-teal-100 rounded-lg px-2 py-1">
               {{ selectedModel.androidCodeName }}
               {% if selectedModel.variant %}
                 {{ 'models.view.variant'|trans({'%variant%': selectedModel.variant}) }}
               {% endif %}
             </span>
           </h2>
-          {% include 'models/attributes/public/_attributes.html.twig' with {'model': selectedModel} %}
+          {% include 'public/models/attributes/_attributes.html.twig' with {'model': selectedModel} %}
         </section>
 
         {% if selectedModel.codeTacs is not empty %}

@@ -1,0 +1,13 @@
+{% if model.attributes.memo is defined %}
+  {% include 'public/models/attributes/_memo.html.twig' with {'attribute': model.attributes.memo} %}
+{% endif %}
+
+{% if model.attributes.supportedOsList is defined %}
+  {% include 'public/models/attributes/_supportedOsList.html.twig' with {'attribute': model.attributes.supportedOsList} %}
+{% else %}
+  <p class="font-bold">{{ 'attributes.supportedOsList.none'|trans }}</p>
+{% endif %}
+
+{% if model.attributes.battery is defined %}
+  {% include 'public/models/attributes/_battery.html.twig' with {'attribute': model.attributes.battery} %}
+{% endif %}

@@ -16,6 +16,11 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Doctrine/Mapping'
                 prefix: 'App\Domain'
                 alias: 'App\Domain'
+            Seach:
+                type: xml
+                dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Doctrine/Search/Mapping'
+                prefix: 'App\Infrastructure\Persistence\Doctrine\Search'
+                alias: 'App\Infrastructure\Persistence\Doctrine\Search'
 
 when@test:
     doctrine:
