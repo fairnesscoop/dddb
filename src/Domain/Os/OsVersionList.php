@@ -12,11 +12,15 @@ class OsVersionList implements \Iterator
 
     private const LINEAGE = 1;
     public const E_OS = 2;
+    public const CALYX_OS = 3;
+    public const IODE_OS = 4;
 
     public function __construct()
     {
         $lineage = new Os(self::LINEAGE, 'Lineage');
         $eOs = new Os(self::E_OS, '/e/OS');
+        $calyxOs = new Os(self::CALYX_OS, 'CalyxOS');
+        $iodeOs = new Os(self::IODE_OS, 'iodéOS');
 
         $this->list = [
             new Version(1, '20', $lineage),
@@ -34,6 +38,10 @@ class OsVersionList implements \Iterator
             new Version(13, 'Pie', $eOs),
             new Version(14, 'Oreo', $eOs),
             new Version(15, 'Nougat', $eOs),
+            new Version(16, '5', $calyxOs),
+            new Version(17, '4', $calyxOs),
+            new Version(18, '4', $iodeOs),
+            new Version(19, '2', $iodeOs),
         ];
     }
 
