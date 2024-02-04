@@ -20,7 +20,7 @@ class DefaultController
     public function __invoke(Request $request)
     {
         $preferredSupportedLocale = 'en';
-        $userPreferredLang = strtolower(substr($request->getPreferredLanguage(), 0, 2));
+        $userPreferredLang = strtolower(substr($request->getPreferredLanguage() ?: $preferredSupportedLocale, 0, 2));
         if ($userPreferredLang === 'fr') {
             $preferredSupportedLocale = 'fr';
         }
