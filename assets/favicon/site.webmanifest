@@ -1,1 +1,20 @@
-{"name":"","short_name":"","icons":[{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}],"theme_color":"#ffffff","background_color":"#ffffff","display":"standalone"}
+{
+  "name": "Digital devices database",
+  "short_name": "DDDB",
+  "description": "Reference for Android based alternative operating systems",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.eddc9f79.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.4b495d6e.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0f766e",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
