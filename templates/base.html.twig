@@ -9,11 +9,9 @@
 
     <link
     rel="apple-touch-icon" href="{{ asset('build/favicon/apple-touch-icon.png') }}">
-    <!-- 180×180 -->
     <link
     rel="shortcut icon" href="{{ asset('build/favicon/favicon.ico') }}" type="image/x-icon">
-    <!-- 32×32 -->
-    <link rel="manifest" href="{{ asset('build/favicon/site.webmanifest') }}" crossorigin="use-credentials">
+    <link rel="manifest" href="{{ path('app_webmanifest')}}" crossorigin="use-credentials">
 
     <title>
       {% block title %}

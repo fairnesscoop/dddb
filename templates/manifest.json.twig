@@ -1,15 +1,15 @@
 {
-  "name": "Digital devices database",
+  "name": "{{ 'common.site_name'|trans|e('js') }}",
   "short_name": "DDDB",
-  "description": "Reference for Android based alternative operating systems",
+  "description": "{{ 'common.site_description'|trans|e('js') }}",
   "icons": [
     {
-      "src": "/build/favicon/android-chrome-192x192.894b865c.png",
+      "src": "{{ asset('build/favicon/android-chrome-192x192.png') }}",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/build/favicon/android-chrome-512x512.103af2a0.png",
+      "src": "{{ asset('build/favicon/android-chrome-512x512.png') }}",
       "sizes": "512x512",
       "type": "image/png"
     }

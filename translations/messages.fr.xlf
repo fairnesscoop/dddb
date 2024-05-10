@@ -10,6 +10,10 @@
                 <source>common.site_name</source>
                 <target>Base de données d'appareils numériques</target>
             </trans-unit>
+            <trans-unit id="common.site_description">
+                <source>common.site_description</source>
+                <target>Référentiel des systèmes d'exploitation alternatifs basés sur Android</target>
+            </trans-unit>
             <trans-unit id="common.login">
                 <source>common.login</source>
                 <target>Se connecter</target>

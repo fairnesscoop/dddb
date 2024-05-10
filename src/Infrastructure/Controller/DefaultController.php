@@ -6,6 +6,7 @@ namespace App\Infrastructure\Controller;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -17,7 +18,7 @@ class DefaultController
     }
 
     #[Route('/', name: 'app_default', methods: ['GET'])]
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): Response
     {
         $preferredSupportedLocale = 'en';
         $userPreferredLang = strtolower(substr($request->getPreferredLanguage() ?: $preferredSupportedLocale, 0, 2));

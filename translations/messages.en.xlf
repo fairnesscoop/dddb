@@ -10,6 +10,10 @@
                 <source>common.site_name</source>
                 <target>Digital devices database</target>
             </trans-unit>
+            <trans-unit id="common.site_description">
+                <source>common.site_description</source>
+                <target>Reference for Android based alternative operating systems</target>
+            </trans-unit>
             <trans-unit id="common.login">
                 <source>common.login</source>
                 <target>Sign in</target>
