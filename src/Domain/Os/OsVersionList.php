@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Domain\Os;
 
+/**
+ * @implements \Iterator<Version>
+ */
 class OsVersionList implements \Iterator
 {
     /** @var Version[] */
@@ -12,8 +15,9 @@ class OsVersionList implements \Iterator
 
     private const LINEAGE = 1;
     public const E_OS = 2;
-    public const CALYX_OS = 3;
-    public const IODE_OS = 4;
+    private const CALYX_OS = 3;
+    private const IODE_OS = 4;
+    private const POST_MARKET_OS = 5;
 
     public function __construct()
     {
@@ -21,6 +25,7 @@ class OsVersionList implements \Iterator
         $eOs = new Os(self::E_OS, '/e/OS');
         $calyxOs = new Os(self::CALYX_OS, 'CalyxOS');
         $iodeOs = new Os(self::IODE_OS, 'iodéOS');
+        $postMarketOs = new Os(self::POST_MARKET_OS, 'postmarketOS');
 
         $this->list = [
             new Version(1, '20', $lineage),
@@ -42,6 +47,7 @@ class OsVersionList implements \Iterator
             new Version(17, '4', $calyxOs),
             new Version(18, '4', $iodeOs),
             new Version(19, '2', $iodeOs),
+            new Version(20, '23', $postMarketOs),
         ];
     }
 
