@@ -13,7 +13,7 @@ class OsVersionList implements \Iterator
     private readonly array $list;
     private int $index = 0;
 
-    private const LINEAGE = 1;
+    public const LINEAGE = 1;
     public const E_OS = 2;
     private const CALYX_OS = 3;
     private const IODE_OS = 4;

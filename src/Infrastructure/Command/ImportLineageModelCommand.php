@@ -4,12 +4,21 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Command;
 
-use App\Application\CommandBusInterface;
 use App\Application\Manufacturer\Command\CreateManufacturerCommand;
+use App\Application\Manufacturer\Command\CreateManufacturerCommandHandler;
 use App\Application\Model\Command\CreateModelCommand;
+use App\Application\Model\Command\CreateModelCommandHandler;
 use App\Application\Serie\Command\CreateSerieCommand;
+use App\Application\Serie\Command\CreateSerieCommandHandler;
 use App\Application\SupportedOsList\Command\AddSupportedOsCommand;
+use App\Application\SupportedOsList\Command\AddSupportedOsCommandHandler;
+use App\Application\SupportedOsList\Command\DeleteSupportedOsCommand;
+use App\Application\SupportedOsList\Command\DeleteSupportedOsCommandHandler;
 use App\Domain\Manufacturer\Repository\ManufacturerRepositoryInterface;
+use App\Domain\Model\Attribute\AttributeCollection;
+use App\Domain\Model\Attribute\AttributeRepositoryInterface;
+use App\Domain\Model\Attribute\SupportedOs;
+use App\Domain\Model\Attribute\SupportedOsList;
 use App\Domain\Model\Manufacturer;
 use App\Domain\Model\Model;
 use App\Domain\Model\Repository\ModelRepositoryInterface;
@@ -34,13 +43,19 @@ use Symfony\Component\Serializer\SerializerInterface;
 class ImportLineageModelCommand extends Command
 {
     private Model|null $mainModel = null;
+    private SymfonyStyle $io;
 
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
         private readonly ManufacturerRepositoryInterface $manufacturerRepository,
         private readonly SerieRepositoryInterface $serieRepository,
         private readonly ModelRepositoryInterface $modelRepository,
-        private readonly CommandBusInterface $commandBus,
+        private readonly AttributeRepositoryInterface $attributeRepository,
+        private readonly CreateManufacturerCommandHandler $createManufacturer,
+        private readonly CreateSerieCommandHandler $createSerie,
+        private readonly CreateModelCommandHandler $createModel,
+        private readonly AddSupportedOsCommandHandler $addSupportedOs,
+        private readonly DeleteSupportedOsCommandHandler $deleteSupportedOs,
         private readonly SerializerInterface $serializer,
     ) {
         parent::__construct();
@@ -55,11 +70,11 @@ class ImportLineageModelCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $io = new SymfonyStyle($input, $output);
+        $this->io = new SymfonyStyle($input, $output);
         $filename = $input->getArgument('filename');
 
         if (!file_exists($filename)) {
-            $io->error("{$filename}: File not found");
+            $this->io->error("{$filename}: File not found");
 
             return Command::FAILURE;
         }
@@ -70,17 +85,17 @@ class ImportLineageModelCommand extends Command
         $existingManufacturerUuid = $this->manufacturerRepository->findUuidByName($lineageModel->vendor);
         if ($existingManufacturerUuid === null) {
             $question = sprintf('"%s" manufacturer not found, do you want to create it?', $lineageModel->vendor);
-            $response = $io->askQuestion(new ConfirmationQuestion($question));
+            $response = $this->io->askQuestion(new ConfirmationQuestion($question));
             if ($response === false) {
-                $io->warning('Model not imported');
+                $this->io->warning('Model not imported');
 
                 return Command::FAILURE;
             }
 
             /** @var Manufacturer $manufacturer */
-            $manufacturer = $this->commandBus->handle(new CreateManufacturerCommand($lineageModel->vendor));
+            $manufacturer = ($this->createManufacturer)(new CreateManufacturerCommand($lineageModel->vendor));
             $manufacturerUuid = $manufacturer->getUuid();
-            $io->info("Manufacturer {$manufacturer->getName()} created");
+            $this->io->info("Manufacturer {$manufacturer->getName()} created");
         } else {
             $manufacturerUuid = $existingManufacturerUuid;
         }
@@ -88,18 +103,18 @@ class ImportLineageModelCommand extends Command
         $existingSerieUuid = $this->serieRepository->findUuidByName($manufacturerUuid, $lineageModel->name);
         if ($existingSerieUuid === null) {
             $question = sprintf('"%s" serie not found, do you want to create it?', $lineageModel->name);
-            $response = $io->askQuestion(new ConfirmationQuestion($question));
+            $response = $this->io->askQuestion(new ConfirmationQuestion($question));
             if ($response === false) {
-                $io->warning('Model not imported');
+                $this->io->warning('Model not imported');
 
                 return Command::FAILURE;
             }
 
             $manufacturerReference = $this->entityManager->getReference(Manufacturer::class, $manufacturerUuid);
             /** @var Serie $serie */
-            $serie = $this->commandBus->handle(new CreateSerieCommand($lineageModel->name, $manufacturerReference));
+            $serie = ($this->createSerie)(new CreateSerieCommand($lineageModel->name, $manufacturerReference));
             $serieUuid = $serie->getUuid();
-            $io->info("Serie {$serie->getName()} created");
+            $this->io->info("Serie {$serie->getName()} created");
         } else {
             $serieUuid = $existingSerieUuid;
         }
@@ -108,6 +123,11 @@ class ImportLineageModelCommand extends Command
 
         $modelReferences = empty($lineageModel->models) ? [null] : $lineageModel->models;
         foreach ($modelReferences as $modelReference) {
+            $this->io->info(
+                "{$lineageModel->vendor} {$lineageModel->name} {$modelReference} [{$lineageModel->codename}-{$lineageModel->variant}] " .
+                " lineage currentBranch: {$mainVersion}",
+            );
+
             if ($modelReference === null) {
                 $existingModel = $this->modelRepository->findModelByAndroidCodeName($serieUuid, $lineageModel->codename, $lineageModel->variant);
             } else {
@@ -115,11 +135,15 @@ class ImportLineageModelCommand extends Command
             }
             if (\is_null($existingModel)) {
                 $this->createModel($serieUuid, $modelReference, $lineageModel->codename, $lineageModel->variant, $mainVersion);
-                $io->info("Model {$lineageModel->name} {$modelReference} has been imported.");
+                $this->io->info("Model {$lineageModel->name} {$modelReference} has been imported.");
             } elseif ($this->mainModel === null) {
+                $attributes = $this->attributeRepository->getModelAttributes($existingModel);
+                $this->checkLatestLineageVersion($existingModel, $attributes, $mainVersion);
                 $this->mainModel = $existingModel;
             }
         }
+
+        $this->entityManager->flush();
 
         return Command::SUCCESS;
     }
@@ -128,17 +152,78 @@ class ImportLineageModelCommand extends Command
     {
         $serie = $this->entityManager->getReference(Serie::class, $serieUuid);
 
-        $model = $this->commandBus->handle(new CreateModelCommand($serie, $reference, $codeName, $variant, $this->mainModel));
+        $model = ($this->createModel)(new CreateModelCommand($serie, $reference, $codeName, $variant, $this->mainModel));
         if ($this->mainModel === null) {
             $this->mainModel = $model;
-            $osList = new OsVersionList();
-            $osVersion = $osList->getLineageOsVersion($latestLineageVersion);
-            $variantSuffix = $variant > 0 ? "variant{$variant}/" : '';
-            $this->commandBus->handle(new AddSupportedOsCommand(
+            $this->addLineageSupportedAttributeToModel($model, $latestLineageVersion, $codeName, $variant);
+        }
+    }
+
+    private function addLineageSupportedAttributeToModel(
+        Model $model,
+        string $latestLineageVersion,
+        string $codeName,
+        int $variant,
+        string $comment = null,
+    ): void {
+        $osList = new OsVersionList();
+        $osVersion = $osList->getLineageOsVersion($latestLineageVersion);
+        $variantSuffix = $variant > 0 ? "variant{$variant}/" : '';
+        ($this->addSupportedOs)(new AddSupportedOsCommand(
+            $model,
+            $osVersion,
+            "https://wiki.lineageos.org/devices/{$codeName}/{$variantSuffix}",
+            $comment,
+        ));
+    }
+
+    private function checkLatestLineageVersion(Model $model, AttributeCollection $attributes, string $upToDateVersion): void
+    {
+        $osList = $attributes->get(SupportedOsList::NAME);
+        /** @var SupportedOs|null $currentVersion */
+        $currentVersion = null;
+        $otherOses = [];
+        /** @var SupportedOs $supportedOs */
+        foreach ($osList->getValue() as $supportedOs) {
+            if ($supportedOs->osVersion->getOs()->getId() !== OsVersionList::LINEAGE) {
+                $otherOses[] = $supportedOs;
+                continue;
+            }
+            if ($currentVersion === null || (int) $supportedOs->osVersion->getName() > (int) $currentVersion->osVersion->getName()) {
+                $currentVersion = $supportedOs;
+            }
+        }
+
+        if ($currentVersion === null) {
+            $this->io->warning(
+                "No lineage version found for {$model->getSerie()->getName()} " .
+                "{$model->getReference()} {$model->getAndroidCodeName()} {$model->getVariant()}",
+            );
+            $this->addLineageSupportedAttributeToModel(
                 $model,
-                $osVersion,
-                "https://wiki.lineageos.org/devices/{$codeName}/{$variantSuffix}",
-            ));
+                $upToDateVersion,
+                $model->getAndroidCodeName(),
+                $model->getVariant(),
+            );
+
+            return;
+        }
+        if ($currentVersion !== null && $currentVersion->osVersion->getName() !== $upToDateVersion) {
+            $this->io->info(
+                "{$model->getSerie()} {$model->getReference()} {$model->getAndroidCodeName()} [{$model->getVariant()}] " .
+                "Upgrade Lineage version from {$currentVersion->osVersion->getName()} to {$upToDateVersion}",
+            );
+            if ($currentVersion->comment) {
+                $this->io->info("There is a comment: {$currentVersion->comment}");
+            }
+            ($this->deleteSupportedOs)(new DeleteSupportedOsCommand($model, $currentVersion->id));
+            $this->addLineageSupportedAttributeToModel(
+                $model,
+                $upToDateVersion,
+                $model->getAndroidCodeName(),
+                $model->getVariant(),
+                $currentVersion->comment,
+            );
         }
     }
 }
