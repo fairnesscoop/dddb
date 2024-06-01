@@ -126,6 +126,7 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
         ;
     }
 
+    /** @return Paginator<Model> */
     public function findPaginatedModels(Serie $serie, int $page, int $pageSize): Paginator
     {
         $query = $this->createQueryBuilder('m')
@@ -136,6 +137,7 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
             ->getQuery()
         ;
 
+        /** @var Paginator<Model> $paginator */
         $paginator = new Paginator($query);
 
         return $paginator;
