@@ -35,7 +35,7 @@
               <td class="p-4 text-sm">{{serie.manufacturer}}</td>
               <td class="p-4 text-sm">{{serie.name}}</td>
               <td class="p-4 text-sm">
-                <a href="{{path('app_models_list', {'serie': serie.uuid}) }}" class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-sm text-sm px-3 py-1 text-center">
+                <a href="{{ path('app_models_list', {'serie': serie.uuid}) }}" class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-sm text-sm px-3 py-1 text-center">
                   {{ 'series.list.table.td.modelsLink'|trans }}
                 </a>
               </td>
