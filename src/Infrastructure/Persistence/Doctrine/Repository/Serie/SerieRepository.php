@@ -41,7 +41,7 @@ final class SerieRepository extends ServiceEntityRepository implements SerieRepo
         ;
     }
 
-    public function findUuidByName(string $manufacturerUuid, string $name): string|null
+    public function findUuidByName(string $manufacturerUuid, string $name): ?string
     {
         $result = $this->createQueryBuilder('s')
             ->select('s.uuid')
@@ -56,7 +56,7 @@ final class SerieRepository extends ServiceEntityRepository implements SerieRepo
         return $result[0] ?? null;
     }
 
-    public function findPaginatedSeries(int $page, int $pageSize, string|null $manufacturerUuid): Paginator
+    public function findPaginatedSeries(int $page, int $pageSize, ?string $manufacturerUuid): Paginator
     {
         $queryBuilder = $this->createQueryBuilder('s')
             ->addSelect('m')

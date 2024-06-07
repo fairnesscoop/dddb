@@ -42,7 +42,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 )]
 class ImportLineageModelCommand extends Command
 {
-    private Model|null $mainModel = null;
+    private ?Model $mainModel = null;
     private SymfonyStyle $io;
 
     public function __construct(
@@ -148,7 +148,7 @@ class ImportLineageModelCommand extends Command
         return Command::SUCCESS;
     }
 
-    private function createModel(string $serieUuid, string|null $reference, string $codeName, int $variant, string $latestLineageVersion): void
+    private function createModel(string $serieUuid, ?string $reference, string $codeName, int $variant, string $latestLineageVersion): void
     {
         $serie = $this->entityManager->getReference(Serie::class, $serieUuid);
 
@@ -164,7 +164,7 @@ class ImportLineageModelCommand extends Command
         string $latestLineageVersion,
         string $codeName,
         int $variant,
-        string $comment = null,
+        ?string $comment = null,
     ): void {
         $osList = new OsVersionList();
         $osVersion = $osList->getLineageOsVersion($latestLineageVersion);
@@ -180,7 +180,7 @@ class ImportLineageModelCommand extends Command
     private function checkLatestLineageVersion(Model $model, AttributeCollection $attributes, string $upToDateVersion): void
     {
         $osList = $attributes->get(SupportedOsList::NAME);
-        /** @var SupportedOs|null $currentVersion */
+        /** @var ?SupportedOs $currentVersion */
         $currentVersion = null;
         $otherOses = [];
         /** @var SupportedOs $supportedOs */

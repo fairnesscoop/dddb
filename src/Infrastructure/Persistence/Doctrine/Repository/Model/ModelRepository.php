@@ -54,7 +54,7 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
         ;
     }
 
-    public function findModelByReference(string $serieUuid, string $reference, int $variant = null): Model|null
+    public function findModelByReference(string $serieUuid, string $reference, ?int $variant = null): ?Model
     {
         $builder = $this->createQueryBuilder('m')
             ->select('m')
@@ -68,7 +68,7 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
         return $builder->getQuery()->getOneOrNullResult();
     }
 
-    public function findModelByAndroidCodeName(string $serieUuid, string $codeName, int $variant = null): Model|null
+    public function findModelByAndroidCodeName(string $serieUuid, string $codeName, ?int $variant = null): ?Model
     {
         $builder = $this->createQueryBuilder('m');
         $builder->select('m')
@@ -86,9 +86,9 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
         return $builder->getQuery()->getOneOrNullResult();
     }
 
-    public function findModelByCodeTac(string $codeTac): ModelHeader|null
+    public function findModelByCodeTac(string $codeTac): ?ModelHeader
     {
-        /** @var CodeTac|null */
+        /** @var ?CodeTac */
         $codeTac = $this->getEntityManager()
             ->createQueryBuilder()
             ->select('tac', 'model', 's', 'manufacturer')
@@ -117,7 +117,7 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
         );
     }
 
-    public function findModelByUuid(string $modelUuid): Model|null
+    public function findModelByUuid(string $modelUuid): ?Model
     {
         return $this->createQueryBuilder('m')
             ->andWhere('m = :uuid')->setParameter('uuid', $modelUuid)

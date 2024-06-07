@@ -11,7 +11,7 @@ class AddBatteryReferenceCommand implements CommandInterface
 {
     public function __construct(
         public readonly Model $model,
-        public string|null $batteryReference = null,
+        public ?string $batteryReference = null,
     ) {
     }
 }

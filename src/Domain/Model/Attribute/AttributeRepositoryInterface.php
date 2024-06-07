@@ -13,7 +13,7 @@ interface AttributeRepositoryInterface
     /** @return string[] */
     public function getAllAttributeNames(): array;
 
-    public function createAttributeFromModel(Model $model, string $attributeName): AttributeInterface|null;
+    public function createAttributeFromModel(Model $model, string $attributeName): ?AttributeInterface;
 
     public function updateModelAttribute(Model $model, string $attributeName, AttributeInterface $attribute): void;
 

@@ -11,7 +11,7 @@ class SetMemoCommand implements CommandInterface
 {
     public function __construct(
         public readonly Model $model,
-        public string|null $text = null,
+        public ?string $text = null,
     ) {
     }
 }

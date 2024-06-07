@@ -8,17 +8,18 @@ use App\Domain\Model\Attribute\AttributeCollection;
 use App\Domain\Model\Attribute\AttributeInterface;
 use App\Domain\Model\Model;
 use App\Infrastructure\Persistence\Doctrine\Repository\Model\Attribute\Denormalizer\DenormalizerInterface;
-use Symfony\Component\DependencyInjection\Argument\ServiceLocator;
-use Symfony\Component\DependencyInjection\Attribute\TaggedLocator;
+use Psr\Container\ContainerInterface;
+use Symfony\Component\DependencyInjection\Attribute\AutowireLocator;
 
 class AttributeBuilder
 {
     public function __construct(
-        #[TaggedLocator(DenormalizerInterface::class, defaultIndexMethod: 'supports')]
-        private readonly ServiceLocator $denormalizerLocator,
+        #[AutowireLocator(DenormalizerInterface::class, defaultIndexMethod: 'supports')]
+        private readonly ContainerInterface $denormalizerLocator,
     ) {
     }
 
+    /** @param array<mixed> $attributes */
     public function createAttributeCollection(array $attributes): AttributeCollection
     {
         $attributeCollection = new AttributeCollection([]);
@@ -35,7 +36,7 @@ class AttributeBuilder
         return $this->denormalizerLocator->get($attributeName)->createAttribute($internalValue);
     }
 
-    public function createAttributeFromModel(Model $model, string $attributeName): AttributeInterface|null
+    public function createAttributeFromModel(Model $model, string $attributeName): ?AttributeInterface
     {
         $internalValues = $model->getAttributes();
         if (!isset($internalValues[$attributeName])) {

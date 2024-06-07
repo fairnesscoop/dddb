@@ -11,8 +11,8 @@ class SupportedOs
     public function __construct(
         public readonly int $id,
         public readonly Version $osVersion,
-        public readonly string|null $helpLink,
-        public readonly string|null $comment,
+        public readonly ?string $helpLink,
+        public readonly ?string $comment,
     ) {
     }
 }

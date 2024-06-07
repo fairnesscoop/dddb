@@ -28,7 +28,7 @@ final class AddSupportedOsFormType extends AbstractType
                     'label' => 'attributes.supportedOsList.form.osVersion',
                     'choices' => $osVersionList,
                     'choice_value' => 'id',
-                    'choice_label' => fn (OsVersion|null $version) => $version?->getFullName(),
+                    'choice_label' => static fn (?OsVersion $version) => $version?->getFullName(),
                     'placeholder' => '---',
                 ],
             )
