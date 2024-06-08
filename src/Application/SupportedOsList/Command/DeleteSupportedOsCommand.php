@@ -11,7 +11,7 @@ class DeleteSupportedOsCommand implements CommandInterface
 {
     public function __construct(
         public readonly Model $model,
-        public int|null $supportedOsId = null,
+        public ?int $supportedOsId = null,
     ) {
     }
 }

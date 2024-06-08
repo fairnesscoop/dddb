@@ -20,7 +20,7 @@ class EOsModel
     #[SerializedName('build_version_dev')]
     public string $buildVersionDev;
     #[SerializedName('build_version_stable')]
-    public string|null $buildVersionStable = null;
+    public ?string $buildVersionStable = null;
 
     #[Ignore()]
     public function getModels(): array

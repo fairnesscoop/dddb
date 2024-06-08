@@ -36,7 +36,7 @@ final class ManufacturerRepository extends ServiceEntityRepository implements Ma
         ;
     }
 
-    public function findUuidByName(string $name): string|null
+    public function findUuidByName(string $name): ?string
     {
         $result = $this->createQueryBuilder('m')
             ->select('m.uuid')

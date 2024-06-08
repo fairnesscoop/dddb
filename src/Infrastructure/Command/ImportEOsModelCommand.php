@@ -36,7 +36,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 )]
 class ImportEOsModelCommand extends Command
 {
-    private Model|null $mainModel = null;
+    private ?Model $mainModel = null;
 
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
@@ -150,7 +150,7 @@ class ImportEOsModelCommand extends Command
         return $osList->hasEOs();
     }
 
-    private function addVersions(Model $model, string $codeName, string $latestEOsVersion, string|null $stableEOsVersion): void
+    private function addVersions(Model $model, string $codeName, string $latestEOsVersion, ?string $stableEOsVersion): void
     {
         $baseURl = 'https://doc.e.foundation/devices/';
         $osList = new OsVersionList();
@@ -178,10 +178,10 @@ class ImportEOsModelCommand extends Command
 
     private function createModel(
         string $serieUuid,
-        string|null $reference,
+        ?string $reference,
         string $codeName,
         string $latestEOsVersion,
-        string|null $stableVersion,
+        ?string $stableVersion,
     ): void {
         $serie = $this->entityManager->getReference(Serie::class, $serieUuid);
 

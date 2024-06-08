@@ -8,7 +8,7 @@ endif
 .PHONY: assets
 
 # Allow non-Docker overrides for CI.
-_DOCKER_EXEC_PHP = docker-compose exec php
+_DOCKER_EXEC_PHP = docker compose exec php
 _SYMFONY = ${_DOCKER_EXEC_PHP} symfony
 BIN_PHP = ${_DOCKER_EXEC_PHP} php
 BIN_CONSOLE = ${_SYMFONY} console
@@ -16,7 +16,7 @@ BIN_COMPOSER = ${_SYMFONY} composer
 NPM = ${_DOCKER_EXEC_PHP} npm
 
 # No TTY commands.
-_DOCKER_EXEC_PHP_NO_TTY = docker-compose exec -T php
+_DOCKER_EXEC_PHP_NO_TTY = docker compose exec -T php
 _SYMFONY_NO_TTY = ${_DOCKER_EXEC_PHP_NO_TTY} symfony
 BIN_PHP_NO_TTY = ${_DOCKER_EXEC_PHP_NO_TTY} php
 BIN_CONSOLE_NO_TTY = ${_SYMFONY_NO_TTY} console
@@ -43,23 +43,23 @@ update_deps:
 	$(NPM) update
 
 start: ## Start container
-	docker-compose up -d
-	docker-compose start
+	docker compose up -d
+	docker compose start
 
 stop: ## Stop containers
-	docker-compose stop
+	docker compose stop
 
 ps: ## Display containers
-	docker-compose ps
+	docker compose ps
 
 restart: stop start ## Restart containers
 
 build: ## Build containers
-	docker-compose build
+	docker compose build
 
 rm: ## Remove containers
 	make stop
-	docker-compose rm
+	docker compose rm
 
 ##
 ## ----------------
@@ -80,7 +80,7 @@ dbmigrate: ## Run db migration
 	${BIN_CONSOLE} doctrine:migrations:migrate -n --all-or-nothing ${ARGS}
 
 dbshell: ## Connect to the database
-	docker-compose exec database psql ${DATABASE_URL}
+	docker compose exec database psql ${DATABASE_URL}
 
 dbfixtures: ## Load tests fixtures
 	make dbmigrate ARGS="--env=test"
@@ -109,7 +109,7 @@ assets: ## Build assets
 	$(NPM) run build
 
 shell: ## Connect to the container
-	docker-compose exec php bash
+	docker compose exec php bash
 
 ##
 ## ----------------

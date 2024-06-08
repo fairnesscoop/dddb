@@ -11,7 +11,7 @@ class SetAndroidCodeNameCommand implements CommandInterface
 {
     public function __construct(
         public Model $model,
-        public string|null $androidCodeName = null,
+        public ?string $androidCodeName = null,
         public int $variant = 0,
     ) {
     }

@@ -21,7 +21,7 @@ final class PublicViewController
     }
 
     #[Route('/public/device/{slug}/{serie}/{modelUuid?}', name: 'app_series_public_view', methods: ['GET'])]
-    public function __invoke(Serie $serie, string|null $modelUuid)
+    public function __invoke(Serie $serie, ?string $modelUuid): Response
     {
         /** @var ModelHeader[] $modelHeaders */
         $modelHeaders = $this->queryBus->handle(new ListSerieModelsQuery($serie));

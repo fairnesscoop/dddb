@@ -19,13 +19,13 @@ interface ModelRepositoryInterface
 
     public function isReferenceUsed(Manufacturer $manufacturer, string $reference, int $variant): bool;
 
-    public function findModelByCodeTac(string $codeTac): ModelHeader|null;
+    public function findModelByCodeTac(string $codeTac): ?ModelHeader;
 
-    public function findModelByUuid(string $modelUuid): Model|null;
+    public function findModelByUuid(string $modelUuid): ?Model;
 
-    public function findModelByReference(string $serieUuid, string $reference, int $variant = null): Model|null;
+    public function findModelByReference(string $serieUuid, string $reference, ?int $variant = null): ?Model;
 
-    public function findModelByAndroidCodeName(string $serieUuid, string $codeName, int $variant = null): Model|null;
+    public function findModelByAndroidCodeName(string $serieUuid, string $codeName, ?int $variant = null): ?Model;
 
     /** return Paginator<Model> */
     public function findPaginatedModels(Serie $serie, int $page, int $pageSize): Paginator;

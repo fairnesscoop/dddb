@@ -15,5 +15,5 @@ interface ManufacturerRepositoryInterface
 
     public function findManufacturers(int $page, int $pageSize): Paginator;
 
-    public function findUuidByName(string $name): string|null;
+    public function findUuidByName(string $name): ?string;
 }

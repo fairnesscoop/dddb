@@ -14,8 +14,8 @@ use App\Domain\Model\Attribute\Memo;
 use App\Domain\Model\Attribute\SupportedOsList;
 use App\Domain\Model\Model;
 use App\Infrastructure\Persistence\Doctrine\Repository\Model\ModelRepository;
-use Symfony\Component\DependencyInjection\Argument\ServiceLocator;
-use Symfony\Component\DependencyInjection\Attribute\TaggedLocator;
+use Psr\Container\ContainerInterface;
+use Symfony\Component\DependencyInjection\Attribute\AutowireLocator;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -24,8 +24,8 @@ class AttributeRepository implements AttributeRepositoryInterface
     public function __construct(
         private readonly AttributeBuilder $attributeBuilder,
         private readonly ModelRepository $modelRepository,
-        #[TaggedLocator(NormalizerInterface::class, defaultIndexMethod: 'supports')]
-        private readonly ServiceLocator $attributeNormalizerLocator,
+        #[AutowireLocator(NormalizerInterface::class, defaultIndexMethod: 'supports')]
+        private readonly ContainerInterface $attributeNormalizerLocator,
         private readonly SerializerInterface $serializer,
     ) {
     }
@@ -44,7 +44,7 @@ class AttributeRepository implements AttributeRepositoryInterface
         ];
     }
 
-    public function createAttributeFromModel(Model $model, string $attributeName): AttributeInterface|null
+    public function createAttributeFromModel(Model $model, string $attributeName): ?AttributeInterface
     {
         return $this->attributeBuilder->createAttributeFromModel($model, $attributeName);
     }

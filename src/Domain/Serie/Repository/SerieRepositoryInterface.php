@@ -14,9 +14,9 @@ interface SerieRepositoryInterface
 
     public function isNameUsed(Manufacturer $manufacturer, string $name): bool;
 
-    public function findPaginatedSeries(int $page, int $pageSize, string|null $manufacturerUuid): Paginator;
+    public function findPaginatedSeries(int $page, int $pageSize, ?string $manufacturerUuid): Paginator;
 
-    public function findUuidByName(string $manufacturerUuid, string $name): string|null;
+    public function findUuidByName(string $manufacturerUuid, string $name): ?string;
 
     public function findAllSerieHeaders(): iterable;
 }

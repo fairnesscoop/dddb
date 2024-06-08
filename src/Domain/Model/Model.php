@@ -10,7 +10,7 @@ class Model
 
     public function __construct(
         private string $uuid,
-        private string|null $reference,
+        private ?string $reference,
         private string $androidCodeName,
         private array $attributes,
         private Serie $serie,
@@ -24,7 +24,7 @@ class Model
         return $this->uuid;
     }
 
-    public function getReference(): string|null
+    public function getReference(): ?string
     {
         return $this->reference;
     }
@@ -62,7 +62,7 @@ class Model
 
     public function setUpdatedAt(\DateTimeInterface $date): void
     {
-        $this->updatedAt = $date;
+        $this->updatedAt = \DateTime::createFromInterface($date);
     }
 
     public function getSerie(): Serie

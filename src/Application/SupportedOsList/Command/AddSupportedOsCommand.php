@@ -12,9 +12,9 @@ class AddSupportedOsCommand implements CommandInterface
 {
     public function __construct(
         public readonly Model $model,
-        public OsVersion|null $osVersion = null,
-        public string|null $helpLink = null,
-        public string|null $comment = null,
+        public ?OsVersion $osVersion = null,
+        public ?string $helpLink = null,
+        public ?string $comment = null,
     ) {
     }
 }

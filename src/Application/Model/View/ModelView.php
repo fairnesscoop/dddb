@@ -12,7 +12,7 @@ readonly class ModelView
         public string $uuid,
         public string $androidCodeName,
         public int $variant,
-        public string|null $reference,
+        public ?string $reference,
         public AttributeCollection $attributes,
         public iterable $codeTacs,
         public \DateTimeInterface $updatedAt,
