@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block canonical -%}
+  {%- if isDefaultModel -%}
+    <link rel="canonical" href="{{ url('app_series_public_view', {
+                  'slug': "#{serie.manufacturer}-#{serie.name}"|slug,
+                  'serie': serie.uuid,
+                  'modelUuid': selectedModel.uuid,
+                }) }}" />
+  {%- endif -%}
+{%- endblock %}
+
 {% block body %}
   <header class="bg-teal-700 px-6 pt-2 pb-3 text-teal-100 flex flex-wrap gap-4 items-end">
     <a href="{{ path('app_series_public_list') }}" class="text-[36px]/[26px] font-black text-teal-400">
