@@ -26,8 +26,10 @@ final class PublicViewController
         /** @var ModelHeader[] $modelHeaders */
         $modelHeaders = $this->queryBus->handle(new ListSerieModelsQuery($serie));
 
+        $isDefaultModel = false;
         if (\is_null($modelUuid)) {
             $modelUuid = $modelHeaders[0]->uuid;
+            $isDefaultModel = true;
         }
         $model = $this->queryBus->handle(new ModelQuery($modelUuid));
 
@@ -38,6 +40,7 @@ final class PublicViewController
                     'serie' => $serie,
                     'models' => $modelHeaders,
                     'selectedModel' => $model,
+                    'isDefaultModel' => $isDefaultModel,
                 ],
             ),
         );

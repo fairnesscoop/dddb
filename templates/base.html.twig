@@ -12,6 +12,7 @@
     <link
     rel="shortcut icon" href="{{ asset('build/favicon/favicon.ico') }}" type="image/x-icon">
     <link rel="manifest" href="{{ path('app_webmanifest')}}" crossorigin="use-credentials">
+    {% block canonical %}{% endblock %}
 
     <title>
       {% block title %}
