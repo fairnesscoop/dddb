@@ -73,6 +73,6 @@ final class ListUsersQueryHandlerTest extends TestCase
 
         $result = $handler($query);
 
-        $this->assertEquals($pagination, $result);
+        self::assertEquals($pagination, $result);
     }
 }

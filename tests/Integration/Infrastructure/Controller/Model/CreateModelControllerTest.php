@@ -32,8 +32,8 @@ final class CreateModelControllerTest extends AbstractWebTestCase
         $repository = $entityManager->getRepository(Model::class);
         $insertedEntity = $repository->findOneBy(['reference' => 'FP4-2022']);
         $this->assertInstanceOf(Model::class, $insertedEntity);
-        $this->assertEquals('android-fp4', $insertedEntity->getAndroidCodeName());
-        $this->assertEquals('Serie 4', $insertedEntity->getSerie()->getName());
+        self::assertEquals('android-fp4', $insertedEntity->getAndroidCodeName());
+        self::assertEquals('Serie 4', $insertedEntity->getSerie()->getName());
     }
 
     public function testReferenceAlreadyExists(): void

@@ -54,7 +54,7 @@ final class CreateManufacturerCommandHandlerTest extends TestCase
         $command = new CreateManufacturerCommand($name);
 
         $result = $handler($command);
-        $this->assertEquals($manufacturer, $result);
+        self::assertEquals($manufacturer, $result);
     }
 
     public function testAlreadyExists(): void

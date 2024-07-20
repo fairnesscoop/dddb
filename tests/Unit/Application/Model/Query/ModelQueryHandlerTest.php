@@ -69,7 +69,7 @@ final class ModelQueryHandlerTest extends TestCase
         $query = new ModelQuery(ModelFactory::MODEL_UUID);
         $result = ($this->handler)($query);
 
-        $this->assertEquals($expectedView, $result);
+        self::assertEquals($expectedView, $result);
     }
 
     public function testModelNotFound(): void

@@ -16,8 +16,8 @@ class ListModelsControllerTest extends AbstractWebTestCase
         $this->assertSame('Models list for Fairphone Serie 4', $crawler->filter('h1')->text());
 
         $firstRow = $crawler->filter('tbody tr:first-child');
-        $this->assertEquals('FP4', $firstRow->filter('td:first-child')->text());
-        $this->assertEquals('android-fp4', $firstRow->filter('td:nth-child(2)')->text());
+        self::assertEquals('FP4', $firstRow->filter('td:first-child')->text());
+        self::assertEquals('android-fp4', $firstRow->filter('td:nth-child(2)')->text());
         $this->assertEmpty($firstRow->filter('td:nth-child(3)')->text());
     }
 

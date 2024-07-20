@@ -26,24 +26,26 @@ class AddSupportedOsCommandHandler
         if ($attributes->has(SupportedOsList::NAME)) {
             /** @var SupportedOsList $supportedOsListAttribute */
             $supportedOsListAttribute = $attributes->get(SupportedOsList::NAME);
-            $newSupportedOs = new SupportedOs(
-                $this->getNextId($supportedOsListAttribute),
-                $command->osVersion,
-                $command->helpLink,
-                $command->comment,
-            );
+            $newSupportedOs = $this->createSupportedOs($this->getNextId($supportedOsListAttribute), $command);
             $supportedOsListAttribute->add($newSupportedOs);
         } else {
-            $newSupportedOs = new SupportedOs(
-                1,
-                $command->osVersion,
-                $command->helpLink,
-                $command->comment,
-            );
+            $newSupportedOs = $this->createSupportedOs(1, $command);
             $supportedOsListAttribute = new SupportedOsList([$newSupportedOs]);
         }
 
         $this->attributeRepository->updateModelAttribute($command->model, SupportedOsList::NAME, $supportedOsListAttribute);
+    }
+
+    private function createSupportedOs(int $osId, AddSupportedOsCommand $command): SupportedOs
+    {
+        return new SupportedOs(
+            $osId,
+            $command->osVersion,
+            $command->helpLink,
+            $command->comment,
+            $command->recoveryIpfsCid,
+            $command->romIpfsCid,
+        );
     }
 
     private function getNextId(SupportedOsList $attribute): int

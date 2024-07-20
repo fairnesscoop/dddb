@@ -12,12 +12,12 @@ class BatteryNormalizerTest extends TestCase
     {
         $normalizer = new BatteryNormalizer();
         $result = $normalizer->normalize(new Battery(['REF-123']));
-        $this->assertEquals(['REF-123'], $result);
+        self::assertEquals(['REF-123'], $result);
     }
 
     public function testSupports(): void
     {
         $normalizer = new BatteryNormalizer();
-        $this->assertEquals(Battery::NAME, $normalizer->supports(Battery::NAME));
+        self::assertEquals(Battery::NAME, $normalizer->supports(Battery::NAME));
     }
 }

@@ -514,6 +514,14 @@
                 <source>attributes.supportedOsList.form.comment</source>
                 <target>Commentaire</target>
             </trans-unit>
+            <trans-unit id="attributes.supportedOsList.form.recoveryIpfsCid">
+                <source>attributes.supportedOsList.form.recoveryIpfsCid</source>
+                <target>Fichier recovery (ipfs CID)</target>
+            </trans-unit>
+            <trans-unit id="attributes.supportedOsList.form.romIpfsCid">
+                <source>attributes.supportedOsList.form.romIpfsCid</source>
+                <target>Fichier ROM (ipfs CID)</target>
+            </trans-unit>
             <trans-unit id="attributes.memo.title">
                 <source>attributes.memo.title</source>
                 <target>Note</target>

@@ -61,7 +61,7 @@ final class CreateModelCommandHandlerTest extends TestCase
         $command = new CreateModelCommand($serie, $reference, $androidCodeName, null);
 
         $result = ($this->handler)($command);
-        $this->assertEquals($model, $result);
+        self::assertEquals($model, $result);
     }
 
     public function testAlreadyExists(): void
