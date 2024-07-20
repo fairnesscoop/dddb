@@ -56,7 +56,7 @@ final class CreateSerieCommandHandlerTest extends TestCase
         $command = new CreateSerieCommand($name, $manufacturer);
 
         $result = $handler($command);
-        $this->assertEquals($serie, $result);
+        self::assertEquals($serie, $result);
     }
 
     public function testAlreadyExists(): void

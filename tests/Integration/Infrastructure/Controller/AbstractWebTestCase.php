@@ -33,7 +33,7 @@ abstract class AbstractWebTestCase extends WebTestCase
 
     protected function assertMetaTitle(string $title, Crawler $crawler): void
     {
-        $this->assertEquals($title, $crawler->filter('title')->text());
+        self::assertEquals($title, $crawler->filter('title')->text());
     }
 
     protected function assertSecurityHeaders(): void

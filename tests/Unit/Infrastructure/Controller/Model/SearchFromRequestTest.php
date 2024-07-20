@@ -51,7 +51,7 @@ final class SearchFromRequestTest extends TestCase
         $request = new Request(['search' => 'Fairphone 3']);
         $result = $this->searchFromRequest->searchModels($request);
 
-        $this->assertEquals(new SearchResultView($expectedModels, 'Fairphone 3'), $result);
+        self::assertEquals(new SearchResultView($expectedModels, 'Fairphone 3'), $result);
     }
 
     public function testEmptyQuery(): void
@@ -62,7 +62,7 @@ final class SearchFromRequestTest extends TestCase
         $request->setSession($this->createSessionMock());
         $result = $this->searchFromRequest->searchModels($request);
 
-        $this->assertEquals(new SearchResultView([], ''), $result);
+        self::assertEquals(new SearchResultView([], ''), $result);
     }
 
     public function testNoQuery(): void
@@ -73,7 +73,7 @@ final class SearchFromRequestTest extends TestCase
         $request->setSession($this->createSessionMock());
         $result = $this->searchFromRequest->searchModels($request);
 
-        $this->assertEquals(new SearchResultView([], ''), $result);
+        self::assertEquals(new SearchResultView([], ''), $result);
     }
 
     public function testTooLongQuery(): void
@@ -84,7 +84,7 @@ final class SearchFromRequestTest extends TestCase
         $request->setSession($this->createSessionMock());
         $result = $this->searchFromRequest->searchModels($request);
 
-        $this->assertEquals(new SearchResultView([], ''), $result);
+        self::assertEquals(new SearchResultView([], ''), $result);
     }
 
     private function createSessionMock(): MockObject|FlashBagAwareSessionInterface

@@ -15,8 +15,8 @@ class SearchModelsControllerTest extends AbstractWebTestCase
         $this->assertSame('fairphone fp4', $crawler->filter('h1')->text());
 
         $firstRow = $crawler->filter('tbody tr:first-child');
-        $this->assertEquals('Fairphone', $firstRow->filter('td:first-child')->text());
-        $this->assertEquals('Serie 4', $firstRow->filter('td:nth-child(2)')->text());
+        self::assertEquals('Fairphone', $firstRow->filter('td:first-child')->text());
+        self::assertEquals('Serie 4', $firstRow->filter('td:nth-child(2)')->text());
     }
 
     public function testTacSearch(): void
@@ -27,8 +27,8 @@ class SearchModelsControllerTest extends AbstractWebTestCase
         $this->assertResponseStatusCodeSame(200);
 
         $firstRow = $crawler->filter('tbody tr:first-child');
-        $this->assertEquals('Fairphone', $firstRow->filter('td:first-child')->text());
-        $this->assertEquals('Serie 4', $firstRow->filter('td:nth-child(2)')->text());
+        self::assertEquals('Fairphone', $firstRow->filter('td:first-child')->text());
+        self::assertEquals('Serie 4', $firstRow->filter('td:nth-child(2)')->text());
     }
 
     public function testUnauthenticatedUser(): void

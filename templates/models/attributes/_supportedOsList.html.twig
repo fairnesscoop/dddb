@@ -39,6 +39,21 @@
             {{ supportedOs.comment }}
           </p>
         {% endif %}
+
+        {% if supportedOs.recoveryIpfsCid is not empty %}
+        <p class="py-1 before:content-['📦']">
+          Recovery ipfs CID:
+          <span class="font-mono bg-gray-100 rounded px-2 py-1">{{ supportedOs.recoveryIpfsCid }}</span>
+        </p>
+        {% endif %}
+
+        {% if supportedOs.romIpfsCid is not empty %}
+        <p class="py-1 before:content-['📦']">
+          ROM ipfs CID:
+          <span class="font-mono bg-gray-100 rounded px-2 py-1">{{ supportedOs.romIpfsCid }}</span>
+        </p>
+
+        {% endif %}
       </li>
       {% endfor %}
     </ul>

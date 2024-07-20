@@ -17,17 +17,19 @@ class SupportedOsListNormalizerTest extends TestCase
 
         $normalizer = new SupportedOsListNormalizer();
         $result = $normalizer->normalize($supportedOsList);
-        $this->assertEquals([[
+        self::assertEquals([[
             'id' => 42,
             'osVersionId' => 1,
             'helpLink' => 'http://example.com',
-            'comment' => 'Hello world'
+            'comment' => 'Hello world',
+            'recoveryIpfsCid' => null,
+            'romIpfsCid' => null,
         ]], $result);
     }
 
     public function testSupports(): void
     {
         $normalizer = new SupportedOsListNormalizer();
-        $this->assertEquals(SupportedOsList::NAME, $normalizer->supports(SupportedOsList::NAME));
+        self::assertEquals(SupportedOsList::NAME, $normalizer->supports());
     }
 }

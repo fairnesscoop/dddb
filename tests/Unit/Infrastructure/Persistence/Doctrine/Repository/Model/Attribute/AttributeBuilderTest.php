@@ -43,6 +43,6 @@ final class AttributeBuilderTest extends TestCase
         $expectedAttributes = new AttributeCollection([Battery::NAME => new Battery($references)]);
 
         $result = $this->builder->createAttributeCollection([Battery::NAME => $references]);
-        $this->assertEquals($expectedAttributes, $result);
+        self::assertEquals($expectedAttributes, $result);
     }
 }

@@ -19,6 +19,8 @@ class SupportedOsListNormalizer implements NormalizerInterface
                 'osVersionId' => $supportedOs->osVersion->getId(),
                 'helpLink' => $supportedOs->helpLink,
                 'comment' => $supportedOs->comment,
+                'recoveryIpfsCid' => $supportedOs->recoveryIpfsCid,
+                'romIpfsCid' => $supportedOs->romIpfsCid,
             ],
             $attribute->getValue(),
         );

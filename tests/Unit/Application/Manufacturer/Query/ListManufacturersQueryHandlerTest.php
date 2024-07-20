@@ -45,7 +45,7 @@ final class ListManufacturersQueryHandlerTest extends TestCase
 
         $this->assertInstanceOf(Pagination::class, $result);
         $this->assertIsIterable($result->items);
-        $this->assertEquals(1, $result->totalItems);
-        $this->assertEquals([1], $result->windowPages);
+        self::assertEquals(1, $result->totalItems);
+        self::assertEquals([1], $result->windowPages);
     }
 }

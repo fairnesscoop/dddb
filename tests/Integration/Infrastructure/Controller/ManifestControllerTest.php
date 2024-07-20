@@ -16,6 +16,6 @@ final class ManifestControllerTest extends AbstractWebTestCase
         $this->assertResponseIsSuccessful();
 
         $response = json_decode($client->getResponse()->getContent(), associative: true);
-        $this->assertEquals("Base de données d'appareils numériques", $response['name']);
+        self::assertEquals("Base de données d'appareils numériques", $response['name']);
     }
 }

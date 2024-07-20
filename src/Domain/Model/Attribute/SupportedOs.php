@@ -13,6 +13,8 @@ class SupportedOs
         public readonly Version $osVersion,
         public readonly ?string $helpLink,
         public readonly ?string $comment,
+        public readonly ?string $recoveryIpfsCid = null,
+        public readonly ?string $romIpfsCid = null,
     ) {
     }
 }

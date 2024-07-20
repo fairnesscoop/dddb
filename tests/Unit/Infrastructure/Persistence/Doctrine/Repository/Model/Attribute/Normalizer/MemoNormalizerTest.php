@@ -12,12 +12,12 @@ class MemoNormalizerTest extends TestCase
     {
         $normalizer = new MemoNormalizer();
         $result = $normalizer->normalize(new Memo('Important note about model'));
-        $this->assertEquals('Important note about model', $result);
+        self::assertEquals('Important note about model', $result);
     }
 
     public function testSupports(): void
     {
         $normalizer = new MemoNormalizer();
-        $this->assertEquals(Memo::NAME, $normalizer->supports(Memo::NAME));
+        self::assertEquals(Memo::NAME, $normalizer->supports(Memo::NAME));
     }
 }

@@ -16,6 +16,11 @@ class SupportedOsListDenormalizer implements DenormalizerInterface
         return new SupportedOsList($this->createList($value));
     }
 
+    /**
+     * @param array<array<string|int|null>> $internalValues
+     *
+     * @return iterable<SupportedOs>
+     */
     private function createList(array $internalValues): iterable
     {
         static $osVersionList = new OsVersionList();
@@ -26,6 +31,8 @@ class SupportedOsListDenormalizer implements DenormalizerInterface
                 $osVersionList->getById($internalValue['osVersionId']),
                 $internalValue['helpLink'],
                 $internalValue['comment'],
+                $internalValue['recoveryIpfsCid'] ?? null,
+                $internalValue['romIpfsCid'] ?? null,
             ),
             $internalValues,
         );

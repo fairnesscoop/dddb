@@ -10,6 +10,7 @@ use App\Domain\Os\Version as OsVersion;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -45,6 +46,22 @@ final class AddSupportedOsFormType extends AbstractType
                 TextareaType::class,
                 options: [
                     'label' => 'attributes.supportedOsList.form.comment',
+                    'required' => false,
+                ],
+            )
+            ->add(
+                'recoveryIpfsCid',
+                TextType::class,
+                options: [
+                    'label' => 'attributes.supportedOsList.form.recoveryIpfsCid',
+                    'required' => false,
+                ],
+            )
+            ->add(
+                'romIpfsCid',
+                TextType::class,
+                options: [
+                    'label' => 'attributes.supportedOsList.form.romIpfsCid',
                     'required' => false,
                 ],
             );

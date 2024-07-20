@@ -50,7 +50,7 @@ final class CreateCodeTacCommandHandlerTest extends TestCase
         $command = new CreateCodeTacCommand($model, '12345678');
 
         $result = ($this->handler)($command);
-        $this->assertEquals($codeTacEntity, $result);
+        self::assertEquals($codeTacEntity, $result);
     }
 
     public function testAlreadyExists(): void

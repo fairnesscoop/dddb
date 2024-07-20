@@ -29,7 +29,7 @@ final class ListSeriesControllerTest extends AbstractWebTestCase
         $this->assertResponseStatusCodeSame(200);
 
         $this->assertSelectorTextSame('tbody tr td', 'Fairphone');
-        $this->assertEquals(0, $crawler->filter('tbody tr td:contains("Google")')->count());
+        self::assertEquals(0, $crawler->filter('tbody tr td:contains("Google")')->count());
     }
 
     public function testUnauthenticatedUser(): void
