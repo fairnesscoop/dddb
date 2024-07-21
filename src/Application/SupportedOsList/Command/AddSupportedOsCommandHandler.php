@@ -43,8 +43,8 @@ class AddSupportedOsCommandHandler
             $command->osVersion,
             $command->helpLink,
             $command->comment,
-            $command->recoveryIpfsCid,
-            $command->romIpfsCid,
+            $command->recoveryFileUrl,
+            $command->romFileUrl,
         );
     }
 

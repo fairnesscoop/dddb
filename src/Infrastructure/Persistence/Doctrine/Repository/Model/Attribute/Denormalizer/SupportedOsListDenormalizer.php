@@ -31,8 +31,8 @@ class SupportedOsListDenormalizer implements DenormalizerInterface
                 $osVersionList->getById($internalValue['osVersionId']),
                 $internalValue['helpLink'],
                 $internalValue['comment'],
-                $internalValue['recoveryIpfsCid'] ?? null,
-                $internalValue['romIpfsCid'] ?? null,
+                $internalValue['recoveryFileUrl'] ?? null,
+                $internalValue['romFileUrl'] ?? null,
             ),
             $internalValues,
         );
