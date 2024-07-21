@@ -15,8 +15,8 @@ class AddSupportedOsCommand implements CommandInterface
         public ?OsVersion $osVersion = null,
         public ?string $helpLink = null,
         public ?string $comment = null,
-        public ?string $recoveryIpfsCid = null,
-        public ?string $romIpfsCid = null,
+        public ?string $recoveryFileUrl = null,
+        public ?string $romFileUrl = null,
     ) {
     }
 }

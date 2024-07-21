@@ -22,8 +22,8 @@ class SupportedOsListNormalizerTest extends TestCase
             'osVersionId' => 1,
             'helpLink' => 'http://example.com',
             'comment' => 'Hello world',
-            'recoveryIpfsCid' => null,
-            'romIpfsCid' => null,
+            'recoveryFileUrl' => null,
+            'romFileUrl' => null,
         ]], $result);
     }
 

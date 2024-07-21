@@ -514,13 +514,13 @@
                 <source>attributes.supportedOsList.form.comment</source>
                 <target>Comment</target>
             </trans-unit>
-            <trans-unit id="attributes.supportedOsList.form.recoveryIpfsCid">
-                <source>attributes.supportedOsList.form.recoveryIpfsCid</source>
-                <target>Recovery file (ipfs CID)</target>
+            <trans-unit id="attributes.supportedOsList.form.recoveryFileUrl">
+                <source>attributes.supportedOsList.form.recoveryFileUrl</source>
+                <target>Recovery file URL</target>
             </trans-unit>
-            <trans-unit id="attributes.supportedOsList.form.romIpfsCid">
-                <source>attributes.supportedOsList.form.romIpfsCid</source>
-                <target>ROM file (ipfs CID)</target>
+            <trans-unit id="attributes.supportedOsList.form.romFileUrl">
+                <source>attributes.supportedOsList.form.romFileUrl</source>
+                <target>ROM file URL</target>
             </trans-unit>
             <trans-unit id="attributes.memo.title">
                 <source>attributes.memo.title</source>

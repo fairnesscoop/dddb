@@ -40,18 +40,18 @@
           </p>
         {% endif %}
 
-        {% if supportedOs.recoveryIpfsCid is not empty %}
-        <p class="py-1 before:content-['📦']">
-          Recovery ipfs CID:
-          <span class="font-mono bg-gray-100 rounded px-2 py-1">{{ supportedOs.recoveryIpfsCid }}</span>
-        </p>
+        {% if supportedOs.recoveryFileUrl is not empty %}
+        <a class="py-1 before:content-['📦'] block" href="{{ supportedOs.recoveryFileUrl }}">
+          {{ 'attributes.supportedOsList.form.recoveryFileUrl'|trans }}
+          <span class="font-mono bg-gray-100 rounded px-2 py-1">{{ supportedOs.recoveryFileUrl }}</span>
+        </a>
         {% endif %}
 
-        {% if supportedOs.romIpfsCid is not empty %}
-        <p class="py-1 before:content-['📦']">
-          ROM ipfs CID:
-          <span class="font-mono bg-gray-100 rounded px-2 py-1">{{ supportedOs.romIpfsCid }}</span>
-        </p>
+        {% if supportedOs.romFileUrl is not empty %}
+        <a class="py-1 before:content-['📦'] block" href="{{ supportedOs.romFileUrl }}">
+          {{ 'attributes.supportedOsList.form.romFileUrl'|trans }}
+          <span class="font-mono bg-gray-100 rounded px-2 py-1">{{ supportedOs.romFileUrl }}</span>
+        </a>
 
         {% endif %}
       </li>
