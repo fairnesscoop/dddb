@@ -84,7 +84,7 @@ class ImportLineageModelCommand extends Command
 
         $existingManufacturerUuid = $this->manufacturerRepository->findUuidByName($lineageModel->vendor);
         if ($existingManufacturerUuid === null) {
-            $question = sprintf('"%s" manufacturer not found, do you want to create it?', $lineageModel->vendor);
+            $question = \sprintf('"%s" manufacturer not found, do you want to create it?', $lineageModel->vendor);
             $response = $this->io->askQuestion(new ConfirmationQuestion($question));
             if ($response === false) {
                 $this->io->warning('Model not imported');
@@ -102,7 +102,7 @@ class ImportLineageModelCommand extends Command
 
         $existingSerieUuid = $this->serieRepository->findUuidByName($manufacturerUuid, $lineageModel->name);
         if ($existingSerieUuid === null) {
-            $question = sprintf('"%s" serie not found, do you want to create it?', $lineageModel->name);
+            $question = \sprintf('"%s" serie not found, do you want to create it?', $lineageModel->name);
             $response = $this->io->askQuestion(new ConfirmationQuestion($question));
             if ($response === false) {
                 $this->io->warning('Model not imported');
