@@ -87,7 +87,7 @@ final class SerieRepository extends ServiceEntityRepository implements SerieRepo
 
         return $this->createQueryBuilder('s')
             ->select(
-                sprintf('NEW %s(s.uuid, s.name, m.name)', SerieHeader::class),
+                \sprintf('NEW %s(s.uuid, s.name, m.name)', SerieHeader::class),
             )
             ->join('s.manufacturer', 'm')
             ->where($expr->exists($subQb->getDQL()))

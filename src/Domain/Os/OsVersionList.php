@@ -60,7 +60,7 @@ class OsVersionList implements \Iterator
             }
         }
 
-        throw new \InvalidArgumentException(sprintf('Id #%d has no corresponding OS version', $osVersionId));
+        throw new \InvalidArgumentException(\sprintf('Id #%d has no corresponding OS version', $osVersionId));
     }
 
     public function getLineageOsVersion(string $version): Version

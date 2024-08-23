@@ -24,7 +24,7 @@ final class ModelQueryHandler
         $modelEntity = $this->modelRepository->findModelByUuid($query->modelUuid);
 
         if (\is_null($modelEntity)) {
-            throw new ModelNotFoundException(sprintf('Model #%s not found', $query->modelUuid));
+            throw new ModelNotFoundException(\sprintf('Model #%s not found', $query->modelUuid));
         }
 
         $attributeCollection = $this->mergedAttributeBuilder->getMergedAttributes($modelEntity);

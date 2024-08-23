@@ -148,7 +148,7 @@ final class ModelRepository extends ServiceEntityRepository implements ModelRepo
     {
         return $this->createQueryBuilder('m')
             ->select(
-                sprintf('NEW %s(m.uuid, m.reference, m.androidCodeName, m.variant)', ModelHeader::class),
+                \sprintf('NEW %s(m.uuid, m.reference, m.androidCodeName, m.variant)', ModelHeader::class),
             )
             ->andWhere('m.serie = :serie')
             ->setParameter('serie', $serie)

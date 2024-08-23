@@ -77,7 +77,7 @@ class ImportEOsModelCommand extends Command
 
         $existingManufacturerUuid = $this->manufacturerRepository->findUuidByName($eOsModel->vendor);
         if ($existingManufacturerUuid === null) {
-            $question = sprintf('"%s" manufacturer not found, do you want to create it?', $eOsModel->vendor);
+            $question = \sprintf('"%s" manufacturer not found, do you want to create it?', $eOsModel->vendor);
             $response = $io->askQuestion(new ConfirmationQuestion($question));
             if ($response === false) {
                 $io->warning('Model not imported');
@@ -97,7 +97,7 @@ class ImportEOsModelCommand extends Command
         $existingSerieUuid = $this->serieRepository->findUuidByName($manufacturerUuid, $serieName);
 
         if ($existingSerieUuid === null) {
-            $question = sprintf('"%s" serie not found, do you want to create it?', $serieName);
+            $question = \sprintf('"%s" serie not found, do you want to create it?', $serieName);
             $response = $io->askQuestion(new ConfirmationQuestion($question));
             if ($response === false) {
                 $io->warning('Model not imported');

@@ -18,10 +18,6 @@ Encore
     from: './assets/favicon',
     to: 'favicon/[path][name].[hash:8s].[ext]'
   })
-  .copyFiles({
-    from: './assets/favicon/favicon.ico',
-    to: 'favicon.ico'
-  })
 
   /*
    * ENTRY CONFIG

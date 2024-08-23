@@ -25,7 +25,7 @@ class Version
 
     public function getFullName(): string
     {
-        return sprintf('%s %s', $this->os->getName(), $this->name);
+        return \sprintf('%s %s', $this->os->getName(), $this->name);
     }
 
     public function getOs(): Os
