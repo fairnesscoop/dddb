@@ -37,6 +37,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 class ImportEOsModelCommand extends Command
 {
     private ?Model $mainModel = null;
+    private SymfonyStyle $io;
 
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
@@ -59,11 +60,11 @@ class ImportEOsModelCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $io = new SymfonyStyle($input, $output);
+        $this->io = new SymfonyStyle($input, $output);
         $filename = $input->getArgument('filename');
 
         if (!file_exists($filename)) {
-            $io->error("{$filename}: File not found");
+            $this->io->error("{$filename}: File not found");
 
             return Command::FAILURE;
         }
@@ -78,9 +79,9 @@ class ImportEOsModelCommand extends Command
         $existingManufacturerUuid = $this->manufacturerRepository->findUuidByName($eOsModel->vendor);
         if ($existingManufacturerUuid === null) {
             $question = \sprintf('"%s" manufacturer not found, do you want to create it?', $eOsModel->vendor);
-            $response = $io->askQuestion(new ConfirmationQuestion($question));
+            $response = $this->io->askQuestion(new ConfirmationQuestion($question));
             if ($response === false) {
-                $io->warning('Model not imported');
+                $this->io->warning('Model not imported');
 
                 return Command::FAILURE;
             }
@@ -88,7 +89,7 @@ class ImportEOsModelCommand extends Command
             /** @var Manufacturer $manufacturer */
             $manufacturer = $this->commandBus->handle(new CreateManufacturerCommand($eOsModel->vendor));
             $manufacturerUuid = $manufacturer->getUuid();
-            $io->info("Manufacturer {$manufacturer->getName()} created");
+            $this->io->info("Manufacturer {$manufacturer->getName()} created");
         } else {
             $manufacturerUuid = $existingManufacturerUuid;
         }
@@ -98,9 +99,9 @@ class ImportEOsModelCommand extends Command
 
         if ($existingSerieUuid === null) {
             $question = \sprintf('"%s" serie not found, do you want to create it?', $serieName);
-            $response = $io->askQuestion(new ConfirmationQuestion($question));
+            $response = $this->io->askQuestion(new ConfirmationQuestion($question));
             if ($response === false) {
-                $io->warning('Model not imported');
+                $this->io->warning('Model not imported');
 
                 return Command::FAILURE;
             }
@@ -109,7 +110,7 @@ class ImportEOsModelCommand extends Command
             /** @var Serie $serie */
             $serie = $this->commandBus->handle(new CreateSerieCommand($serieName, $manufacturerReference));
             $serieUuid = $serie->getUuid();
-            $io->info("Serie {$serie->getName()} created");
+            $this->io->info("Serie {$serie->getName()} created");
         } else {
             $serieUuid = $existingSerieUuid;
         }
@@ -119,6 +120,11 @@ class ImportEOsModelCommand extends Command
             $modelReferences = [null];
         }
         foreach ($modelReferences as $modelReference) {
+            $this->io->info(
+                "{$eOsModel->vendor} {$eOsModel->name} {$modelReference} [{$eOsModel->codename}] " .
+                " eos buildVersionStable: {$eOsModel->buildVersionStable} - eos buildVersionDev: {$eOsModel->buildVersionDev}",
+            );
+
             if ($modelReference === null) {
                 $existingModel = $this->modelRepository->findModelByAndroidCodeName($serieUuid, $eOsModel->codename);
             } else {
@@ -126,7 +132,7 @@ class ImportEOsModelCommand extends Command
             }
             if (\is_null($existingModel)) {
                 $this->createModel($serieUuid, $modelReference, $eOsModel->codename, $eOsModel->buildVersionDev, $eOsModel->buildVersionStable);
-                $io->info("Model {$serieName} {$modelReference} has been imported.");
+                $this->io->info("Model {$serieName} {$modelReference} has been imported.");
             } elseif ($this->mainModel === null) {
                 $attributes = $this->attributeRepository->getModelAttributes($existingModel);
                 if (!$this->hasEOsVersion($attributes)) {
@@ -210,9 +216,10 @@ class ImportEOsModelCommand extends Command
         'haydn' => 'Mi 11i',
         'hlte' => 'Galaxy Note 3 LTE (N9005/P)',
         'j7elte' => 'Galaxy J7 (2015)',
+        'jfltexx' => 'Galaxy S4 (GT-I9505, SGH-I337M, SGH-M919/V)',
         'kane' => 'one vision',
         'kiev' => 'moto g 5G',
-        'klte' => 'Galaxy S5 LTE (G900F/M/R4/R7/T/V/W8)',
+        'klte' => 'Galaxy S5 LTE (G900F/M/R4/R7/T/T3/V/W8)',
         'klteactivexx' => 'Galaxy S5 Active (G870F)',
         'land' => 'Redmi 3S / 3X',
         'lisa' => '11 Lite 5G NE',
