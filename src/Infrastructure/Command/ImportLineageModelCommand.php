@@ -82,6 +82,12 @@ class ImportLineageModelCommand extends Command
         /** @var LineageModel $lineageModel */
         $lineageModel = $this->serializer->deserialize(file_get_contents($filename), LineageModel::class, YamlEncoder::FORMAT);
 
+        if ($this->isCodeNameBlocked($lineageModel->codename)) {
+            $this->io->warning('codename excluded');
+
+            return Command::INVALID;
+        }
+
         $existingManufacturerUuid = $this->manufacturerRepository->findUuidByName($lineageModel->vendor);
         if ($existingManufacturerUuid === null) {
             $question = \sprintf('"%s" manufacturer not found, do you want to create it?', $lineageModel->vendor);
@@ -225,5 +231,17 @@ class ImportLineageModelCommand extends Command
                 $currentVersion->comment,
             );
         }
+    }
+
+    private function isCodeNameBlocked(string $codename): bool
+    {
+        return \in_array($codename, [
+            'foster_tab',
+            'mdarcy_tab',
+            'nx_tab',
+            'porg_tab',
+            'quill_tab',
+            's3ve3gxx',
+        ]);
     }
 }
