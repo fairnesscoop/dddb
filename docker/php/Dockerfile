@@ -43,4 +43,6 @@ RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | b
 RUN curl -sSk https://getcomposer.org/installer | php -- --disable-tls && \
    mv composer.phar /usr/local/bin/composer
 
+RUN git config --global --add safe.directory /var/www/device-referential
+
 CMD ["php-fpm"]
