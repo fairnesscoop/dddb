@@ -38,6 +38,7 @@ class OsVersionList implements \Iterator
             new Version(6, '15', $lineage),
             new Version(7, '14', $lineage),
             new Version(11, '13', $lineage),
+            new Version(23, 'U', $eOs),
             new Version(12, 'T', $eOs),
             new Version(8, 'S', $eOs),
             new Version(10, 'R', $eOs),
