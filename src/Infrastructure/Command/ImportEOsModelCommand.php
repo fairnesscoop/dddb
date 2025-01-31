@@ -72,6 +72,12 @@ class ImportEOsModelCommand extends Command
         /** @var EOsModel $eOsModel */
         $eOsModel = $this->serializer->deserialize(file_get_contents($filename), EOsModel::class, YamlEncoder::FORMAT);
 
+        if ($this->isCodeNameBlocked($eOsModel->codename)) {
+            $this->io->warning('codename excluded');
+
+            return Command::INVALID;
+        }
+
         // Check if version is supported
         $osList = new OsVersionList();
         $osList->getEOsVersion($eOsModel->buildVersionDev);
@@ -240,4 +246,11 @@ class ImportEOsModelCommand extends Command
         'victara' => 'moto x (2014)',
         'zl1' => 'Le Pro3',
     ];
+
+    private function isCodeNameBlocked(string $codename): bool
+    {
+        return \in_array($codename, [
+            's3ve3gxx',
+        ]);
+    }
 }
