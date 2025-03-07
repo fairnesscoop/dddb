@@ -41,8 +41,10 @@ class SearchRepository implements SearchRepositoryInterface
         $termQueryBuilder->setParameter('words', $queryTerms, ArrayParameterType::STRING);
 
         foreach ($queryTerms as $index => $termValue) {
-            $termQueryBuilder->orWhere($termQueryBuilder->expr()->like('word', ":word{$index}"));
-            $termQueryBuilder->setParameter("word{$index}", $termValue . '%');
+            $termQueryBuilder->orWhere($termQueryBuilder->expr()->like('word', ":wordPrefix{$index}"));
+            $termQueryBuilder->setParameter("wordPrefix{$index}", $termValue . '%');
+            $termQueryBuilder->orWhere("word % :word{$index}");
+            $termQueryBuilder->setParameter("word{$index}", $termValue);
         }
 
         $termQueryBuilder->groupBy('term.model_uuid');
