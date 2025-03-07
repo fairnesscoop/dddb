@@ -9,20 +9,21 @@ use App\Domain\Model\Attribute\Memo;
 use App\Domain\Model\Attribute\SupportedOsList;
 use App\Domain\Model\CodeTac;
 use App\Domain\Model\Model;
+use App\Domain\Model\Serie;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 final class ModelFixture extends Fixture implements DependentFixtureInterface
 {
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [SerieFixture::class];
     }
 
     public function load(ObjectManager $manager): void
     {
-        $fairphone4Serie = $this->getReference('fairphone4');
+        $fairphone4Serie = $this->getReference('fairphone4', Serie::class);
         $fp4Model = new Model(
             'b4b0f83d-b70a-461d-a822-1f4451111efc',
             'FP4',
