@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ListModelsQueryHandlerTest extends TestCase
 {
-    private MockObject|ModelRepositoryInterface $modelRepository;
+    private MockObject&ModelRepositoryInterface $modelRepository;
     private ListModelsQueryHandler $handler;
 
     public function setUp(): void
@@ -28,7 +28,7 @@ final class ListModelsQueryHandlerTest extends TestCase
 
     public function testList(): void
     {
-        /** @var MockObject|Paginator $paginator */
+        /** @var MockObject&Paginator $paginator */
         $paginator = $this->createMock(Paginator::class);
         $paginator->expects(self::once())->method('count')->willReturn(1);
 

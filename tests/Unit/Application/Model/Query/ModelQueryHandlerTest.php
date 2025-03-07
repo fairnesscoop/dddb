@@ -19,9 +19,9 @@ use PHPUnit\Framework\TestCase;
 
 final class ModelQueryHandlerTest extends TestCase
 {
-    private MockObject|ModelRepositoryInterface $modelRepository;
-    private MockObject|MergedAttributesBuilder $attributesBuilder;
-    private MockObject|CodeTacRepositoryInterface $codeTacRepository;
+    private MockObject&ModelRepositoryInterface $modelRepository;
+    private MockObject&MergedAttributesBuilder $attributesBuilder;
+    private MockObject&CodeTacRepositoryInterface $codeTacRepository;
     private ModelQueryHandler $handler;
 
     public function setUp(): void

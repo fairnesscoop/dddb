@@ -6,6 +6,7 @@ namespace App\Domain;
 
 final class Pagination
 {
+    /** @var array<mixed> */
     public readonly array $windowPages;
     public readonly int $lastPage;
     public readonly bool $hasFirstPageLandmark;
@@ -13,6 +14,9 @@ final class Pagination
     public readonly bool $hasRightTruncature;
     public readonly bool $hasLastPageLandmark;
 
+    /**
+     * @param iterable<mixed> $items
+     */
     public function __construct(
         public readonly iterable $items,
         public readonly int $totalItems,

@@ -7,9 +7,9 @@ namespace App\Infrastructure\Controller\Model;
 use App\Application\Model\Query\ListModelsQuery;
 use App\Application\QueryBusInterface;
 use App\Domain\Model\Serie;
+use App\Domain\Pagination;
 use App\Infrastructure\Controller\Pagination\Builder;
 use App\Infrastructure\Controller\ResponseBuilder;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -34,7 +34,7 @@ final class ListModelsController
             return $this->responseBuilder->badRequest($exception->getMessage());
         }
 
-        /** @var Paginator $models */
+        /** @var Pagination $models */
         $models = $this->queryBus->handle(
             new ListModelsQuery(
                 serie: $serie,

@@ -19,7 +19,7 @@ final class PublicListController
     }
 
     #[Route('/', name: 'app_series_public_list', methods: ['GET'])]
-    public function __invoke()
+    public function __invoke(): Response
     {
         $series = $this->queryBus->handle(
             new AllSeriesQuery(),
@@ -36,7 +36,9 @@ final class PublicListController
     }
 
     /**
-     * @param SerieHeader[] $series
+     * @param array<SerieHeader> $series
+     *
+     * @return array<int, array<string, array<SerieHeader>>>
      */
     private function aggregateByManufacturer(array $series): array
     {

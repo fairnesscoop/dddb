@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 final class DeleteCodeTacCommandHandlerTest extends TestCase
 {
-    private MockObject|CodeTacRepositoryInterface $codeTacRepository;
+    private MockObject&CodeTacRepositoryInterface $codeTacRepository;
     private DeleteCodeTacCommandHandler $handler;
 
     public function setUp(): void

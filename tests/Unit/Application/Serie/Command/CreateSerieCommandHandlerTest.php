@@ -16,8 +16,8 @@ use PHPUnit\Framework\TestCase;
 
 final class CreateSerieCommandHandlerTest extends TestCase
 {
-    private MockObject|IdFactoryInterface $idFactory;
-    private MockObject|SerieRepositoryInterface $serieRepository;
+    private MockObject&IdFactoryInterface $idFactory;
+    private MockObject&SerieRepositoryInterface $serieRepository;
 
     public function setUp(): void
     {

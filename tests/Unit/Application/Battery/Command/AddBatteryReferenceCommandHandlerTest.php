@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 
 final class AddBatteryReferenceCommandHandlerTest extends TestCase
 {
-    private MockObject|AttributeRepositoryInterface $attributeRepository;
+    private MockObject&AttributeRepositoryInterface $attributeRepository;
     private AddBatteryReferenceCommandHandler $handler;
 
     public function setUp(): void

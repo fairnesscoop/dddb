@@ -10,7 +10,7 @@ use App\Domain\Model\Model;
 use App\Domain\Model\Serie;
 use App\Domain\Serie\Repository\SerieRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\Order;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -56,6 +56,9 @@ final class SerieRepository extends ServiceEntityRepository implements SerieRepo
         return $result[0] ?? null;
     }
 
+    /**
+     * @return Paginator<Serie>
+     */
     public function findPaginatedSeries(int $page, int $pageSize, ?string $manufacturerUuid): Paginator
     {
         $queryBuilder = $this->createQueryBuilder('s')
@@ -66,8 +69,8 @@ final class SerieRepository extends ServiceEntityRepository implements SerieRepo
             $queryBuilder->andWhere('s.manufacturer = :manufacturer')->setParameter('manufacturer', $manufacturerUuid);
         }
 
-        $queryBuilder->orderBy('m.name', Criteria::ASC)
-            ->addOrderBy('s.name', Criteria::ASC)
+        $queryBuilder->orderBy('m.name', Order::Ascending->value)
+            ->addOrderBy('s.name', Order::Ascending->value)
             ->setFirstResult($pageSize * ($page - 1)) // set the offset
             ->setMaxResults($pageSize);
 
@@ -91,8 +94,8 @@ final class SerieRepository extends ServiceEntityRepository implements SerieRepo
             )
             ->join('s.manufacturer', 'm')
             ->where($expr->exists($subQb->getDQL()))
-            ->orderBy('m.name', Criteria::ASC)
-            ->addOrderBy('s.name', Criteria::ASC)
+            ->orderBy('m.name', Order::Ascending->value)
+            ->addOrderBy('s.name', Order::Ascending->value)
             ->getQuery()
             ->getResult()
         ;

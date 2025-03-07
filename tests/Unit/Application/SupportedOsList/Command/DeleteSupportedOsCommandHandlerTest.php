@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 
 final class DeleteSupportedOsCommandHandlerTest extends TestCase
 {
-    private MockObject|AttributeRepositoryInterface $attributeRepository;
+    private MockObject&AttributeRepositoryInterface $attributeRepository;
     private DeleteSupportedOsCommandHandler $handler;
 
     public function setUp(): void

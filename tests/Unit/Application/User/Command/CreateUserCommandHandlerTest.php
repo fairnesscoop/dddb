@@ -18,10 +18,10 @@ use PHPUnit\Framework\TestCase;
 
 final class CreateUserCommandHandlerTest extends TestCase
 {
-    private MockObject|IdFactoryInterface $idFactory;
-    private MockObject|PasswordHasherInterface $passwordHasher;
-    private MockObject|UserRepositoryInterface $userRepository;
-    private MockObject|IsUserAlreadyRegistred $isUserAlreadyRegistred;
+    private MockObject&IdFactoryInterface $idFactory;
+    private MockObject&PasswordHasherInterface $passwordHasher;
+    private MockObject&UserRepositoryInterface $userRepository;
+    private MockObject&IsUserAlreadyRegistred $isUserAlreadyRegistred;
 
     public function setUp(): void
     {

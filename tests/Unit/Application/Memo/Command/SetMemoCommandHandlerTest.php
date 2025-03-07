@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Application\Memo\Command;
 
-use App\Application\Attribute\Builder\AttributeBuilder;
 use App\Application\Memo\Command\SetMemoCommand;
 use App\Application\Memo\Command\SetMemoCommandHandler;
 use App\Domain\Model\Attribute\AttributeRepositoryInterface;
@@ -16,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 final class SetMemoCommandHandlerTest extends TestCase
 {
-    private MockObject|AttributeBuilder $attributeRepository;
+    private MockObject&AttributeRepositoryInterface $attributeRepository;
     private SetMemoCommandHandler $handler;
 
     public function setUp(): void
@@ -79,6 +78,9 @@ final class SetMemoCommandHandlerTest extends TestCase
         ($this->handler)($command);
     }
 
+    /**
+     * @return array<array<mixed>>
+     */
     public static function emptyValues(): array
     {
         return [[null], ['']];

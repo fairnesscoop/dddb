@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 
 final class AddSupportedOsCommandHandlerTest extends TestCase
 {
-    private MockObject|AttributeRepositoryInterface $attributeRepository;
+    private MockObject&AttributeRepositoryInterface $attributeRepository;
     private AddSupportedOsCommandHandler $handler;
 
     public function setUp(): void

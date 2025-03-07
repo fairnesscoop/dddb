@@ -14,14 +14,14 @@ use Symfony\Component\DependencyInjection\Argument\ServiceLocator;
 
 final class AttributeBuilderTest extends TestCase
 {
-    private MockObject|DenormalizerInterface $attributeDenormalizer;
+    private MockObject&DenormalizerInterface $attributeDenormalizer;
     private AttributeBuilder $builder;
 
     public function setUp(): void
     {
         $this->attributeDenormalizer = $this->createMock(DenormalizerInterface::class);
 
-        /** @var MockObject|ServiceLocator $builderLocator */
+        /** @var MockObject&ServiceLocator $builderLocator */
         $builderLocator = $this->createMock(ServiceLocator::class);
         $builderLocator->expects(self::any())
             ->method('get')

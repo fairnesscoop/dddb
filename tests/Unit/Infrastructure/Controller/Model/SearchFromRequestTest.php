@@ -18,8 +18,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class SearchFromRequestTest extends TestCase
 {
-    private MockObject|QueryBusInterface $queryBus;
-    private MockObject|TranslatorInterface $translator;
+    private MockObject&QueryBusInterface $queryBus;
+    private MockObject&TranslatorInterface $translator;
     private SearchFromRequest $searchFromRequest;
 
     public function setUp(): void
@@ -87,9 +87,9 @@ final class SearchFromRequestTest extends TestCase
         self::assertEquals(new SearchResultView([], ''), $result);
     }
 
-    private function createSessionMock(): MockObject|FlashBagAwareSessionInterface
+    private function createSessionMock(): MockObject&FlashBagAwareSessionInterface
     {
-        /** @var MockObject|FlashBagAwareSessionInterface $sessionMock */
+        /** @var MockObject&FlashBagAwareSessionInterface $sessionMock */
         $sessionMock = $this->createMock(FlashBagAwareSessionInterface::class);
         $sessionMock->expects($this->once())
             ->method('getFlashBag')

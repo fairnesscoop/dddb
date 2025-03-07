@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 final class CreateCodeTacCommandHandlerTest extends TestCase
 {
-    private MockObject|CodeTacRepositoryInterface $codeTacRepository;
+    private MockObject&CodeTacRepositoryInterface $codeTacRepository;
     private CreateCodeTacCommandHandler $handler;
 
     public function setUp(): void

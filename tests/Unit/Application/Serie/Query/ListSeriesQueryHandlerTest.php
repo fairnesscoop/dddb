@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Application\Serie\Query;
 
 use App\Application\Serie\Query\ListSeriesQuery;
 use App\Application\Serie\Query\ListSeriesQueryHandler;
+use App\Domain\Model\Serie;
 use App\Domain\Pagination;
 use App\Domain\Serie\Repository\SerieRepositoryInterface;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -14,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ListSeriesQueryHandlerTest extends TestCase
 {
-    private MockObject|SerieRepositoryInterface $serieRepository;
+    private MockObject&SerieRepositoryInterface $serieRepository;
 
     public function setUp(): void
     {
@@ -23,7 +24,7 @@ final class ListSeriesQueryHandlerTest extends TestCase
 
     public function testList(): void
     {
-        /** @var MockObject|Paginator $paginator */
+        /** @var MockObject&Paginator<Serie> $paginator */
         $paginator = $this->createMock(Paginator::class);
         $paginator->expects(self::once())->method('count')->willReturn(1);
 
