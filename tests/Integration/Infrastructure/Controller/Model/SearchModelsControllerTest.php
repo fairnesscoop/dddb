@@ -19,6 +19,18 @@ class SearchModelsControllerTest extends AbstractWebTestCase
         self::assertEquals('Serie 4', $firstRow->filter('td:nth-child(2)')->text());
     }
 
+    public function testFuzzyTextSearch(): void
+    {
+        $client = $this->login();
+        $crawler = $client->request('GET', '/en/search?search=fairfone+fp4');
+
+        $this->assertResponseStatusCodeSame(200);
+
+        $firstRow = $crawler->filter('tbody tr:first-child');
+        self::assertEquals('Fairphone', $firstRow->filter('td:first-child')->text());
+        self::assertEquals('Serie 4', $firstRow->filter('td:nth-child(2)')->text());
+    }
+
     public function testTacSearch(): void
     {
         $client = $this->login();
