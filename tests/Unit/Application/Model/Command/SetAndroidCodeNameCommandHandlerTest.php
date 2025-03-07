@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 final class SetAndroidCodeNameCommandHandlerTest extends TestCase
 {
-    private MockObject|ModelRepositoryInterface $modelRepository;
+    private MockObject&ModelRepositoryInterface $modelRepository;
     private SetAndroidCodeNameCommandHandler $handler;
 
     public function setUp(): void

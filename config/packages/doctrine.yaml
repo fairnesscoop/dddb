@@ -22,7 +22,7 @@ doctrine:
                 prefix: 'App\Infrastructure\Persistence\Doctrine\Search'
                 alias: 'App\Infrastructure\Persistence\Doctrine\Search'
         controller_resolver:
-            auto_mapping: true
+            auto_mapping: false
         enable_lazy_ghost_objects: true
 
 when@test:

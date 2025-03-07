@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
 
 final class CreateModelCommandHandlerTest extends TestCase
 {
-    private MockObject|IdFactoryInterface $idFactory;
-    private MockObject|ModelRepositoryInterface $modelRepository;
+    private MockObject&IdFactoryInterface $idFactory;
+    private MockObject&ModelRepositoryInterface $modelRepository;
     private CreateModelCommandHandler $handler;
 
     public function setUp(): void

@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ListManufacturersQueryHandlerTest extends TestCase
 {
-    private MockObject|ManufacturerRepositoryInterface $manufacturerRepository;
+    private MockObject&ManufacturerRepositoryInterface $manufacturerRepository;
 
     public function setUp(): void
     {
@@ -23,7 +23,7 @@ final class ListManufacturersQueryHandlerTest extends TestCase
 
     public function testList(): void
     {
-        /** @var MockObject|Paginator $paginator */
+        /** @var MockObject&Paginator $paginator */
         $paginator = $this->createMock(Paginator::class);
         $paginator->expects(self::once())->method('count')->willReturn(1);
 

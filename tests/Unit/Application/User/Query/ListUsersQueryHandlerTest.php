@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ListUsersQueryHandlerTest extends TestCase
 {
-    private MockObject|UserRepositoryInterface $userRepository;
+    private MockObject&UserRepositoryInterface $userRepository;
 
     public function setUp(): void
     {
